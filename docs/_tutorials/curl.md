@@ -1,8 +1,8 @@
 ---
 layout: tutorials
-title: Example Tutorial 1
-summary: This is a short description for the landing page.
-icon: tutorial-1-icon.png
+title: HTTP Client (curl)
+summary: How to get started with SEMP using the curl tool
+icon: curl-logo.png
 ---
 
 You would describe your tutorial in markdown like these. See other samples for full examples.
