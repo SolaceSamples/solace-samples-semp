@@ -5,6 +5,11 @@ repository: https://github.com/SolaceSamples/solace-samples-semp
 
 # Also see _includes/intro.html to customize the description which gets included in index.html.
 
+# Links to docs. Using variables to make it easy to keep up to date
+docs-overview: http://docs.solacesystems.com/concepts/overview
+docs-paging: http://docs.solacesystems.com/concepts/paging
+docs-api: http://docs.solacesystems.com
+
 
 #----------------------------------------------------
 # Generally don't modify items below this point
