@@ -7,8 +7,9 @@ repository: https://github.com/SolaceSamples/solace-samples-semp
 
 # Links to docs. Using variables to make it easy to keep up to date
 docs-overview: http://docs.solacesystems.com/concepts/overview
-docs-paging: http://docs.solacesystems.com/concepts/paging
+docs-concepts-paging: http://docs.solacesystems.com/concepts/paging
 docs-api: http://docs.solacesystems.com
+dosc-schema: http://docs.solacesystem.com/awesomeschema
 
 
 #----------------------------------------------------

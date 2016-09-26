@@ -1,4 +1,4 @@
 - title: Tutorials
   tutorials:
   - curl
-  - semp-java-client
+  - java-client
