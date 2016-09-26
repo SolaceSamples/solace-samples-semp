@@ -77,7 +77,7 @@ sempApiInstance = new MsgVpnsApi(thisClient);
 
 Remember to update the values in the above to match your environment.
 
-### Using a secure connection to the Solace Message Router
+### Using a Secure Connection to the Solace Message Router
 
 TODO – Need details here.
 
@@ -126,7 +126,7 @@ private void handleError(ApiException ae) {
 
 The code uses the `ObjectMapper` from the Jackson library, which is used internally by the Swagger client library. It then simply prints the relevant information to the console. 
 
-## Creating an object using POST
+## Creating an Object Using POST
 
 You create a client username from the `clientUsernames` collection within the message-VPN. The client username has only one required attribute, its name. In this example I’ve chosen `tutorialUser`. For interest, I will also enable the new client username so it is ready for messaging clients to use. During creation, any attributes that are not specified will be created using default values. 
 
@@ -156,7 +156,7 @@ MsgVpnClientUsername createdClientUsername = resp.getData();
 System.out.println("Created client username: " + createdClientUsername);
 ```
 
-## Retrieving an object using GET
+## Retrieving an Object Using GET
 
 Now that you have created a client username, you can retrieve the object using an `msgVpnsVidClientUsernamesCidGet()`. The following code shows you how to retrieve a client username and print it to the console.
 
@@ -171,7 +171,7 @@ try {
 }
 ```
 
-## Retrieving a collection of objects using GET
+## Retrieving a Collection of Objects Using GET
 
 You can also retrieve all of the client usernames within the `default` message VPN and you will see the newly created `tutorialUser` object as well as any others. For this, you would use the `msgVpnsVidClientUsernamesGet()` method which will execute an HTTP GET on the actual `clientUsernames` collection.
 
@@ -189,7 +189,7 @@ try {
 
 For large collections, the response will be paged. See [SEMP paging]({{ site.docs-docs-concepts-paging }}){:target="_top"} for details.
 
-## Partially updating an object using PATCH
+## Partially Updating an Object Using PATCH
 
 The HTTP PATCH method allows you to partially update a SEMP object, only the attributes that are specified are updated. So let’s disable the `tutorialUser` client username as an example of how PATCH can be used. 
 
@@ -210,7 +210,7 @@ try {
 }
 ```
 
-## Fully updating an object using PUT
+## Fully Updating an Object Using PUT
 
 The HTTP PUT method is used to update an object to match the attributes specified. All attributes not specified are reset to default values. The method for updating a client username via a PUT call is `msgVpnsVidClientUsernamesCidPut()`. For the purposes of an example, let’s reset the `tutorialUser` so that it is enabled and all other attributes are defaulted. The following code would do this:
 
@@ -229,7 +229,7 @@ try {
 }
 ```
 
-## Removing an object using DELETE
+## Removing an Object Using DELETE
 
 The HTTP DELETE method is used to remove an object which is accessed through the `msgVpnsVidClientUsernamesCidDelete()` method. This method requires only the VPN and client username strings to identify the object to delete. The following code deletes the `tutorialUser` client username.
 
