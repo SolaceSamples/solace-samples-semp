@@ -162,8 +162,8 @@ Now that you have created a client username, you can retrieve the object using a
 
 ```java
 try {
-    String vpn = “default”;
-    String clientUsername = “tutorialUser”;
+    String vpn = "default";
+    String clientUsername = "tutorialUser";
     MsgVpnClientUsernameResponse resp = sempApiInstance.msgVpnsVidClientUsernamesCidGet(vpn, clientUsername);
     System.out.println("Retrieved client username: " + resp.getData());
 } catch (ApiException e) {
@@ -197,8 +197,8 @@ The following code shows how to disable a client username. To do this, you creat
 
 ```java
 try {
-    String vpn = “default”;
-    String clientUsername = “tutorialUser”;
+    String vpn = "default";
+    String clientUsername = "tutorialUser";
     MsgVpnClientUsername updatedClientUsername = new MsgVpnClientUsername();
     updatedClientUsername.setEnabled(false);
     MsgVpnClientUsernameResponse resp = sempApiInstance.msgVpnsVidClientUsernamesCidPatch(
@@ -216,8 +216,8 @@ The HTTP PUT method is used to update an object to match the attributes specifie
 
 ```java
 try {
-    String vpn = “default”;
-    String clientUsername = “tutorialUser”;
+    String vpn = "default";
+    String clientUsername = "tutorialUser";
     MsgVpnClientUsername updatedClientUsername = new MsgVpnClientUsername();
     updatedClientUsername.setEnabled(true);
     MsgVpnClientUsernameResponse resp = sempApiInstance. msgVpnsVidClientUsernamesCidPut(
@@ -235,8 +235,8 @@ The HTTP DELETE method is used to remove an object which is accessed through the
 
 ```java
 try {
-    String vpn = “default”;
-    String clientUsername = “tutorialUser”;
+    String vpn = "default";
+    String clientUsername = "tutorialUser";
     MetaResponse resp = sempApiInstance.msgVpnsVidClientUsernamesCidDelete(vpn, clientUsername);
 } catch (ApiException e) {
     handleError(e);
