@@ -35,7 +35,7 @@ The examples below make a few assumptions for simplicity:
 
 Before jumping to a specific method and SEMP resource, let’s just introduce a few basic concepts that common across the API. If you have not already, you can learn more about these concepts and SEMP in general by checking out the [API overview]({{ site.docs-overview }}){:target="_top"}.
 
-Objects in SEMP are represented by JSON. For example, if you want to create a client username called `tutorialUser` and enable this client username, you can use the following JSON.
+Objects in SEMP are represented by JSON. For example, if you want to create a Client Username called `tutorialUser` and enable this Client Username, you can use the following JSON.
 
 ```
 {
@@ -44,21 +44,21 @@ Objects in SEMP are represented by JSON. For example, if you want to create a cl
 }
 ```
 
-All Solace message router objects are addressed by a resource path that you specify in the URI. So for example let’s look at the URI for creating a client username.
+All Solace message router objects are addressed by a resource path that you specify in the URI. So for example let’s look at the URI for creating a Client Username.
 
     solacevmr:8080/SEMP/v2/config/msgVpns/default/clientUsernames
 
 In this URI, the authority component is `solacevmr:8080`, which identifies the Solace message router that you are interacting with. Then `/SEMP/v2/config` identifies that you are making a SEMP call and that you are using version 2 of the API `config` API.
 
-The remaining part of the URI, `/msgVpns/default/clientUsernames`, identifies that you are targeting client usernames collection within the “default” message-VPN.
+The remaining part of the URI, `/msgVpns/default/clientUsernames`, identifies that you are targeting Client Usernames collection within the “default” message-VPN.
 
-Ok let’s get started…
+Ok let’s get started...
 
 ## Creating an object using POST
 
-You create a client username from the `clientUsernames` collection within the message-VPN. The client username has only one required attribute, its name. In this example I’ve chosen `tutorialUser`. For interest, I will also enable the new client username so it is ready for messaging clients to use. During creation, any attributes that are not specified will be created using default values. 
+You create a Client Username from the `clientUsernames` collection within the message-VPN. The Client Username has only one required attribute, its name. In this example I’ve chosen `tutorialUser`. For interest, I will also enable the new Client Username so it is ready for messaging clients to use. During creation, any attributes that are not specified will be created using default values. 
 
-With `curl`, you can create a client username using an HTTP POST with the following command:
+With `curl`, you can create a Client Username using an HTTP POST with the following command:
 
 ```
 curl -X POST -u user:password solacevmr:8080/SEMP/v2/config/msgVpns/default/clientUsernames \
@@ -100,7 +100,7 @@ The response contains three components. These are explained in more detail in th
 
 ## Retrieving an object using GET
 
-Now that you have created a client username, you can retrieve the object using an HTTP GET. The resource path for the `tutorialUser` client username created previously would be:
+Now that you have created a Client Username, you can retrieve the object using an HTTP GET. The resource path for the `tutorialUser` Client Username created previously would be:
 
     /msgVpns/default/clientUsernames/tutorialUser
 
@@ -136,7 +136,7 @@ When you retrieve a specific object from SEMP, the response will contain the exp
 
 ## Retrieving a collection of objects using GET
 
-You can also retrieve all of the client usernames within the `default` message VPN and you will see the newly created `tutorialUser` object as well as any others. For this, you perform an HTTP GET on the actual `clientUsernames` collection.
+You can also retrieve all of the Client Usernames within the `default` Message VPN and you will see the newly created `tutorialUser` object as well as any others. For this, you perform an HTTP GET on the actual `clientUsernames` collection.
 
     curl -u user:password solacevmr:8080/SEMP/v2/config/msgVpns/default/clientUsernames
 
@@ -198,7 +198,7 @@ For developers, you can also notice that for collections, the links object will 
 
 ## Partially updating an object using PATCH
 
-The HTTP PATCH method allows you to partially update a SEMP object, only the attributes that are specified are updated. So let’s disable the `tutorialUser` client username as an example of how PATCH can be used. The URI is the same as the GET, it is the specific address of the `tutorialUser` object. In the JSON body, you specify all attributes that you want updated. In this case just `enabled` and we will send a value of `false`.
+The HTTP PATCH method allows you to partially update a SEMP object, only the attributes that are specified are updated. So let’s disable the `tutorialUser` Client Username as an example of how PATCH can be used. The URI is the same as the GET, it is the specific address of the `tutorialUser` object. In the JSON body, you specify all attributes that you want updated. In this case just `enabled` and we will send a value of `false`.
 
 ```
 curl -X PATCH  -u user:password solacevmr:8080/SEMP/v2/config/msgVpns/default/clientUsernames/tutorialUser \
@@ -233,7 +233,7 @@ The response back from the Solace message router will again have the same format
 
 ## Fully updating an object using PUT
 
-The HTTP PUT method is used to update an object to match the attributes specified. All attributes not specified are reset to default values. Again, the URI for the `tutorialUser` client username is the same URI as used in the GET and PATCH. For the purposes of an example, let’s reset the `tutorialUser` so that it is enabled and all other attributes are defaulted. The following `curl` would do this:
+The HTTP PUT method is used to update an object to match the attributes specified. All attributes not specified are reset to default values. Again, the URI for the `tutorialUser` Client Username is the same URI as used in the GET and PATCH. For the purposes of an example, let’s reset the `tutorialUser` so that it is enabled and all other attributes are defaulted. The following `curl` would do this:
 
 ```
 curl -X PUT  -u user:password solacevmr:8080/SEMP/v2/config/msgVpns/default/clientUsernames/tutorialUser \
@@ -241,7 +241,7 @@ curl -X PUT  -u user:password solacevmr:8080/SEMP/v2/config/msgVpns/default/clie
   -d '{"clientUsername":"tutorialUser","enabled":true}'
 ```
 
-As with other methods, the response format contains the meta, links, and data. In the data object, the full client username is represented. You can see that it is now enabled.
+As with other methods, the response format contains the meta, links, and data. In the data object, the full Client Username is represented. You can see that it is now enabled.
 
 ```
 {
@@ -269,7 +269,7 @@ As with other methods, the response format contains the meta, links, and data. I
        
 ## Removing an object using DELETE
 
-The HTTP DELETE method is used to remove an object. No content is required. All the details are provided in the URI. The following curl will delete the `tutorialUser` client username object.
+The HTTP DELETE method is used to remove an object. No content is required. All the details are provided in the URI. The following curl will delete the `tutorialUser` Client Username object.
 
     curl -X DELETE  -u user:password solacevmr:8080/SEMP/v2/config/msgVpns/default/clientUsernames/tutorialUser
 
@@ -289,7 +289,7 @@ In contrast to other methods, for the delete only the meta object is returned. T
 
 ## Summary
 
-At this point, you have created, retrieved, updated and deleted a client username object using SEMP. The examples used `curl` to send and receive the HTTP requests, but you can adapt the steps to any programming language of your choice. 
+At this point, you have created, retrieved, updated and deleted a Client Username object using SEMP. The examples used `curl` to send and receive the HTTP requests, but you can adapt the steps to any programming language of your choice. 
 
 SEMP is an extensive API that lets you configure anything on your Solace message router so there is a lot more to understand. If you want to know more, either you can get more familiar with the SEMP concepts by checking out the [user guide]({{ site.docs-overview }}){:target="_top"} or you can see the full [developer documentation for the API]({{ site.docs-api }}){:target="_top"}.
 

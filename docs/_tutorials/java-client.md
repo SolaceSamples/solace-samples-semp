@@ -56,30 +56,26 @@ One quick and easy way is to use the online editor. The following steps walk you
 
 ## Client Library Basics
 
-Before jumping to specific tasks like creating a client username, we will first introduce a few basic concepts that common to the SEMP client library. If you have not already, you can learn more about these concepts and SEMP in general by checking out the API overview <<LINK to API overview>>.[API overview]({{ site.docs-overview }}){:target="_top"}.
+Before jumping to specific tasks like creating a Client Username, we will first introduce a few basic concepts that common to the SEMP client library. If you have not already, you can learn more about these concepts and SEMP in general by checking out the API overview <<LINK to API overview>>.[API overview]({{ site.docs-overview }}){:target="_top"}.
 
 ### Initializing the SEMP API
 
-Before sending any commands, you must initialize the client library. There is a close relationship between the tags used in the SEMP specification and the SEMP client library classes offered. Each tag, like `MsgVpns`, is compiled into a class in the `io.swagger.client.api` package. Because of this, you have the option to work with the full SEMP API or subsets as controlled by the tags in the SEMP specification. You should determine which tag best fits your use case and use this client API class. For this introduction, we will use the `MsgVpns` tag and the `MsgVpnsApi` class because configuring a Solace message router message-VPN is a very common task in a dev-ops workflow.
+Before sending any commands, you must initialize the client library. There is a close relationship between the tags used in the SEMP specification and the SEMP client library classes offered. Each tag, like `msgVpn`, is compiled into a class in the `io.swagger.client.api` package. Because of this, you have the option to work with the full SEMP API or subsets as controlled by the tags in the SEMP specification. You should determine which tag best fits your use case and use this client API class. For this introduction, we will use the `msgVpn` tag and the `MsgVpnApi` class because configuring a Solace message router message-VPN is a very common task in a dev-ops workflow.
 
 Before you can send any commands to the Solace message router, you need an instance of the SEMP API. The following code shows you how to create such an instance and set the SEMP username and password. This will connect of HTTP. Secure connections are also supported and outlined below:
 
 ```
 import io.swagger.client.ApiClient;
-import io.swagger.client.api.MsgVpnsApi;
+import io.swagger.client.api.MsgVpnApi;
 
 ApiClient thisClient = new ApiClient();
 thisClient.setBasePath(“http://solacevmr:8080/SEMP/v2/config”);
 thisClient.setUsername(“user”);
 thisClient.setPassword(“password”);
-sempApiInstance = new MsgVpnsApi(thisClient);
+MsgVpnApi SEMPsempApiInstance = new MsgVpnApi(thisClient);
 ```
 
 Remember to update the values in the above to match your environment.
-
-### Using a Secure Connection to the Solace Message Router
-
-TODO – Need details here.
 
 ### Error handling
 
@@ -104,68 +100,66 @@ The Solace message router will always respond with a JSON payload of the followi
 }
 ```
 
-In this way, client applications, can parse for the `error` structure and learn details of what went wrong. If we ignore other types of errors like connection timeout, etc, the following code shows you how to parse the Solace response body and extract the details using the client library `MetaResponse` object from the model.
+In this way, client applications, can parse for the `SempError` structure and learn details of what went wrong. If we ignore other types of errors like connection timeout, etc, the following code shows you how to parse the Solace response body and extract the details using the client library `SempMetaOnlyResponse` object from the model.
 
 ```java
 private void handleError(ApiException ae) {
-    ObjectMapper mapper = new ObjectMapper();
+    Gson gson = new Gson();
     String responseString = ae.getResponseBody();
-    try {
-        MetaResponse respObj = mapper.readValue(responseString, MetaResponse.class);
-        io.swagger.client.model.Error errorInfo = respObj.getMeta().getError();
-        System.out.println("Error during operation. Details..." + 
-                "\nHTTP Status Code: " + ae.getCode() + 
-                "\nSEMP Error Code: " + errorInfo.getCode() + 
-                "\nSEMP Error Status: " + errorInfo.getStatus() + 
-                "\nSEMP Error Descriptions: " + errorInfo.getDescription()) ;
-    } catch (IOException e) {
-        System.out.println("Unexpected response format: " + responseString);
-    }
+    SempMetaOnlyResponse respObj = gson.fromJson(responseString, SempMetaOnlyResponse.class);
+    SempError errorInfo = respObj.getMeta().getError();
+    System.out.println("Error during operation. Details..." + 
+            "\nHTTP Status Code: " + ae.getCode() + 
+            "\nSEMP Error Code: " + errorInfo.getCode() + 
+            "\nSEMP Error Status: " + errorInfo.getStatus() + 
+            "\nSEMP Error Descriptions: " + errorInfo.getDescription()) ;
 }
 ```
 
-The code uses the `ObjectMapper` from the Jackson library, which is used internally by the Swagger client library. It then simply prints the relevant information to the console. 
+The code uses the `Gson` library to parse the JSON response, which is used internally by the Swagger client library. It then simply prints the relevant information to the console. 
 
 ## Creating an Object Using POST
 
-You create a client username from the `clientUsernames` collection within the message-VPN. The client username has only one required attribute, its name. In this example I’ve chosen `tutorialUser`. For interest, I will also enable the new client username so it is ready for messaging clients to use. During creation, any attributes that are not specified will be created using default values. 
+You create a Client Username from the `clientUsernames` collection within the message-VPN. The Client Username has only one required attribute, its name. In this example I’ve chosen `tutorialUser`. For interest, I will also enable the new Client Username so it is ready for messaging clients to use. During creation, any attributes that are not specified will be created using default values. 
 
-To create a client username, you use the `msgVpnsVidClientUsernamesPost()` method. If you understand how the resource names are composed in the SEMP API, the method names should be easy to derive and understand. For details on resource name composition, you can check out the [SEMP Concepts – URI Structure]({{ site.docs-docs-concepts-uri }}){:target="_top"}. 
+To create a Client Username, you use the `msgVpnsVidClientUsernamesPost()` method. If you understand how the resource names are composed in the SEMP API, the method names should be easy to derive and understand. For details on resource name composition, you can check out the [SEMP Concepts – URI Structure]({{ site.docs-docs-concepts-uri }}){:target="_top"}. 
 
-The new client username is represented by the `MsgVpnClientUsername` class from the model. Using this class, you can set any client username attributes you would like during creation.
+The new Client Username is represented by the `MsgVpnClientUsername` class from the model. Using this class, you can set any Client Username attributes you would like during creation.
 
 ```java
-String vpn = “default”;
-String clientUsername = “tutorialUser”;
-MsgVpnClientUsername newClientUsername = new MsgVpnClientUsername();
-newClientUsername.setClientUsername(clientUsername);
-newClientUsername.setEnabled(true);
-MsgVpnClientUsernameResponse resp = null;
-try {
-    resp = sempApiInstance.msgVpnsVidClientUsernamesPost(vpn, newClientUsername);
-} catch (ApiException e) {
-    handleError(e);
-    return;
-}
+    String msgVpn = "default";
+    String clientUsername = "tutorialUser";
+    MsgVpnClientUsername newClientUsername = new MsgVpnClientUsername();
+    newClientUsername.setClientUsername(clientUsername);
+    newClientUsername.setEnabled(true);
+    MsgVpnClientUsernameResponse resp = null;
+    List<String> nullSelector = null;
+    try {
+        resp = sempApiInstance.createMsgVpnClientUsername(msgVpn, newClientUsername, nullSelector);
+    } catch (ApiException e) {
+        handleError(e);
+        return;
+    }
 ```
 
-The response will contain the newly created client username in the data portion. You can extract and print this new client username as follows.
+The response will contain the newly created Client Username in the data portion. You can extract and print this new Client Username as follows.
 
 ```java
-MsgVpnClientUsername createdClientUsername = resp.getData();
-System.out.println("Created client username: " + createdClientUsername);
+    MsgVpnClientUsername createdClientUsername = resp.getData();
+    System.out.println("Created Client Username: " + createdClientUsername);
 ```
 
 ## Retrieving an Object Using GET
 
-Now that you have created a client username, you can retrieve the object using an `msgVpnsVidClientUsernamesCidGet()`. The following code shows you how to retrieve a client username and print it to the console.
+Now that you have created a Client Username, you can retrieve the object using an `msgVpnsVidClientUsernamesCidGet()`. The following code shows you how to retrieve a Client Username and print it to the console.
 
 ```java
 try {
-    String vpn = "default";
+    String msgVpn = "default";
     String clientUsername = "tutorialUser";
-    MsgVpnClientUsernameResponse resp = sempApiInstance.msgVpnsVidClientUsernamesCidGet(vpn, clientUsername);
-    System.out.println("Retrieved client username: " + resp.getData());
+    List<String> nullSelector = null;
+    MsgVpnClientUsernameResponse resp = sempApiInstance.getMsgVpnClientUsername(msgVpn, clientUsername, nullSelector);
+    System.out.println("Retrieved Client Username: " + resp.getData());
 } catch (ApiException e) {
     handleError(e);
 }
@@ -173,36 +167,38 @@ try {
 
 ## Retrieving a Collection of Objects Using GET
 
-You can also retrieve all of the client usernames within the `default` message VPN and you will see the newly created `tutorialUser` object as well as any others. For this, you would use the `msgVpnsVidClientUsernamesGet()` method which will execute an HTTP GET on the actual `clientUsernames` collection.
+You can also retrieve all of the Client Usernames within the `default` Message VPN and you will see the newly created `tutorialUser` object as well as any others. For this, you would use the `msgVpnsVidClientUsernamesGet()` method which will execute an HTTP GET on the actual `clientUsernames` collection.
 
-The following code will retrieve a list of all the client usernames in the `default` message-VPN and print the count to the console.
+The following code will retrieve a list of all the Client Usernames in the `default` message-VPN and print the count to the console.
 
 ```java
 try {
-    MsgVpnClientUsernamesResponse resp = sempApiInstance.msgVpnsVidClientUsernamesGet(vpn);
+    String msgVpn = "default";
+    // Ignore paging and selectors in this example. So set to null.
+    MsgVpnClientUsernamesResponse resp = sempApiInstance.getMsgVpnClientUsernames(msgVpn, null, null, null, null);
     List<MsgVpnClientUsername> clientUsernamesList = resp.getData();
-    System.out.println("Retrieved " + clientUsernamesList.size() + " client usernames.");
+    System.out.println("Retrieved " + clientUsernamesList.size() + " Client Usernames.");
 } catch (ApiException e) {
     handleError(e);
 }
 ```
 
-For large collections, the response will be paged. See [SEMP paging]({{ site.docs-docs-concepts-paging }}){:target="_top"} for details.
+For large collections, the response will be paged. See [SEMP paging]({{ site.docs-concepts-paging }}){:target="_top"} for details.
 
 ## Partially Updating an Object Using PATCH
 
-The HTTP PATCH method allows you to partially update a SEMP object, only the attributes that are specified are updated. So let’s disable the `tutorialUser` client username as an example of how PATCH can be used. 
+The HTTP PATCH method allows you to partially update a SEMP object, only the attributes that are specified are updated. So let’s disable the `tutorialUser` Client Username as an example of how PATCH can be used. 
 
-The following code shows how to disable a client username. To do this, you create a `MsgVpnClientUsername` and update the enabled state to false. Then call the PATCH method. 
+The following code shows how to disable a Client Username. To do this, you create a `MsgVpnClientUsername` and update the enabled state to false. Then call the PATCH method. 
 
 ```java
 try {
-    String vpn = "default";
+    String msgVpn = "default";
     String clientUsername = "tutorialUser";
     MsgVpnClientUsername updatedClientUsername = new MsgVpnClientUsername();
     updatedClientUsername.setEnabled(false);
     MsgVpnClientUsernameResponse resp = sempApiInstance.msgVpnsVidClientUsernamesCidPatch(
-          vpn,
+          msgVpn,
           clientUsername,
           updatedClientUsername);
 } catch (ApiException e) {
@@ -212,18 +208,16 @@ try {
 
 ## Fully Updating an Object Using PUT
 
-The HTTP PUT method is used to update an object to match the attributes specified. All attributes not specified are reset to default values. The method for updating a client username via a PUT call is `msgVpnsVidClientUsernamesCidPut()`. For the purposes of an example, let’s reset the `tutorialUser` so that it is enabled and all other attributes are defaulted. The following code would do this:
+The HTTP PUT method is used to update an object to match the attributes specified. All attributes not specified are reset to default values. The method for updating a Client Username via a PUT call is `msgVpnsVidClientUsernamesCidPut()`. For the purposes of an example, let’s reset the `tutorialUser` so that it is enabled and all other attributes are defaulted. The following code would do this:
 
 ```java
 try {
-    String vpn = "default";
+    String msgVpn = "default";
     String clientUsername = "tutorialUser";
     MsgVpnClientUsername updatedClientUsername = new MsgVpnClientUsername();
     updatedClientUsername.setEnabled(true);
-    MsgVpnClientUsernameResponse resp = sempApiInstance. msgVpnsVidClientUsernamesCidPut(
-          vpn,
-          clientUsername,
-          updatedClientUsername);
+    MsgVpnClientUsernameResponse resp = sempApiInstance.replaceMsgVpnClientUsername(
+                            msgVpn, clientUsername, updatedClientUsername, null);
 } catch (ApiException e) {
     handleError(e);
 }
@@ -231,13 +225,13 @@ try {
 
 ## Removing an Object Using DELETE
 
-The HTTP DELETE method is used to remove an object which is accessed through the `msgVpnsVidClientUsernamesCidDelete()` method. This method requires only the VPN and client username strings to identify the object to delete. The following code deletes the `tutorialUser` client username.
+The HTTP DELETE method is used to remove an object which is accessed through the `msgVpnsVidClientUsernamesCidDelete()` method. This method requires only the VPN and Client Username strings to identify the object to delete. The following code deletes the `tutorialUser` Client Username.
 
 ```java
 try {
-    String vpn = "default";
+    String msgVpn = "default";
     String clientUsername = "tutorialUser";
-    MetaResponse resp = sempApiInstance.msgVpnsVidClientUsernamesCidDelete(vpn, clientUsername);
+    SempMetaOnlyResponse resp = sempApiInstance.deleteMsgVpnClientUsername(msgVpn, clientUsername);
 } catch (ApiException e) {
     handleError(e);
 }
@@ -245,6 +239,6 @@ try {
 
 ## Summary
 
-At this point, you have created, retrieved, updated and deleted a client username object using SEMP. The examples used a generated client library in Java to interact with the Solace message router, but you can adapt the steps to any programming language of your choice. 
+At this point, you have created, retrieved, updated and deleted a Client Username object using SEMP. The examples used a generated client library in Java to interact with the Solace message router, but you can adapt the steps to any programming language of your choice. 
 
 SEMP is an extensive API that lets you configure anything on your Solace message router so there is a lot more to understand. If you want to know more, either you can get more familiar with the SEMP concepts by checking out the [user guide]({{ site.docs-overview }}){:target="_top"} or you can see the full [developer documentation for the API]({{ site.docs-api }}){:target="_top"}.
