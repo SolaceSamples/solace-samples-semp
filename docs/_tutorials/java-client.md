@@ -77,6 +77,8 @@ MsgVpnApi SEMPsempApiInstance = new MsgVpnApi(thisClient);
 
 Remember to update the values in the above to match your environment.
 
+[*Source Reference: JavaClientSample.initialize()*]({{ site.repository }}/blob/master/src/main/java/com/solace/samples/JavaClientSample.java){:target="_blank"}
+
 ### Error handling
 
 There are many different errors that can occur when trying to connect with and manage the Solace message routers. In the client library, the `ApiException` class represents all of these errors. This `ApiException` wraps the HTTP errors and provides access to the HTTP response code, response headers, response body, etc.
@@ -118,6 +120,8 @@ private void handleError(ApiException ae) {
 
 The code uses the `Gson` library to parse the JSON response, which is used internally by the Swagger client library. It then simply prints the relevant information to the console. 
 
+[*Source Reference: JavaClientSample.handleError()*]({{ site.repository }}/blob/master/src/main/java/com/solace/samples/JavaClientSample.java){:target="_blank"}
+
 ## Creating an Object Using POST
 
 You create a Client Username from the `clientUsernames` collection within the message-VPN. The Client Username has only one required attribute, its name. In this example I’ve chosen `tutorialUser`. For interest, I will also enable the new Client Username so it is ready for messaging clients to use. During creation, any attributes that are not specified will be created using default values. 
@@ -149,6 +153,8 @@ The response will contain the newly created Client Username in the data portion.
     System.out.println("Created Client Username: " + createdClientUsername);
 ```
 
+[*Source Reference: JavaClientSample.createObjectUsingPost()*]({{ site.repository }}/blob/master/src/main/java/com/solace/samples/JavaClientSample.java){:target="_blank"}
+
 ## Retrieving an Object Using GET
 
 Now that you have created a Client Username, you can retrieve the object using an `msgVpnsVidClientUsernamesCidGet()`. The following code shows you how to retrieve a Client Username and print it to the console.
@@ -164,6 +170,8 @@ try {
     handleError(e);
 }
 ```
+
+[*Source Reference: JavaClientSample.retrievingObjectUsingGet()*]({{ site.repository }}/blob/master/src/main/java/com/solace/samples/JavaClientSample.java){:target="_blank"}
 
 ## Retrieving a Collection of Objects Using GET
 
@@ -184,6 +192,8 @@ try {
 ```
 
 For large collections, the response will be paged. See [SEMP paging]({{ site.docs-concepts-paging }}){:target="_top"} for details.
+
+[*Source Reference: JavaClientSample.retrievingCollectionUsingGet()*]({{ site.repository }}/blob/master/src/main/java/com/solace/samples/JavaClientSample.java){:target="_blank"}
 
 ## Partially Updating an Object Using PATCH
 
@@ -206,6 +216,8 @@ try {
 }
 ```
 
+[*Source Reference: JavaClientSample.partialObjectUpdateUsingPatch()*]({{ site.repository }}/blob/master/src/main/java/com/solace/samples/JavaClientSample.java){:target="_blank"}
+
 ## Fully Updating an Object Using PUT
 
 The HTTP PUT method is used to update an object to match the attributes specified. All attributes not specified are reset to default values. The method for updating a Client Username via a PUT call is `msgVpnsVidClientUsernamesCidPut()`. For the purposes of an example, let’s reset the `tutorialUser` so that it is enabled and all other attributes are defaulted. The following code would do this:
@@ -223,6 +235,8 @@ try {
 }
 ```
 
+[*Source Reference: JavaClientSample.fullObjectUpdateUsingPut()*]({{ site.repository }}/blob/master/src/main/java/com/solace/samples/JavaClientSample.java){:target="_blank"}
+
 ## Removing an Object Using DELETE
 
 The HTTP DELETE method is used to remove an object which is accessed through the `msgVpnsVidClientUsernamesCidDelete()` method. This method requires only the VPN and Client Username strings to identify the object to delete. The following code deletes the `tutorialUser` Client Username.
@@ -237,7 +251,51 @@ try {
 }
 ```
 
+[*Source Reference: JavaClientSample.removingObjectUsingDelete()*]({{ site.repository }}/blob/master/src/main/java/com/solace/samples/JavaClientSample.java){:target="_blank"}
+
 ## Summary
+
+The full source code for this example is available in [GitHub]({{ site.repository }}){:target="_blank"}. If you combine the example source code shown above results in the following source:
+
+*   [JavaClientSample.java]({{ site.repository }}/blob/master/src/main/java/com/solace/samples/JavaClientSample.java){:target="_blank"}
+
+### Getting the Source
+
+Clone the GitHub repository containing the Solace samples.
+
+```
+git clone {{ site.repository }}
+cd {{ site.baseurl | remove: '/'}}
+```
+
+### Building
+
+The project uses Gradle. To build, execute the following command.
+
+```
+./gradlew build
+```
+
+This builds all of the Java Samples with OS specific launch scripts. The files are staged in the `build/staged` directory.
+
+### Running the Sample
+
+You start the `JavaClientSample` with a three arguments:
+
+1. The SEMP Base Path. For example: `http://solacevmr:8080/SEMP/v2/config`
+2. The SEMP Username.
+3. The SEMP Password. 
+
+For example: 
+
+```
+$ ./build/staged/bin/javaClientSample <SEMP_BASE_PATH> <SEMP_USER> <SEMP_PASSWORD>
+JavaClientSample initializing...
+SEMP initializing: <SEMP_BASE_PATH>, <SEMP_USER>
+Creating Object: tutorialUser
+...
+Client Username delete. Resp: 200
+```
 
 At this point, you have created, retrieved, updated and deleted a Client Username object using SEMP. The examples used a generated client library in Java to interact with the Solace message router, but you can adapt the steps to any programming language of your choice. 
 
