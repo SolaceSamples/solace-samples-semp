@@ -1,7 +1,7 @@
 ---
 layout: tutorials
-title: Java Client Library 
-summary: How to get started with SEMP using the OpenAPI generated Java client library.
+title: Basic CRUD - Java Client Library 
+summary: The basics of how to create, read, update, and delete a SEMP object using a Java client library
 icon: java-logo.jpg
 ---
 

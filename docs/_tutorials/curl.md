@@ -1,7 +1,7 @@
 ---
 layout: tutorials
-title: HTTP Client (curl)
-summary: How to get started with SEMP using the curl tool
+title: Basic CRUD - curl
+summary: The basics of how to create, read, update, and delete a SEMP object using an HTTP client (curl)
 icon: curl-logo.png
 ---
 
