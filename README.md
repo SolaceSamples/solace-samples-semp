@@ -1,5 +1,59 @@
-# Solace Samples Template
+# Getting Started Examples
+## Solace Element Management Protocol (SEMP)
 
+These tutorials will get you up to speed and managing Solace message routers with SEMP as quickly as possible. There are two ways you can get started:
+
+- If your company has Solace message routers deployed, contact your middleware team to obtain the host name or IP address of a Solace message router to test against, a username and password to access it, and a VPN in which you can produce and consume messages.
+- If you do not have access to a Solace message router, you will need to go through the “[Set up a VMR](http://dev.solacesystems.com/get-started/vmr-setup-tutorials/setting-up-solace-vmr/)” tutorial to download and install the software.
+
+If you are new to SEMP, you can learn more here for full documentation and API reference:
+
+* http://docs.solacesystems.com/SEMP/SEMP-Home.htm
+
+## Contents
+
+This repository contains code and matching tutorial walk throughs for different basic scenarios. It is best to view the associated [tutorials landing page](https://solacesamples.github.io/solace-samples-semp/).
+
+## Prerequisites
+
+There are no prerequisites. 
+
+## Build the Samples
+
+    ./gradlew build
+
+## Running the Samples
+
+To try individual samples, build the project from source and then run samples like the following:
+
+    ./build/staged/bin/javaClientSample <SEMP_BASE_PATH> <SEMP_USER> <SEMP_PASSWORD>
+
+See the individual tutorials linked from the [tutorials landing page](https://solacesamples.github.io/solace-samples-semp/) for full details which can walk you through the samples, what they do, and how to correctly run them to explore SEMP.
+
+## Exploring the Samples
+
+### Setting up your preferred IDE
+
+Using a modern Java IDE provides cool productivity features like auto-completion, on-the-fly compilation, assisted refactoring and debugging which can be useful when you're exploring the samples and even modifying the samples. Follow the steps below for your preferred IDE.
+
+#### Using Eclipse
+
+To generate Eclipse metadata (.classpath and .project files), do the following:
+
+    ./gradlew eclipse
+
+Once complete, you may then import the projects into Eclipse as usual:
+
+ *File -> Import -> Existing projects into workspace*
+
+Browse to the *'solace-samples-semp'* root directory. All projects should import
+free of errors.
+
+#### Using IntelliJ IDEA
+
+To generate IDEA metadata (.iml and .ipr files), do the following:
+
+    ./gradlew idea
 
 ## Contributing
 
@@ -17,8 +71,8 @@ This project is licensed under the Apache License, Version 2.0. - See the [LICEN
 
 For more information try these resources:
 
-- The Solace Developer Portal website at:
-[http://dev.solacesystems.com](http://dev.solacesystems.com/)
+- SEMP Documentation: http://docs.solacesystems.com/SEMP/SEMP-Home.htm
+- The Solace Developer Portal website at: [http://dev.solacesystems.com](http://dev.solacesystems.com/)
 - Get a better understanding of [Solace technology.](http://dev.solacesystems.com/tech/)
 - Check out the [Solace blog](http://dev.solacesystems.com/blog/) for other interesting discussions around Solace technology
 - Ask the [Solace community.](http://dev.solacesystems.com/community/)
