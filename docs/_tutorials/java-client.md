@@ -5,11 +5,11 @@ summary: The basics of how to create, read, update, and delete a SEMP object usi
 icon: java-logo.jpg
 ---
 
-This is a quick tutorial to help you get started with the SEMP. You can find detailed reference of the SEMP resources by checking out the [API reference]({{ site.docs-api }}){:target="_top"}.
+This is a quick tutorial to help you get started with the SEMP Java client library. You can find detailed reference of the SEMP resources by checking out the [API reference]({{ site.docs-api }}){:target="_top"}.
 
 The following examples use a Java API generated from the SEMP specification and include an overview of the steps involved in creating this API. There is extensive support for creating SEMP client APIs in many programming languages. It should be easy enough to adapt the instructions and examples below to the programming language of your choosing.
 
-Alternatively, it is also possible to use SEMP through directly through HTTP. If you are interested using the API directly through HTTP, you can look at this [this Quick Start tutorial]({{ site.baseurl }}/curl) walks you through the basics of making SEMP calls directly through HTTP.
+Alternatively, it is also possible to use SEMP directly through HTTP. If you are interested in using the API directly through HTTP, you can look at this [Quick Start tutorial]({{ site.baseurl }}/curl) which walks you through the basics of making SEMP calls directly through HTTP.
 
 ## Contents
 
@@ -56,26 +56,26 @@ One quick and easy way is to use the online editor. The following steps walk you
 
 ## Client Library Basics
 
-Before jumping to specific tasks like creating a Client Username, we will first introduce a few basic concepts that common to the SEMP client library. If you have not already, you can learn more about these concepts and SEMP in general by checking out the API overview <<LINK to API overview>>.[API overview]({{ site.docs-overview }}){:target="_top"}.
+Before jumping to specific tasks like creating a Client Username, we will first introduce a few basic concepts common to the SEMP client library. If you have not already, you can learn more about these concepts and SEMP in general by checking out the [API overview]({{ site.docs-overview}}){:target="_top"}.
 
 ### Initializing the SEMP API
 
 Before sending any commands, you must initialize the client library. There is a close relationship between the tags used in the SEMP specification and the SEMP client library classes offered. Each tag, like `msgVpn`, is compiled into a class in the `io.swagger.client.api` package. Because of this, you have the option to work with the full SEMP API or subsets as controlled by the tags in the SEMP specification. You should determine which tag best fits your use case and use this client API class. For this introduction, we will use the `msgVpn` tag and the `MsgVpnApi` class because configuring a Solace message router message-VPN is a very common task in a dev-ops workflow.
 
-Before you can send any commands to the Solace message router, you need an instance of the SEMP API. The following code shows you how to create such an instance and set the SEMP username and password. This will connect of HTTP. Secure connections are also supported and outlined below:
+Before you can send any commands to the Solace message router, you need an instance of the SEMP API. The following code shows you how to create such an instance and set the SEMP username and password. This will connect over HTTP.
 
 ```
 import io.swagger.client.ApiClient;
 import io.swagger.client.api.MsgVpnApi;
 
 ApiClient thisClient = new ApiClient();
-thisClient.setBasePath(“http://solacevmr:8080/SEMP/v2/config”);
-thisClient.setUsername(“user”);
-thisClient.setPassword(“password”);
-MsgVpnApi SEMPsempApiInstance = new MsgVpnApi(thisClient);
+thisClient.setBasePath("http://solacevmr:8080/SEMP/v2/config");
+thisClient.setUsername("user");
+thisClient.setPassword("password");
+MsgVpnApi sempApiInstance = new MsgVpnApi(thisClient);
 ```
 
-Remember to update the values in the above to match your environment.
+Remember to update the values in the above example to match your environment.
 
 [*Source Reference: JavaClientSample.initialize()*]({{ site.repository }}/blob/master/src/main/java/com/solace/samples/JavaClientSample.java){:target="_blank"}
 
