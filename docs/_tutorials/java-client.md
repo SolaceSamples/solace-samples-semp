@@ -77,7 +77,7 @@ MsgVpnApi SEMPsempApiInstance = new MsgVpnApi(thisClient);
 
 Remember to update the values in the above to match your environment.
 
-[*Source Reference: JavaClientSample.initialize()*]({{ site.repository }}/blob/master/src/main/java/com/solace/samples/JavaClientSample.java){:target="_blank"}
+[*Source Reference: JavaClientSample.initialize()*]({{ site.repository }}/blob/master/src/main/java/com/solace/samples/JavaClientSample.java#L56){:target="_blank"}
 
 ### Error handling
 
@@ -120,7 +120,7 @@ private void handleError(ApiException ae) {
 
 The code uses the `Gson` library to parse the JSON response, which is used internally by the Swagger client library. It then simply prints the relevant information to the console. 
 
-[*Source Reference: JavaClientSample.handleError()*]({{ site.repository }}/blob/master/src/main/java/com/solace/samples/JavaClientSample.java){:target="_blank"}
+[*Source Reference: JavaClientSample.handleError()*]({{ site.repository }}/blob/master/src/main/java/com/solace/samples/JavaClientSample.java#L44){:target="_blank"}
 
 ## Creating an Object Using POST
 
@@ -153,7 +153,7 @@ The response will contain the newly created Client Username in the data portion.
     System.out.println("Created Client Username: " + createdClientUsername);
 ```
 
-[*Source Reference: JavaClientSample.createObjectUsingPost()*]({{ site.repository }}/blob/master/src/main/java/com/solace/samples/JavaClientSample.java){:target="_blank"}
+[*Source Reference: JavaClientSample.createObjectUsingPost()*]({{ site.repository }}/blob/master/src/main/java/com/solace/samples/JavaClientSample.java#L67){:target="_blank"}
 
 ## Retrieving an Object Using GET
 
@@ -171,7 +171,7 @@ try {
 }
 ```
 
-[*Source Reference: JavaClientSample.retrievingObjectUsingGet()*]({{ site.repository }}/blob/master/src/main/java/com/solace/samples/JavaClientSample.java){:target="_blank"}
+[*Source Reference: JavaClientSample.retrievingObjectUsingGet()*]({{ site.repository }}/blob/master/src/main/java/com/solace/samples/JavaClientSample.java#L88){:target="_blank"}
 
 ## Retrieving a Collection of Objects Using GET
 
@@ -193,7 +193,7 @@ try {
 
 For large collections, the response will be paged. See [SEMP paging]({{ site.docs-concepts-paging }}){:target="_top"} for details.
 
-[*Source Reference: JavaClientSample.retrievingCollectionUsingGet()*]({{ site.repository }}/blob/master/src/main/java/com/solace/samples/JavaClientSample.java){:target="_blank"}
+[*Source Reference: JavaClientSample.retrievingCollectionUsingGet()*]({{ site.repository }}/blob/master/src/main/java/com/solace/samples/JavaClientSample.java#L100){:target="_blank"}
 
 ## Partially Updating an Object Using PATCH
 
@@ -216,7 +216,7 @@ try {
 }
 ```
 
-[*Source Reference: JavaClientSample.partialObjectUpdateUsingPatch()*]({{ site.repository }}/blob/master/src/main/java/com/solace/samples/JavaClientSample.java){:target="_blank"}
+[*Source Reference: JavaClientSample.partialObjectUpdateUsingPatch()*]({{ site.repository }}/blob/master/src/main/java/com/solace/samples/JavaClientSample.java#L113){:target="_blank"}
 
 ## Fully Updating an Object Using PUT
 
@@ -235,7 +235,7 @@ try {
 }
 ```
 
-[*Source Reference: JavaClientSample.fullObjectUpdateUsingPut()*]({{ site.repository }}/blob/master/src/main/java/com/solace/samples/JavaClientSample.java){:target="_blank"}
+[*Source Reference: JavaClientSample.fullObjectUpdateUsingPut()*]({{ site.repository }}/blob/master/src/main/java/com/solace/samples/JavaClientSample.java#L128){:target="_blank"}
 
 ## Removing an Object Using DELETE
 
@@ -251,7 +251,7 @@ try {
 }
 ```
 
-[*Source Reference: JavaClientSample.removingObjectUsingDelete()*]({{ site.repository }}/blob/master/src/main/java/com/solace/samples/JavaClientSample.java){:target="_blank"}
+[*Source Reference: JavaClientSample.removingObjectUsingDelete()*]({{ site.repository }}/blob/master/src/main/java/com/solace/samples/JavaClientSample.java#L144){:target="_blank"}
 
 ## Summary
 
