@@ -13,6 +13,8 @@ The following examples use `curl` which is a simple command line tool which can 
 
 Alternatively, it is also possible to use SEMP through a client library. If you are interested in using a client library, you can look at this [Quick Start tutorial]({{ site.baseurl }}/java-client) which provides steps for generating a client library and using it to make SEMP calls.
 
+**Note**: Currently SEMP v2 is only supported on Solace message router appliances running SolOS version 7.2.2 and above. Solace virtual message router will add SEMP v2 support in the near future.
+
 ## Contents
 
 * [Assumptions](#assumptions)

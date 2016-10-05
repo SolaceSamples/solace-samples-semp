@@ -9,6 +9,8 @@ If you are new to SEMP, you can learn more here for full documentation and API r
 
 These tutorials apply to the SEMP API starting in version 2. For older versions of the SEMP API, you can see the [Legacy SEMP Documentation](http://docs.solacesystems.com/SEMP/Using-SEMP-to-Manage-and-Monitor-Routers.htm)
 
+**Note**: Currently SEMP v2 is only supported on Solace message router appliances running SolOS version 7.2.2 and above. Solace virtual message router will add SEMP v2 support in the near future.
+
 ## Contents
 
 This repository contains code and matching tutorial walk throughs for different basic scenarios. It is best to view the associated [tutorials landing page](https://solacesamples.github.io/solace-samples-semp/).
