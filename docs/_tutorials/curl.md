@@ -5,11 +5,13 @@ summary: The basics of how to create, read, update, and delete a SEMP object usi
 icon: curl-logo.png
 ---
 
-This is a quick tutorial to help you get started with the SEMP. You can find detailed reference of the SEMP resources by checking out the [API reference]({{ site.docs-api }}){:target="_top"}.
+This is a quick tutorial to help you get started with the SEMP. You can learn more about the SEMP API using the [Online Documentation]({{ site.docs-semp-home }}){:target="_top"}. These documents explain the API concepts and details about the REST API. Additionally developers will find the [SEMP API Reference]({{ site.docs-api }}){:target="_top"} useful in understanding how to apply the concepts in this tutorial to other Solace Message Router objects.
+
+**Note**: This tutorial applies to the SEMP API starting in version 2. For older versions of the SEMP API, you can see the [Legacy SEMP Documentation]({{ site.docs-semp-legacy }}){:target="_top"}
 
 The following examples use `curl` which is a simple command line tool which can easily send HTTP requests and print the response. Most programming languages have readily available libraries for HTTP. It should be easy enough to adapt the examples below to the programming language of your choosing.
 
-Alternatively, it is also possible to use SEMP through a client library. If you are interested in using a client library, you can look at [this Quick Start tutorial]({{ site.baseurl }}/java-client) which provides steps for generating a client library and using it to make SEMP calls.
+Alternatively, it is also possible to use SEMP through a client library. If you are interested in using a client library, you can look at this [Quick Start tutorial]({{ site.baseurl }}/java-client) which provides steps for generating a client library and using it to make SEMP calls.
 
 ## Contents
 
