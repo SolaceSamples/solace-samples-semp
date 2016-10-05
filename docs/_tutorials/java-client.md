@@ -13,6 +13,8 @@ The following examples use a Java API generated from the SEMP specification and 
 
 Alternatively, it is also possible to use SEMP through directly through HTTP. If you are interested using the API directly through HTTP, you can look at this [Quick Start tutorial]({{ site.baseurl }}/curl) walks you through the basics of making SEMP calls directly through HTTP.
 
+**Note**: Currently SEMP v2 is only supported on Solace message router appliances running SolOS version 7.2.2 and above. Solace virtual message router will add SEMP v2 support in the near future.
+
 ## Contents
 
 * [Assumptions](#assumptions)
