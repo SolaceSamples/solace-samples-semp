@@ -23,6 +23,7 @@ Alternatively, it is also possible to use SEMP through directly through HTTP. If
 * [Creating an Object](#creating-an-object-using-post)
 * [Retrieving an Object](#retrieving-an-object-using-get)
 * [Retrieving a Collection](#retrieving-a-collection-of-objects-using-get)
+* [Paging over a large Collection](#paging-over-a-large-collection-of-objects-using-get)
 * [Partially Updating an Object](#partially-updating-an-object-using-patch)
 * [Fully Updating an Object](#fully-updating-an-object-using-put)
 * [Removing an Object](#removing-an-object-using-delete)
@@ -195,9 +196,44 @@ try {
 }
 ```
 
-For large collections, the response will be paged. See [SEMP paging]({{ site.docs-concepts-paging }}){:target="_top"} for details.
+For large collections, the response will be paged. See [Paging over a large Collection of Objects Using GET](#paging-over-a-large-collection-of-objects-using-get) for details.
 
 [*Source Reference: JavaClientSample.retrievingCollectionUsingGet()*]({{ site.repository }}/blob/master/src/main/java/com/solace/samples/JavaClientSample.java#L100){:target="_blank"}
+
+## Paging over a large Collection of Objects Using GET
+
+Paging can be used to iterate over a large collection of objects. This example will iterate over all the Client Usernames within the `default` Message VPN. For this, you must use the `getMsgVpnClientUsernames()` method which will execute an HTTP GET on the actual `clientUsernames` collection using a cursor value to define the starting point of subsequent requests.
+
+The following code will retrieve all Client Usernames in the `default` message-VPN and print them to the console. The count argument is ommitted in this example but could be used to limit the number of objects retrieved by each GET operation.
+
+```java
+try {
+		String msgVpnName = "default";
+		String cursor = null;
+		MsgVpnClientUsernamesResponse response = null;
+
+		try {
+			do {
+				response = api.getMsgVpnClientUsernames(msgVpnName, null, cursor, null, null);
+
+				for (MsgVpnClientUsername clientUsername : response.getData()) {
+					System.out.println("Retrieved client username: " + clientUsername.getClientUsername());
+				}
+
+				if (response.getMeta().getPaging() != null) {
+					cursor = response.getMeta().getPaging().getCursorQuery();
+				} else {
+					cursor = null;
+				}
+
+			} while (cursor != null);
+		} catch (ApiException e) {
+			handleError(e);
+		}
+```
+
+See [SEMP paging]({{ site.docs-concepts-paging }}){:target="_top"} for more details.
+
 
 ## Partially Updating an Object Using PATCH
 
