@@ -117,7 +117,7 @@ public class JavaClientSample {
         }
     }
     
-    public void fullObjectUpdateUsingPut() {
+    public void replaceObjectUpdateUsingPut() {
         try {
             String msgVpn = "default";
             String clientUsername = "tutorialUser";
@@ -167,7 +167,7 @@ public class JavaClientSample {
         app.retrievingObjectUsingGet();
         app.retrievingCollectionUsingGet();
         app.partialObjectUpdateUsingPatch();
-        app.fullObjectUpdateUsingPut();
+        app.replaceObjectUpdateUsingPut();
         app.removingObjectUsingDelete();
         
     }

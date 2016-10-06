@@ -232,7 +232,7 @@ public void partialObjectUpdateUsingPatch() {
 The HTTP PUT method is used to replace an existing object. The method for replacing a Client Username via a PUT call is `replaceMsgVpnClientUsername()`. For the purposes of an example, let’s replace the existing `MsgVpnClientUsername` (`tutorialUser`) with a new one. Default values are used for all parameters not provided. The following code would do this:
 
 ```java
-public void fullObjectUpdateUsingPut() {
+public void replaceObjectUpdateUsingPut() {
     try {
         String msgVpn = "default";
         String clientUsername = "tutorialUser";
