@@ -136,37 +136,48 @@ The new Client Username is represented by the `MsgVpnClientUsername` class from 
 The response will contain the newly created Client Username in the data portion.
 
 ```java
+public void createObjectUsingPost() {
+
     String msgVpn = "default";
     String clientUsername = "tutorialUser";
+    System.out.format("Creating Object: %s \n", clientUsername);
+    
     MsgVpnClientUsername newClientUsername = new MsgVpnClientUsername();
     newClientUsername.setClientUsername(clientUsername);
     newClientUsername.setEnabled(true);
-
+    MsgVpnClientUsernameResponse resp = null;
     try {
-        MsgVpnClientUsernameResponse resp = sempApiInstance.createMsgVpnClientUsername(msgVpn, newClientUsername, null);
-        MsgVpnClientUsername createdClientUsername = resp.getData();
-        System.out.println("Created Client Username: " + createdClientUsername);
+            resp = sempApiInstance.createMsgVpnClientUsername(msgVpn, newClientUsername, null);
     } catch (ApiException e) {
         handleError(e);
+        return;
     }
+    
+    MsgVpnClientUsername createdClientUsername = resp.getData();
+    System.out.println("Created Client Username: " + createdClientUsername);
+}
 ```
 
-[*Source Reference: JavaClientSample.createObjectUsingPost()*]({{ site.repository }}/blob/master/src/main/java/com/solace/samples/JavaClientSample.java#L67){:target="_blank"}
+[*Source Reference: JavaClientSample.createObjectUsingPost()*]({{ site.repository }}/blob/master/src/main/java/com/solace/samples/JavaClientSample.java#L62){:target="_blank"}
 
 ## Retrieving an Object Using GET
 
 Now that you have created a Client Username, you can retrieve the object using `getMsgVpnClientUsername()`. The following code shows you how to retrieve a Client Username and print it to the console.
 
 ```java
-try {
-    MsgVpnClientUsernameResponse resp = sempApiInstance.getMsgVpnClientUsername(msgVpn, clientUsername, null);
-    System.out.println("Retrieved Client Username: " + resp.getData());
-} catch (ApiException e) {
-    handleError(e);
+public void retrievingObjectUsingGet() {
+    try {
+        String msgVpn = "default";
+        String clientUsername = "tutorialUser";
+        MsgVpnClientUsernameResponse resp = sempApiInstance.getMsgVpnClientUsername(msgVpn, clientUsername, null);
+        System.out.println("Retrieved Client Username: " + resp.getData());
+    } catch (ApiException e) {
+        handleError(e);
+    }
 }
 ```
 
-[*Source Reference: JavaClientSample.retrievingObjectUsingGet()*]({{ site.repository }}/blob/master/src/main/java/com/solace/samples/JavaClientSample.java#L88){:target="_blank"}
+[*Source Reference: JavaClientSample.retrievingObjectUsingGet()*]({{ site.repository }}/blob/master/src/main/java/com/solace/samples/JavaClientSample.java#L83){:target="_blank"}
 
 ## Retrieving a Collection of Objects Using GET
 
@@ -175,19 +186,22 @@ You can also retrieve all of the Client Usernames within the `default` Message V
 The following code will retrieve a list of all the Client Usernames in the `default` message-VPN and print the count to the console.
 
 ```java
-try {
-    // Ignore paging and selectors in this example, set to null.
-    MsgVpnClientUsernamesResponse resp = sempApiInstance.getMsgVpnClientUsernames(msgVpn, null, null, null, null);
-    List<MsgVpnClientUsername> clientUsernamesList = resp.getData();
-    System.out.println("Retrieved " + clientUsernamesList.size() + " Client Usernames.");
-} catch (ApiException e) {
-    handleError(e);
+public void retrievingCollectionUsingGet() {
+    try {
+        String msgVpn = "default";
+        // Ignore paging and selectors in this example. So set to null.
+        MsgVpnClientUsernamesResponse resp = sempApiInstance.getMsgVpnClientUsernames(msgVpn, null, null, null, null);
+        List<MsgVpnClientUsername> clientUsernamesList = resp.getData();
+        System.out.println("Retrieved " + clientUsernamesList.size() + " Client Usernames.");
+    } catch (ApiException e) {
+        handleError(e);
+    }
 }
 ```
 
 For large collections, the response will be paged. See [SEMP paging]({{ site.docs-concepts-paging }}){:target="_top"} for details.
 
-[*Source Reference: JavaClientSample.retrievingCollectionUsingGet()*]({{ site.repository }}/blob/master/src/main/java/com/solace/samples/JavaClientSample.java#L100){:target="_blank"}
+[*Source Reference: JavaClientSample.retrievingCollectionUsingGet()*]({{ site.repository }}/blob/master/src/main/java/com/solace/samples/JavaClientSample.java#L94){:target="_blank"}
 
 ## Partially Updating an Object Using PATCH
 
@@ -196,48 +210,66 @@ The HTTP PATCH method allows you to partially update a SEMP object, only the att
 The following code shows how to disable a Client Username. To do this, you create a `MsgVpnClientUsername` and update the enabled state to false. Then call the PATCH method. 
 
 ```java
-try {
-    MsgVpnClientUsername updatedClientUsername = new MsgVpnClientUsername();
-    updatedClientUsername.setEnabled(false);
-    MsgVpnClientUsernameResponse resp = sempApiInstance.updateMsgVpnClientUsername(
-            msgVpn, clientUsername, updatedClientUsername, null);
-} catch (ApiException e) {
-    handleError(e);
+public void partialObjectUpdateUsingPatch() {
+    try {
+        String msgVpn = "default";
+        String clientUsername = "tutorialUser";
+        MsgVpnClientUsername updatedClientUsername = new MsgVpnClientUsername();
+        updatedClientUsername.setEnabled(false);
+        MsgVpnClientUsernameResponse resp = sempApiInstance.updateMsgVpnClientUsername(
+                msgVpn, clientUsername, updatedClientUsername, null);
+        System.out.println("Updated: " + resp.getData());
+    } catch (ApiException e) {
+        handleError(e);
+    }
 }
 ```
 
-[*Source Reference: JavaClientSample.partialObjectUpdateUsingPatch()*]({{ site.repository }}/blob/master/src/main/java/com/solace/samples/JavaClientSample.java#L113){:target="_blank"}
+[*Source Reference: JavaClientSample.partialObjectUpdateUsingPatch()*]({{ site.repository }}/blob/master/src/main/java/com/solace/samples/JavaClientSample.java#L106){:target="_blank"}
 
 ## Fully Updating an Object Using PUT
 
 The HTTP PUT method is used to replace an existing object. The method for replacing a Client Username via a PUT call is `replaceMsgVpnClientUsername()`. For the purposes of an example, let’s replace the existing `MsgVpnClientUsername` (`tutorialUser`) with a new one. Default values are used for all parameters not provided. The following code would do this:
 
 ```java
-try {
-    MsgVpnClientUsername updatedClientUsername = new MsgVpnClientUsername();
-    updatedClientUsername.setEnabled(true);
-    MsgVpnClientUsernameResponse resp = sempApiInstance.replaceMsgVpnClientUsername(
-            msgVpn, clientUsername, updatedClientUsername, null);
-} catch (ApiException e) {
-    handleError(e);
+public void fullObjectUpdateUsingPut() {
+    try {
+        String msgVpn = "default";
+        String clientUsername = "tutorialUser";
+        MsgVpnClientUsername updatedClientUsername = new MsgVpnClientUsername();
+        updatedClientUsername.setEnabled(true);
+        MsgVpnClientUsernameResponse resp = sempApiInstance.replaceMsgVpnClientUsername(
+                        msgVpn, clientUsername, updatedClientUsername, null);
+        System.out.println("Updated: " + resp.getData());
+        
+    } catch (ApiException e) {
+        handleError(e);
+    }
 }
 ```
 
-[*Source Reference: JavaClientSample.fullObjectUpdateUsingPut()*]({{ site.repository }}/blob/master/src/main/java/com/solace/samples/JavaClientSample.java#L128){:target="_blank"}
+[*Source Reference: JavaClientSample.fullObjectUpdateUsingPut()*]({{ site.repository }}/blob/master/src/main/java/com/solace/samples/JavaClientSample.java#L120){:target="_blank"}
 
 ## Removing an Object Using DELETE
 
 The HTTP DELETE method is used to remove an object which is accessed through the `deleteMsgVpnClientUsername()` method. This method requires only the VPN and Client Username strings to identify the object to delete. The following code deletes the `tutorialUser` Client Username.
 
 ```java
-try {
-    SempMetaOnlyResponse resp = sempApiInstance.deleteMsgVpnClientUsername(msgVpn, clientUsername);
-} catch (ApiException e) {
-    handleError(e);
+public void removingObjectUsingDelete() {
+
+    try {
+        String msgVpn = "default";
+        String clientUsername = "tutorialUser";
+        SempMetaOnlyResponse resp = sempApiInstance.deleteMsgVpnClientUsername(msgVpn, clientUsername);
+        System.out.println("Client Username delete. Resp: " + resp.getMeta().getResponseCode());
+        
+    } catch (ApiException e) {
+        handleError(e);
+    }
 }
 ```
 
-[*Source Reference: JavaClientSample.removingObjectUsingDelete()*]({{ site.repository }}/blob/master/src/main/java/com/solace/samples/JavaClientSample.java#L144){:target="_blank"}
+[*Source Reference: JavaClientSample.removingObjectUsingDelete()*]({{ site.repository }}/blob/master/src/main/java/com/solace/samples/JavaClientSample.java#L135){:target="_blank"}
 
 ## Summary
 

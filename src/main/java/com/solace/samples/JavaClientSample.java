@@ -35,11 +35,6 @@ import io.swagger.client.model.SempMetaOnlyResponse;
 public class JavaClientSample {
 
     MsgVpnApi sempApiInstance;
-    String C_MSG_VPN = "default";
-    String C_TUTORIAL_USER = "tutorialUser";
- // No selectors in this example
-    List<String> C_NULL_SELECTORS = null;
-    
     
     private void handleError(ApiException ae) {
         Gson gson = new Gson();
@@ -50,7 +45,7 @@ public class JavaClientSample {
                 "\nHTTP Status Code: " + ae.getCode() + 
                 "\nSEMP Error Code: " + errorInfo.getCode() + 
                 "\nSEMP Error Status: " + errorInfo.getStatus() + 
-                "\nSEMP Error Descriptions: " + errorInfo.getDescription()) ;
+                "\nSEMP Error Descriptions: " + errorInfo.getDescription());
     }
     
     public void initialize(String basePath, String user, String password) throws Exception {
@@ -64,18 +59,18 @@ public class JavaClientSample {
         sempApiInstance = new MsgVpnApi(thisClient);
     }
     
-    public void createObjectUsingPost() throws Exception {
+    public void createObjectUsingPost() {
 
-        System.out.format("Creating Object: %s \n", C_TUTORIAL_USER);
+        String msgVpn = "default";
+        String clientUsername = "tutorialUser";
+        System.out.format("Creating Object: %s \n", clientUsername);
        
-        String msgVpn = C_MSG_VPN;
-        String clientUsername = C_TUTORIAL_USER;
         MsgVpnClientUsername newClientUsername = new MsgVpnClientUsername();
         newClientUsername.setClientUsername(clientUsername);
         newClientUsername.setEnabled(true);
         MsgVpnClientUsernameResponse resp = null;
         try {
-             resp = sempApiInstance.createMsgVpnClientUsername(msgVpn, newClientUsername, C_NULL_SELECTORS);
+             resp = sempApiInstance.createMsgVpnClientUsername(msgVpn, newClientUsername, null);
         } catch (ApiException e) {
             handleError(e);
             return;
@@ -85,22 +80,20 @@ public class JavaClientSample {
         System.out.println("Created Client Username: " + createdClientUsername);
     }
     
-    public void retrievingObjectUsingGet() throws Exception {
-
+    public void retrievingObjectUsingGet() {
         try {
-            String msgVpn = C_MSG_VPN;
-            String clientUsername = C_TUTORIAL_USER;
-            MsgVpnClientUsernameResponse resp = sempApiInstance.getMsgVpnClientUsername(msgVpn, clientUsername, C_NULL_SELECTORS);
+            String msgVpn = "default";
+            String clientUsername = "tutorialUser";
+            MsgVpnClientUsernameResponse resp = sempApiInstance.getMsgVpnClientUsername(msgVpn, clientUsername, null);
             System.out.println("Retrieved Client Username: " + resp.getData());
         } catch (ApiException e) {
             handleError(e);
         }
     }
     
-    public void retrievingCollectionUsingGet() throws Exception {
-
+    public void retrievingCollectionUsingGet() {
         try {
-            String msgVpn = C_MSG_VPN;
+            String msgVpn = "default";
             // Ignore paging and selectors in this example. So set to null.
             MsgVpnClientUsernamesResponse resp = sempApiInstance.getMsgVpnClientUsernames(msgVpn, null, null, null, null);
             List<MsgVpnClientUsername> clientUsernamesList = resp.getData();
@@ -110,26 +103,24 @@ public class JavaClientSample {
         }
     }
     
-    public void partialObjectUpdateUsingPatch() throws Exception {
-
+    public void partialObjectUpdateUsingPatch() {
         try {
-            String msgVpn = C_MSG_VPN;
-            String clientUsername = C_TUTORIAL_USER;
+            String msgVpn = "default";
+            String clientUsername = "tutorialUser";
             MsgVpnClientUsername updatedClientUsername = new MsgVpnClientUsername();
             updatedClientUsername.setEnabled(false);
             MsgVpnClientUsernameResponse resp = sempApiInstance.updateMsgVpnClientUsername(
-                    msgVpn, clientUsername, updatedClientUsername, C_NULL_SELECTORS);
+                    msgVpn, clientUsername, updatedClientUsername, null);
             System.out.println("Updated: " + resp.getData());
         } catch (ApiException e) {
             handleError(e);
         }
     }
     
-    public void fullObjectUpdateUsingPut() throws Exception {
-
+    public void fullObjectUpdateUsingPut() {
         try {
-            String msgVpn = C_MSG_VPN;
-            String clientUsername = C_TUTORIAL_USER;
+            String msgVpn = "default";
+            String clientUsername = "tutorialUser";
             MsgVpnClientUsername updatedClientUsername = new MsgVpnClientUsername();
             updatedClientUsername.setEnabled(true);
             MsgVpnClientUsernameResponse resp = sempApiInstance.replaceMsgVpnClientUsername(
@@ -141,11 +132,11 @@ public class JavaClientSample {
         }
     }
     
-    public void removingObjectUsingDelete() throws Exception {
+    public void removingObjectUsingDelete() {
 
         try {
-            String msgVpn = C_MSG_VPN;
-            String clientUsername = C_TUTORIAL_USER;
+            String msgVpn = "default";
+            String clientUsername = "tutorialUser";
             SempMetaOnlyResponse resp = sempApiInstance.deleteMsgVpnClientUsername(msgVpn, clientUsername);
             System.out.println("Client Username delete. Resp: " + resp.getMeta().getResponseCode());
             
