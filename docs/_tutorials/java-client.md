@@ -81,7 +81,7 @@ MsgVpnApi sempApiInstance = new MsgVpnApi(thisClient);
 
 Remember to update the values in the above example to match your environment.
 
-[*Source Reference: JavaClientSample.initialize()*]({{ site.repository }}/blob/master/src/main/java/com/solace/samples/JavaClientSample.java#L56){:target="_blank"}
+[*Source Reference: JavaClientSample.initialize()*]({{ site.repository }}/blob/master/src/main/java/com/solace/samples/JavaClientSample.java#L51){:target="_blank"}
 
 ### Error handling
 
@@ -124,7 +124,7 @@ private void handleError(ApiException ae) {
 
 The code uses the `Gson` library to parse the JSON response, which is used internally by the Swagger client library. It then simply prints the relevant information to the console. 
 
-[*Source Reference: JavaClientSample.handleError()*]({{ site.repository }}/blob/master/src/main/java/com/solace/samples/JavaClientSample.java#L44){:target="_blank"}
+[*Source Reference: JavaClientSample.handleError()*]({{ site.repository }}/blob/master/src/main/java/com/solace/samples/JavaClientSample.java#L39){:target="_blank"}
 
 ## Creating an Object Using POST
 
