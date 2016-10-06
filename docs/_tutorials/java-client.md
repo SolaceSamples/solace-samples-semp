@@ -5,11 +5,16 @@ summary: The basics of how to create, read, update, and delete a SEMP object usi
 icon: java-logo.jpg
 ---
 
-This is a quick tutorial to help you get started with the SEMP Java client library. You can find detailed reference of the SEMP resources by checking out the [API reference]({{ site.docs-api }}){:target="_top"}.
+
+This is a quick tutorial to help you get started with the SEMP Java client library. You can learn more about the SEMP API using the [Online Documentation]({{ site.docs-semp-home }}){:target="_top"}. These documents explain the API concepts and details about the REST API. Additionally developers will find the [SEMP API Reference]({{ site.docs-api }}){:target="_top"} useful in understanding how to apply the concepts in this tutorial to other Solace Message Router objects.
+
+**Note**: This tutorial applies to the SEMP API starting in version 2. For older versions of the SEMP API, you can see the [Legacy SEMP Documentation]({{ site.docs-semp-legacy }}){:target="_top"}
 
 The following examples use a Java API generated from the SEMP specification and include an overview of the steps involved in creating this API. There is extensive support for creating SEMP client APIs in many programming languages. It should be easy enough to adapt the instructions and examples below to the programming language of your choosing.
 
-Alternatively, it is also possible to use SEMP directly through HTTP. If you are interested in using the API directly through HTTP, you can look at this [Quick Start tutorial]({{ site.baseurl }}/curl) which walks you through the basics of making SEMP calls directly through HTTP.
+Alternatively, it is also possible to use SEMP through directly through HTTP. If you are interested in using the API directly through HTTP, you can look at this [Quick Start tutorial]({{ site.baseurl }}/curl) which walks you through the basics of making SEMP calls directly through HTTP.
+
+**Note**: Currently SEMP v2 is only supported on Solace message router appliances running SolOS version 7.2.2 and above. Solace virtual message router will add SEMP v2 support in the near future.
 
 ## Contents
 
@@ -77,7 +82,7 @@ MsgVpnApi sempApiInstance = new MsgVpnApi(thisClient);
 
 Remember to update the values in the above example to match your environment.
 
-[*Source Reference: JavaClientSample.initialize()*]({{ site.repository }}/blob/master/src/main/java/com/solace/samples/JavaClientSample.java){:target="_blank"}
+[*Source Reference: JavaClientSample.initialize()*]({{ site.repository }}/blob/master/src/main/java/com/solace/samples/JavaClientSample.java#L56){:target="_blank"}
 
 ### Error handling
 
@@ -120,7 +125,7 @@ private void handleError(ApiException ae) {
 
 The code uses the `Gson` library to parse the JSON response, which is used internally by the Swagger client library. It then simply prints the relevant information to the console. 
 
-[*Source Reference: JavaClientSample.handleError()*]({{ site.repository }}/blob/master/src/main/java/com/solace/samples/JavaClientSample.java){:target="_blank"}
+[*Source Reference: JavaClientSample.handleError()*]({{ site.repository }}/blob/master/src/main/java/com/solace/samples/JavaClientSample.java#L44){:target="_blank"}
 
 ## Creating an Object Using POST
 
@@ -147,7 +152,7 @@ The response will contain the newly created Client Username in the data portion.
     }
 ```
 
-[*Source Reference: JavaClientSample.createObjectUsingPost()*]({{ site.repository }}/blob/master/src/main/java/com/solace/samples/JavaClientSample.java){:target="_blank"}
+[*Source Reference: JavaClientSample.createObjectUsingPost()*]({{ site.repository }}/blob/master/src/main/java/com/solace/samples/JavaClientSample.java#L67){:target="_blank"}
 
 ## Retrieving an Object Using GET
 
@@ -162,7 +167,7 @@ try {
 }
 ```
 
-[*Source Reference: JavaClientSample.retrievingObjectUsingGet()*]({{ site.repository }}/blob/master/src/main/java/com/solace/samples/JavaClientSample.java){:target="_blank"}
+[*Source Reference: JavaClientSample.retrievingObjectUsingGet()*]({{ site.repository }}/blob/master/src/main/java/com/solace/samples/JavaClientSample.java#L88){:target="_blank"}
 
 ## Retrieving a Collection of Objects Using GET
 
@@ -183,7 +188,7 @@ try {
 
 For large collections, the response will be paged. See [SEMP paging]({{ site.docs-concepts-paging }}){:target="_top"} for details.
 
-[*Source Reference: JavaClientSample.retrievingCollectionUsingGet()*]({{ site.repository }}/blob/master/src/main/java/com/solace/samples/JavaClientSample.java){:target="_blank"}
+[*Source Reference: JavaClientSample.retrievingCollectionUsingGet()*]({{ site.repository }}/blob/master/src/main/java/com/solace/samples/JavaClientSample.java#L100){:target="_blank"}
 
 ## Partially Updating an Object Using PATCH
 
@@ -202,7 +207,7 @@ try {
 }
 ```
 
-[*Source Reference: JavaClientSample.partialObjectUpdateUsingPatch()*]({{ site.repository }}/blob/master/src/main/java/com/solace/samples/JavaClientSample.java){:target="_blank"}
+[*Source Reference: JavaClientSample.partialObjectUpdateUsingPatch()*]({{ site.repository }}/blob/master/src/main/java/com/solace/samples/JavaClientSample.java#L113){:target="_blank"}
 
 ## Fully Updating an Object Using PUT
 
@@ -219,7 +224,7 @@ try {
 }
 ```
 
-[*Source Reference: JavaClientSample.fullObjectUpdateUsingPut()*]({{ site.repository }}/blob/master/src/main/java/com/solace/samples/JavaClientSample.java){:target="_blank"}
+[*Source Reference: JavaClientSample.fullObjectUpdateUsingPut()*]({{ site.repository }}/blob/master/src/main/java/com/solace/samples/JavaClientSample.java#L128){:target="_blank"}
 
 ## Removing an Object Using DELETE
 
@@ -233,7 +238,7 @@ try {
 }
 ```
 
-[*Source Reference: JavaClientSample.removingObjectUsingDelete()*]({{ site.repository }}/blob/master/src/main/java/com/solace/samples/JavaClientSample.java){:target="_blank"}
+[*Source Reference: JavaClientSample.removingObjectUsingDelete()*]({{ site.repository }}/blob/master/src/main/java/com/solace/samples/JavaClientSample.java#L144){:target="_blank"}
 
 ## Summary
 
