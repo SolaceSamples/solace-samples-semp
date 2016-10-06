@@ -206,7 +206,7 @@ try {
 
 ## Fully Updating an Object Using PUT
 
-The HTTP PUT method is used to update an object to match the attributes specified. All attributes not specified are reset to default values. The method for updating a Client Username via a PUT call is `replaceMsgVpnClientUsername()`. For the purposes of an example, let’s reset the `tutorialUser` so that it is enabled and all other attributes not provided are resetted to their default value. The following code would do this:
+The HTTP PUT method is used to replace an existing object. The method for replacing a Client Username via a PUT call is `replaceMsgVpnClientUsername()`. For the purposes of an example, let’s replace the existing `MsgVpnClientUsername` (`tutorialUser`) with a new one. Default values are used for all parameters not provided. The following code would do this:
 
 ```java
 try {
