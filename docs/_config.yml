@@ -5,15 +5,17 @@ repository: https://github.com/SolaceSamples/solace-samples-semp
 
 # Also see _includes/intro.html to customize the description which gets included in index.html.
 
-# Links to docs. Using variables to make it easy to keep up to date
-docs-semp-home: http://docs.solacesystems.com/Home.htm
-docs-overview: http://docs.solacesystems.com/concepts/overview
-docs-concepts-paging: http://docs.solacesystems.com/concepts/paging
-docs-concepts-uri: http://docs.solacesystems.com/concepts/uri
-docs-api: http://docs.solacesystems.com/Home.htm
-docs-schema: http://docs.solacesystem.com/awesomeschema
-docs-semp-legacy: http://docs.solacesystems.com/SEMP/Using-SEMP-to-Manage-and-Monitor-Routers.htm
-
+# Links
+docs-semp-home: http://docs.solace.com/SEMP/SEMP-Home.htm
+docs-concepts: http://docs.solace.com/SEMP/SEMP-Concepts.htm
+docs-architecture: http://docs.solace.com/SEMP/SEMP-API-Archit.htm
+docs-http-responses: http://docs.solace.com/SEMP/SEMP-API-Protocol.htm#HTTP-content
+docs-concepts-paging: http://docs.solace.com/SEMP/SEMP-API-Archit.htm#Paginati
+docs-concepts-uri: http://docs.solace.com/SEMP/SEMP-API-Protocol.htm#URI
+docs-api: http://docs.solace.com/swagger-ui/index.html
+docs-schema: http://docs.solace.com/SEMP/SEMP-API-Archit.htm#SEMP
+docs-semp-legacy: http://docs.solace.com/SEMP/Legacy-SEMP.htm
+docs-vmr-setup: http://docs.solace.com/Solace-VMR-Set-Up/Setting-Up-VMRs.htm
 
 #----------------------------------------------------
 # Generally don't modify items below this point

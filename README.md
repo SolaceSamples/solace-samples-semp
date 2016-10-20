@@ -62,7 +62,11 @@ Please read [CONTRIBUTING.md](CONTRIBUTING.md) for details on our code of conduc
 
 ## Authors
 
+<<<<<<< HEAD
 See the list of [contributors](https://github.com/SolaceSamples/solace-samples-semp/contributors) who participated in this project.
+=======
+See the list of [contributors](https://github.com/SolaceSamples/solace-samples-template/contributors) who participated in this project.
+>>>>>>> samples-template/master
 
 ## License
 
@@ -72,8 +76,15 @@ This project is licensed under the Apache License, Version 2.0. - See the [LICEN
 
 For more information try these resources:
 
+<<<<<<< HEAD
 - SEMP Documentation: http://docs.solacesystems.com/SEMP/SEMP-Home.htm
 - The Solace Developer Portal website at: [http://dev.solacesystems.com](http://dev.solacesystems.com/)
 - Get a better understanding of [Solace technology.](http://dev.solacesystems.com/tech/)
 - Check out the [Solace blog](http://dev.solacesystems.com/blog/) for other interesting discussions around Solace technology
 - Ask the [Solace community.](http://dev.solacesystems.com/community/)
+=======
+- The Solace Developer Portal website at: http://dev.solace.com
+- Get a better understanding of [Solace technology](http://dev.solace.com/tech/).
+- Check out the [Solace blog](http://dev.solace.com/blog/) for other interesting discussions around Solace technology
+- Ask the [Solace community.](http://dev.solace.com/community/)
+>>>>>>> samples-template/master

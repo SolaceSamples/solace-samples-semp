@@ -13,8 +13,6 @@ The following examples use `curl` which is a simple command line tool which can 
 
 Alternatively, it is also possible to use SEMP through a client library. If you are interested in using a client library, you can look at this [Quick Start tutorial]({{ site.baseurl }}/java-client) which provides steps for generating a client library and using it to make SEMP calls.
 
-**Note**: Currently SEMP v2 is only supported on Solace message router appliances running SolOS version 7.2.2 and above. Solace virtual message router will add SEMP v2 support in the near future.
-
 ## Contents
 
 * [Assumptions](#assumptions)
@@ -37,7 +35,7 @@ The examples below make a few assumptions for simplicity:
 
 ## The Basics
 
-Before jumping to a specific method and SEMP resource, let’s just introduce a few basic concepts that common across the API. If you have not already, you can learn more about these concepts and SEMP in general by checking out the [API overview]({{ site.docs-overview }}){:target="_top"}.
+Before jumping to a specific method and SEMP resource, let’s just introduce a few basic concepts that common across the API. If you have not already, you can learn more about these concepts and SEMP in general by checking out the [API overview]({{ site.docs-architecture }}){:target="_top"}.
 
 Objects in SEMP are represented by JSON. For example, if you want to create a Client Username called `tutorialUser` and enable this Client Username, you can use the following JSON.
 
@@ -96,7 +94,7 @@ When you execute this command, if successful the Solace message router will resp
 }
 ```
 
-The response contains three components. These are explained in more detail in the [API overview]({{ site.docs-overview }}){:target="_top"}. But here is a quick summary:
+The response contains three components. These are explained in more detail in the [API concepts documentation]({{ site.docs-http-responses }}){:target="_top"}. But here is a quick summary:
 
 * Meta – The meta field contains information about the request that was sent, the response code from the Solace message router and it will contain additional error information on failures.
 * Links – The links object makes the API self-discoverable which can be nice for developers as they are coding. You can experiment with SEMP objects and use the links to navigate through collections to member objects etc. In general, this is simply a tool to aid in development because at runtime, most configuration management tools and applications follow known patterns and can directly address the resources. There is no need for this discoverability.

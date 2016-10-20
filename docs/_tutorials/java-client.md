@@ -13,8 +13,6 @@ The following examples use a Java API generated from the SEMP specification and 
 
 Alternatively, it is also possible to use SEMP through directly through HTTP. If you are interested in using the API directly through HTTP, you can look at this [Quick Start tutorial]({{ site.baseurl }}/curl) which walks you through the basics of making SEMP calls directly through HTTP.
 
-**Note**: Currently SEMP v2 is only supported on Solace message router appliances running SolOS version 7.2.2 and above. Solace virtual message router will add SEMP v2 support in the near future.
-
 ## Contents
 
 * [Assumptions](#assumptions)
@@ -60,7 +58,7 @@ One quick and easy way is to use the online editor. The following steps walk you
 
 ## Client Library Basics
 
-Before jumping to specific tasks like creating a Client Username, we will first introduce a few basic concepts common to the SEMP client library. If you have not already, you can learn more about these concepts and SEMP in general by checking out the [API overview]({{ site.docs-overview}}){:target="_top"}.
+Before jumping to specific tasks like creating a Client Username, we will first introduce a few basic concepts common to the SEMP client library. If you have not already, you can learn more about these concepts and SEMP in general by checking out the [SEMP Concepts]({{ site.docs-architecture }}){:target="_top"}.
 
 ### Initializing the SEMP API
 
@@ -317,4 +315,4 @@ Client Username delete. Resp: 200
 
 At this point, you have created, retrieved, updated and deleted a Client Username object using SEMP. The examples used a generated client library in Java to interact with the Solace message router, but you can adapt the steps to any programming language of your choice. 
 
-SEMP is an extensive API that lets you configure anything on your Solace message router so there is a lot more to understand. If you want to know more, you can either get more familiar with the SEMP concepts by checking out the [user guide]({{ site.docs-overview }}){:target="_top"} or you can see the full [developer documentation for the API]({{ site.docs-api }}){:target="_top"}.
+SEMP is an extensive API that lets you configure anything on your Solace message router so there is a lot more to understand. If you want to know more, you can either get more familiar with the SEMP concepts by checking out the [Concepts Guide]({{ site.docs-concepts }}){:target="_top"} or you can see the full [developer documentation for the API]({{ site.docs-api }}){:target="_top"}.
