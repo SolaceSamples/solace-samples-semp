@@ -9,12 +9,12 @@ repository: https://github.com/SolaceSamples/solace-samples-semp
 docs-semp-home: http://docs.solace.com/SEMP/SEMP-Home.htm
 docs-concepts: http://docs.solace.com/SEMP/SEMP-Concepts.htm
 docs-architecture: http://docs.solace.com/SEMP/SEMP-API-Archit.htm
-docs-http-responses: http://docs.solace.com/SEMP/SEMP-API-Protocol.htm#HTTP-content
+docs-http-responses: http://docs.solace.com/SEMP/SEMP-API-Protocol.htm#HTTP4
 docs-concepts-paging: http://docs.solace.com/SEMP/SEMP-API-Archit.htm#Paginati
 docs-concepts-uri: http://docs.solace.com/SEMP/SEMP-API-Protocol.htm#URI
-docs-api: http://docs.solace.com/swagger-ui/index.html
+docs-api: http://docs.solace.com/API-Developer-Online-Ref-Documentation/swagger-ui/index.html
 docs-schema: http://docs.solace.com/SEMP/SEMP-API-Archit.htm#SEMP
-docs-semp-legacy: http://docs.solace.com/SEMP/Legacy-SEMP.htm
+docs-semp-legacy: http://docs.solace.com/SEMP/Using-Legacy-SEMP.htm
 docs-vmr-setup: http://docs.solace.com/Solace-VMR-Set-Up/Setting-Up-VMRs.htm
 
 #----------------------------------------------------

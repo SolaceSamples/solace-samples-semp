@@ -5,9 +5,9 @@ These tutorials will get you up to speed and managing Solace message routers wit
 
 If you are new to SEMP, you can learn more here for full documentation and API reference:
 
-* http://docs.solacesystems.com/SEMP/SEMP-Home.htm
+* http://docs.solace.com/SEMP/SEMP-Home.htm
 
-These tutorials apply to the SEMP API starting in version 2. For older versions of the SEMP API, you can see the [Legacy SEMP Documentation](http://docs.solacesystems.com/SEMP/Using-SEMP-to-Manage-and-Monitor-Routers.htm)
+These tutorials apply to the SEMP API starting in version 2. For older versions of the SEMP API, you can see the [Legacy SEMP Documentation](http://docs.solace.com/SEMP/Using-Legacy-SEMP.htm)
 
 **Note**: Currently SEMP v2 is only supported on Solace message router appliances running SolOS version 7.2.2 and above. Solace virtual message router will add SEMP v2 support in the near future.
 
@@ -62,11 +62,7 @@ Please read [CONTRIBUTING.md](CONTRIBUTING.md) for details on our code of conduc
 
 ## Authors
 
-<<<<<<< HEAD
 See the list of [contributors](https://github.com/SolaceSamples/solace-samples-semp/contributors) who participated in this project.
-=======
-See the list of [contributors](https://github.com/SolaceSamples/solace-samples-template/contributors) who participated in this project.
->>>>>>> samples-template/master
 
 ## License
 
@@ -76,15 +72,7 @@ This project is licensed under the Apache License, Version 2.0. - See the [LICEN
 
 For more information try these resources:
 
-<<<<<<< HEAD
-- SEMP Documentation: http://docs.solacesystems.com/SEMP/SEMP-Home.htm
-- The Solace Developer Portal website at: [http://dev.solacesystems.com](http://dev.solacesystems.com/)
-- Get a better understanding of [Solace technology.](http://dev.solacesystems.com/tech/)
-- Check out the [Solace blog](http://dev.solacesystems.com/blog/) for other interesting discussions around Solace technology
-- Ask the [Solace community.](http://dev.solacesystems.com/community/)
-=======
 - The Solace Developer Portal website at: http://dev.solace.com
 - Get a better understanding of [Solace technology](http://dev.solace.com/tech/).
 - Check out the [Solace blog](http://dev.solace.com/blog/) for other interesting discussions around Solace technology
 - Ask the [Solace community.](http://dev.solace.com/community/)
->>>>>>> samples-template/master
