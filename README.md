@@ -13,7 +13,7 @@ These tutorials apply to the SEMP API starting in version 2. For older versions 
 
 ## Contents
 
-This repository contains code and matching tutorial walk throughs for different basic scenarios. It is best to view the associated [tutorials landing page](https://solacesamples.github.io/solace-samples-semp/).
+This repository contains code and matching tutorial walk throughs for different basic scenarios. It is best to view the associated [tutorials home page](https://solacesamples.github.io/solace-samples-semp/).
 
 ## Prerequisites
 
@@ -29,7 +29,7 @@ To try individual samples, build the project from source and then run samples li
 
     ./build/staged/bin/javaClientSample <SEMP_BASE_PATH> <SEMP_USER> <SEMP_PASSWORD>
 
-See the individual tutorials linked from the [tutorials landing page](https://solacesamples.github.io/solace-samples-semp/) for full details which can walk you through the samples, what they do, and how to correctly run them to explore SEMP.
+See the individual tutorials linked from the [tutorials home page](https://solacesamples.github.io/solace-samples-semp/) for full details which can walk you through the samples, what they do, and how to correctly run them to explore SEMP.
 
 ## Exploring the Samples
 
