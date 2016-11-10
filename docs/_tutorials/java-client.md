@@ -13,19 +13,6 @@ The following examples use a Java API generated from the SEMP specification and 
 
 Alternatively, it is also possible to use SEMP through directly through HTTP. If you are interested in using the API directly through HTTP, you can look at this [Quick Start tutorial]({{ site.baseurl }}/curl/) which walks you through the basics of making SEMP calls directly through HTTP.
 
-## Contents
-
-* [Assumptions](#assumptions)
-* [Generating the Client Library](#generating-the-semp-client-library)
-* [Client Library Basics](#client-library-basics)
-* [Creating an Object](#creating-an-object-using-post)
-* [Retrieving an Object](#retrieving-an-object-using-get)
-* [Retrieving a Collection](#retrieving-a-collection-of-objects-using-get)
-* [Partially Updating an Object](#partially-updating-an-object-using-patch)
-* [Fully Updating an Object](#fully-updating-an-object-using-put)
-* [Removing an Object](#removing-an-object-using-delete)
-* [Summary](#summary)
-
 ## Assumptions
 
 The examples below make a few assumptions for simplicity:

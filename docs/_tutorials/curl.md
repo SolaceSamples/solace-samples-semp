@@ -13,18 +13,6 @@ The following examples use `curl` which is a simple command line tool which can 
 
 Alternatively, it is also possible to use SEMP through a client library. If you are interested in using a client library, you can look at this [Quick Start tutorial]({{ site.baseurl }}/java-client/) which provides steps for generating a client library and using it to make SEMP calls.
 
-## Contents
-
-* [Assumptions](#assumptions)
-* [The Basics](#the-basics)
-* [Creating an Object](#creating-an-object-using-post)
-* [Retrieving an Object](#retrieving-an-object-using-get)
-* [Retrieving a Collection](#retrieving-a-collection-of-objects-using-get)
-* [Partially Updating an Object](#partially-updating-an-object-using-patch)
-* [Fully Updating an Object](#fully-updating-an-object-using-put)
-* [Removing an Object](#removing-an-object-using-delete)
-* [Summary](#summary)
-
 ## Assumptions
 
 The examples below make a few assumptions for simplicity:
