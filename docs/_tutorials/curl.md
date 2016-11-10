@@ -84,9 +84,9 @@ When you execute this command, if successful the Solace message router will resp
 
 The response contains three components. These are explained in more detail in the [API concepts documentation]({{ site.docs-http-responses }}){:target="_top"}. But here is a quick summary:
 
-* Meta – The meta field contains information about the request that was sent, the response code from the Solace message router and it will contain additional error information on failures.
-* Links – The links object makes the API self-discoverable which can be nice for developers as they are coding. You can experiment with SEMP objects and use the links to navigate through collections to member objects etc. In general, this is simply a tool to aid in development because at runtime, most configuration management tools and applications follow known patterns and can directly address the resources. There is no need for this discoverability.
-* Data – The data contains a full representation of the newly created object. Here you can see what default values were select by the Solace message router etc.
+* Meta - The meta field contains information about the request that was sent, the response code from the Solace message router and it will contain additional error information on failures.
+* Links - The links object makes the API self-discoverable which can be nice for developers as they are coding. You can experiment with SEMP objects and use the links to navigate through collections to member objects etc. In general, this is simply a tool to aid in development because at runtime, most configuration management tools and applications follow known patterns and can directly address the resources. There is no need for this discoverability.
+* Data - The data contains a full representation of the newly created object. Here you can see what default values were select by the Solace message router etc.
 
 ## Retrieving an object using GET
 
@@ -96,7 +96,7 @@ Now that you have created a Client Username, you can retrieve the object using a
 
 Putting that together with curl, you get the following command:
 
-    curl –X GET -u user:password solacevmr:8080/SEMP/v2/config/msgVpns/default/clientUsernames/tutorialUser
+    curl -X GET -u user:password solacevmr:8080/SEMP/v2/config/msgVpns/default/clientUsernames/tutorialUser
 
 When you retrieve a specific object from SEMP, the response will contain the expected, `meta`, `links`, and `data` fields with the `data` field being the full representation of the object.
 
