@@ -107,7 +107,7 @@ private void handleError(ApiException ae) {
 }
 ```
 
-The code uses the `Gson` library to parse the JSON response, which is used internally by the Swagger client library. It then simply prints the relevant information to the console. 
+The code uses the `Gson` library to parse the JSON response, which is used internally by the Swagger client library. There's no reason why you can't use your own favourite JSON parser, of course. It then simply prints the relevant information to the console. 
 
 [*Source Reference: JavaClientSample.handleError()*]({{ site.repository }}/blob/master/src/main/java/com/solace/samples/JavaClientSample.java#L39){:target="_blank"}
 
