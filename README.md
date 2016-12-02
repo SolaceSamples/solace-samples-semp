@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/SolaceSamples/solace-samples-semp.svg?branch=master)](https://travis-ci.org/SolaceSamples/solace-samples-semp)
+
 # Getting Started Examples
 ## Solace Element Management Protocol (SEMP)
 
