@@ -1,6 +1,6 @@
 ---
 layout: tutorials
-title: Basic CRUD - curl
+title: Basic Operations - curl
 summary: The basics of how to create, read, update, and delete a SEMP object using an HTTP client (curl)
 icon: curl-logo.png
 ---

@@ -1,6 +1,6 @@
 ---
 layout: tutorials
-title: Basic CRUD - Java Client Library 
+title: Basic Operations - Java Client Library 
 summary: The basics of how to create, read, update, and delete a SEMP object using a Java client library
 icon: java-logo.jpg
 ---
