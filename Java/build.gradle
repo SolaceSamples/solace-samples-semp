@@ -17,6 +17,18 @@ distZip.enabled=false
 applicationName = 'solace-samples-semp'
 version = ''
 
+eclipse {
+  project {
+    name = 'semp.java'
+  }
+}
+
+idea {
+  module {
+    name = 'semp.java'
+  }
+}
+
 jar {
 	baseName = 'solace-samples-semp'
     version =  version

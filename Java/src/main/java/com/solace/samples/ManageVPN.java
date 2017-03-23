@@ -43,7 +43,10 @@ import io.swagger.client.model.SempMetaOnlyResponse;
 
 public class ManageVPN {
 
-	MsgVpnApi sempApiInstance;
+    String DEFAULT_CLIENTPROFILE = "default";
+    String DEFAULT_CLIENTUSERNAME = "default";
+    
+    MsgVpnApi sempApiInstance;
     
     private void handleError(ApiException ae) {
         Gson gson = new Gson();
@@ -81,13 +84,11 @@ public class ManageVPN {
         MsgVpnResponse vpnResp = sempApiInstance.createMsgVpn(msgVpn, null);        
     }
     
-    public void updateClientProfileForPersistentMessaging(String messageVpnName) throws ApiException {
+    public void updateDefaultClientProfileForPersistentMessaging(String messageVpnName) throws ApiException {
 
-        String DEFAULT_CLIENTPROFILE = "default";
-        
         System.out.format("Modifying Client-Profile for persistent messaging...\n");
         
-    	// Modify existing default client-profile
+        // Modify existing default client-profile
         MsgVpnClientProfile clientProfile = new MsgVpnClientProfile();
         clientProfile.setAllowGuaranteedMsgSendEnabled(true);
         clientProfile.setAllowGuaranteedMsgReceiveEnabled(true);
@@ -97,93 +98,91 @@ public class ManageVPN {
     
     public void setupClientUsername(String messageVpnName, String clientName, String clientPassword) throws ApiException {
 
-        String DEFAULT_CLIENTUSERNAME = "default";
-        
         System.out.format("Setting up Client-Username: %s with password...\n", clientName);
 
-    	// Create or modify client-username
+        // Create or modify client-username
         MsgVpnClientUsername clientUsername = new MsgVpnClientUsername();
-        MsgVpnClientUsernameResponse cuResp = null;
+        clientUsername.setPassword(clientPassword);
+        clientUsername.setEnabled(true);
         if (!clientName.equals(DEFAULT_CLIENTUSERNAME)) {
             // Create client-username if not default (which was already created automatically with the VPN)
             clientUsername.setClientUsername(clientName);
-            clientUsername.setPassword(clientPassword);
-            clientUsername.setEnabled(true);
-            cuResp = sempApiInstance.createMsgVpnClientUsername(messageVpnName, clientUsername, null);
+            MsgVpnClientUsernameResponse cuResp = sempApiInstance.createMsgVpnClientUsername(
+                    messageVpnName, clientUsername, null);
         } else {
-            // Modify existing default client-username with the password
-            clientUsername.setPassword(clientPassword);
-            clientUsername.setEnabled(true);
-            cuResp = sempApiInstance.updateMsgVpnClientUsername(messageVpnName, DEFAULT_CLIENTUSERNAME, clientUsername, null);
+            // Modify existing default client-username
+            MsgVpnClientUsernameResponse cuResp = sempApiInstance.updateMsgVpnClientUsername(
+                    messageVpnName, DEFAULT_CLIENTUSERNAME, clientUsername, null);
         }
     }
     
     public void createQueue(String messageVpnName, String queueName ) throws ApiException {
 
-		System.out.format("Creating persistent Queue: %s...\n", queueName);
-		   
-		MsgVpnQueue queue = new MsgVpnQueue();
-		queue.setQueueName(queueName);
-		queue.setPermission(PermissionEnum.DELETE);
-		queue.setIngressEnabled(true);
-		queue.setEgressEnabled(true);
-		queue.setAccessType(AccessTypeEnum.NON_EXCLUSIVE);
-		MsgVpnQueueResponse qResp = sempApiInstance.createMsgVpnQueue(messageVpnName, queue, null);
+        System.out.format("Creating persistent Queue: %s...\n", queueName);
+           
+        // Create a queue
+        MsgVpnQueue queue = new MsgVpnQueue();
+        queue.setQueueName(queueName);
+        queue.setPermission(PermissionEnum.DELETE);
+        queue.setIngressEnabled(true);
+        queue.setEgressEnabled(true);
+        queue.setAccessType(AccessTypeEnum.NON_EXCLUSIVE);
+        MsgVpnQueueResponse qResp = sempApiInstance.createMsgVpnQueue(messageVpnName, queue, null);
     }
 
     public void deleteMessageVpn(String messageVPNName) throws ApiException {
 
-		System.out.format("Deleting Message-VPN: %s...\n", messageVPNName);
+        System.out.format("Deleting Message-VPN: %s...\n", messageVPNName);
 
         // Prerequisite for delete VPN is to remove all queues
         MsgVpnQueuesResponse resp = sempApiInstance.getMsgVpnQueues(messageVPNName, null, null, null, null);
         List<MsgVpnQueue> queuesList = resp.getData();
-        if (queuesList.size()>0) {
-	        System.out.format("Message-VPN contains one or more queues, deleting them first:\n");
-        	for (MsgVpnQueue queue: queuesList){
-	        	deleteQueue(messageVPNName, queue.getQueueName());
-	        }
+        if (queuesList.size() > 0) {
+            System.out.format("Message-VPN contains one or more queues, deleting them first:\n");
+            for (MsgVpnQueue queue: queuesList){
+                deleteQueue(messageVPNName, queue.getQueueName());
+            }
         }
-		
-		// Delete message-vpn
+    
+        // Delete message-vpn
         SempMetaOnlyResponse vpnResp = sempApiInstance.deleteMsgVpn(messageVPNName);
     }
 
     public void deleteQueue(String messageVpnName, String queueName) throws ApiException {
 
-		System.out.format("Deleting Queue: %s...\n", queueName);
+        System.out.format("Deleting Queue: %s...\n", queueName);
 
-        // Delete message-vpn
+        // Delete queue
         SempMetaOnlyResponse resp = sempApiInstance.deleteMsgVpnQueue(messageVpnName, queueName);
     }
 
     public static void main(String... args) throws Exception {
 
         // Modify these params as needed
-    	final String vmrUser = "admin";
+        final String vmrUser = "admin";
         final String vmrPassword = "admin";
         final String vpnUserName = "default";
         final String vpnUserPassword = "password";
         final String testQueueName = "testQueue";
 
         final String usage = "\nUsage: manageVPN [createvpn | deletevpn | addqueue | deletequeue] <host> <vpnname> [<quename>]" +
-            	"\nEx: manageVPN createvpn <host> <vpnname>" +
-            	"\n        Create a message-vpn and add a testQueue" +
-            	"\n    manageVPN deletevpn <host> <vpnname>" +
-        		"\n        Delete the message-vpn" +
-            	"\n    manageVPN addqueue <host> <vpnname> <quename>" +
-        		"\n        Create the queue" +
-            	"\n    manageVPN deletequeue <host> <vpnname> <quename>" +
-        		"\n        Delete the queue";
-    	
-    	// Check command line arguments
+                "\nEx: manageVPN createvpn <host> <vpnname>" +
+                "\n        Create a message-vpn and add a sample queue: testQueue" +
+                "\n    manageVPN deletevpn <host> <vpnname>" +
+                "\n        Delete the message-vpn" +
+                "\n    manageVPN addqueue <host> <vpnname> <quename>" +
+                "\n        Create the queue" +
+                "\n    manageVPN deletequeue <host> <vpnname> <quename>" +
+                "\n        Delete the queue";
+        
+        // Check command line arguments
         if (args.length < 3) {
             System.out.println(usage);
             System.exit(-1);
         }
         System.out.println("manageVPN initializing...");
         
-        
+        String command = args[0];
         String vmrBasePath = "http://" + args[1] + ":8080/SEMP/v2/config";
         String messageVpnName = args[2];
 
@@ -191,42 +190,42 @@ public class ManageVPN {
         
         app.initialize(vmrBasePath, vmrUser, vmrPassword);
         try {
-			switch (args[0])  {
-			    case "createvpn":
-		        	app.createMessageVpn(messageVpnName);
-		        	app.updateClientProfileForPersistentMessaging(messageVpnName);
-		        	app.setupClientUsername(messageVpnName, vpnUserName, vpnUserPassword);
-		        	// Additionally create a queue
-		        	app.createQueue(messageVpnName, testQueueName);
-			        break;
-			    case "deletevpn":
-			    	app.deleteMessageVpn(messageVpnName);
-			        break;
-			    case "addqueue":
-			        if (args.length < 4) {
-			            System.out.println("Command 'addqueue' requires more parameters. " + usage);
-			            System.exit(-1);
-			        } else {
-			        	// Create the message VPN with default user
-			        	app.createQueue(messageVpnName, args[3]);
-			        }
-			        break;
-			    case "deletequeue":
-			        if (args.length < 4) {
-			            System.out.println("Command 'deletequeue' requires more parameters. " + usage);
-			            System.exit(-1);
-			        } else {
-			        	// Create the message VPN with default user
-			        	app.deleteQueue(messageVpnName, args[3]);
-			        }
-			        break;
-			    default:
-			    	System.out.println("Invalid command: " + args[0] + usage);
-			        System.exit(-1);
-			}
-		} catch (ApiException e) {
-			app.handleError(e);
-	        System.exit(-1);
+            switch (command)  {
+                case "createvpn":
+                    app.createMessageVpn(messageVpnName);
+                    app.updateDefaultClientProfileForPersistentMessaging(messageVpnName);
+                    app.setupClientUsername(messageVpnName, vpnUserName, vpnUserPassword);
+                    // Additionally create a queue
+                    app.createQueue(messageVpnName, testQueueName);
+                    break;
+                case "deletevpn":
+                    app.deleteMessageVpn(messageVpnName);
+                    break;
+                case "addqueue":
+                    if (args.length < 4) {
+                        System.out.println("Command 'addqueue' requires more parameters. " + usage);
+                        System.exit(-1);
+                    } else {
+                        // Create the message VPN with default user
+                        app.createQueue(messageVpnName, args[3]);
+                    }
+                    break;
+                case "deletequeue":
+                    if (args.length < 4) {
+                        System.out.println("Command 'deletequeue' requires more parameters. " + usage);
+                        System.exit(-1);
+                    } else {
+                        // Create the message VPN with default user
+                        app.deleteQueue(messageVpnName, args[3]);
+                    }
+                    break;
+                default:
+                    System.out.println("Invalid command: " + command + usage);
+                    System.exit(-1);
+            }
+        } catch (ApiException e) {
+            app.handleError(e);
+            System.exit(-1);
         }
     }
 }
