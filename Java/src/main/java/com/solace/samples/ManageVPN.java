@@ -165,14 +165,14 @@ public class ManageVPN {
         final String vpnUserPassword = "password";
         final String testQueueName = "testQueue";
 
-        final String usage = "\nUsage: manageVPN [createvpn | deletevpn | addqueue | deletequeue] <host> <vpnname> [<quename>]" +
-                "\nEx: manageVPN createvpn <host> <vpnname>" +
+        final String usage = "\nUsage: manageVPN [createvpn | deletevpn | addqueue | deletequeue] <host:port> <vpnname> [<quename>]" +
+                "\nEx: manageVPN createvpn <host:port> <vpnname>" +
                 "\n        Create a message-vpn and add a sample queue: testQueue" +
-                "\n    manageVPN deletevpn <host> <vpnname>" +
+                "\n    manageVPN deletevpn <host:port> <vpnname>" +
                 "\n        Delete the message-vpn" +
-                "\n    manageVPN addqueue <host> <vpnname> <quename>" +
+                "\n    manageVPN addqueue <host:port> <vpnname> <quename>" +
                 "\n        Create the queue" +
-                "\n    manageVPN deletequeue <host> <vpnname> <quename>" +
+                "\n    manageVPN deletequeue <host:port> <vpnname> <quename>" +
                 "\n        Delete the queue";
         
         // Check command line arguments
@@ -183,7 +183,7 @@ public class ManageVPN {
         System.out.println("manageVPN initializing...");
         
         String command = args[0];
-        String vmrBasePath = "http://" + args[1] + ":8080/SEMP/v2/config";
+        String vmrBasePath = "http://" + args[1] + "/SEMP/v2/config";
         String messageVpnName = args[2];
 
         ManageVPN app = new ManageVPN();
