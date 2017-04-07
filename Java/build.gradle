@@ -24,8 +24,14 @@ eclipse {
 }
 
 idea {
+  project {
+    outputFile = new File('.', 'semp.java.ipr')
+  }
   module {
     name = 'semp.java'
+  }
+  workspace {
+//    outputFile = new File('.', 'semp.java.iws')
   }
 }
 
@@ -54,7 +60,7 @@ dependencies {
 task createAllStartScripts() << {
      // just a placeholder
 }
-  def scripts = [ 'javaClientSample':'com.solace.samples.JavaClientSample',
+  def scripts = [ 'basicOperationsSample':'com.solace.samples.BasicOperationsSample',
                   'manageVPN':'com.solace.samples.ManageVPN'  ]
   scripts.each() { scriptName, className ->
           def t = tasks.create(name: scriptName+'StartScript', type: CreateStartScripts) {

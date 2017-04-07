@@ -32,7 +32,7 @@ import io.swagger.client.model.MsgVpnClientUsernamesResponse;
 import io.swagger.client.model.SempError;
 import io.swagger.client.model.SempMetaOnlyResponse;
 
-public class JavaClientSample {
+public class BasicOperationsSample {
 
     MsgVpnApi sempApiInstance;
     
@@ -160,7 +160,7 @@ public class JavaClientSample {
         String vmrUser = args[1];
         String vmrPassword = args[2];
 
-        JavaClientSample app = new JavaClientSample();
+        BasicOperationsSample app = new BasicOperationsSample();
         
         app.initialize(vmrBasePath, vmrUser, vmrPassword);
         app.createObjectUsingPost();

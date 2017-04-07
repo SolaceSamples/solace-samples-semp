@@ -2,6 +2,9 @@
 title: Solace Samples SEMP
 baseurl: "/solace-samples-semp" # the subpath of your site, e.g. /solace-samples-java
 repository: https://github.com/SolaceSamples/solace-samples-semp
+repository-java: https://github.com/SolaceSamples/solace-samples-semp/Java
+tutorials-home: https://solacesamples.github.io/solace-samples-semp/
+solace-samples-jms-queues: https://solacesamples.github.io/solace-samples-jms/persistence-with-queues/
 
 # Also see _includes/intro.html to customize the description which gets included in index.html.
 
@@ -16,6 +19,16 @@ docs-api: http://docs.solace.com/API-Developer-Online-Ref-Documentation/swagger-
 docs-schema: http://docs.solace.com/SEMP/SEMP-API-Archit.htm#SEMP
 docs-semp-legacy: http://docs.solace.com/SEMP/Using-Legacy-SEMP.htm
 docs-vmr-setup: http://docs.solace.com/Solace-VMR-Set-Up/Setting-Up-VMRs.htm
+docs-router-concepts: http://docs.solace.com/Features/Core-Concepts.htm#router-concepts
+docs-mgmt-user-aa: http://docs.solace.com/Features/Mgmt-User-Authenticate-Authorize.htm
+docs-msg-vpn: http://docs.solace.com/Configuring-and-Managing-Routers/Configuring-VPNs.htm
+docs-client-profile: http://docs.solace.com/Features/Client-Authorization.htm#client_authentication_and_authorization_2866343001_219397
+docs-acl-profile: http://docs.solace.com/Configuring-and-Managing-Routers/Managing-Access-Control-Lists.htm
+docs-client-username: http://docs.solace.com/Features/Client-authentication-and-authorization.htm
+docs-queues: http://docs.solace.com/Configuring-and-Managing-Routers/Configuring-Queues.htm
+docs-dtes: http://docs.solace.com/Configuring-and-Managing-Routers/Configuring-DTEs.htm
+docs-soladmin-home: http://docs.solace.com/SolAdmin/SolAdmin-Home.htm
+docs-solace-downloads: http://dev.solace.com/downloads/
 
 #----------------------------------------------------
 # Generally don't modify items below this point
