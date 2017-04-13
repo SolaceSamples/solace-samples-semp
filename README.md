@@ -23,13 +23,14 @@ There are no prerequisites.
 
 ## Build the Samples
 
+    cd java
     ./gradlew build
 
 ## Running the Samples
 
 To try individual samples, build the project from source and then run samples like the following:
 
-    ./build/staged/bin/javaClientSample <SEMP_BASE_PATH> <SEMP_USER> <SEMP_PASSWORD>
+    ./build/staged/bin/basicOperationsSample <SEMP_BASE_PATH> <SEMP_USER> <SEMP_PASSWORD>
 
 See the individual tutorials linked from the [tutorials home page](https://solacesamples.github.io/solace-samples-semp/) for full details which can walk you through the samples, what they do, and how to correctly run them to explore SEMP.
 

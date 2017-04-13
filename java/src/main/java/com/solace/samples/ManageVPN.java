@@ -166,10 +166,10 @@ public class ManageVPN {
         final String vpnUserPassword = "password";
         final String testQueueName = "testQueue";
 
-        final String usage = "\nUsage: manageVPN [createvpn | deletevpn] <host:port> <vpnname>" +
-                "\nEx: manageVPN createvpn <host:port> <vpnname>" +
+        final String usage = "\nUsage: manageVPN [create | delete] <host:port> <vpnname>" +
+                "\nEx: manageVPN create <host:port> <vpnname>" +
                 "\n        Create a message-vpn and add a sample queue: testQueue" +
-                "\n    manageVPN deletevpn <host:port> <vpnname>" +
+                "\n    manageVPN delete <host:port> <vpnname>" +
                 "\n        Delete the message-vpn";
         
         // Check command line arguments
@@ -186,15 +186,15 @@ public class ManageVPN {
         
         app.initialize(vmrBasePath, vmrUser, vmrPassword);
         try {
-            switch (command)  {
-                case "createvpn":
+            switch (command.toLowerCase())  {
+                case "create":
                     app.createMessageVpn(messageVpnName);
                     app.updateDefaultClientProfileForPersistentMessaging(messageVpnName);
                     app.setupClientUsername(messageVpnName, vpnUserName, vpnUserPassword);
                     // Additionally create a queue
                     app.createQueue(messageVpnName, testQueueName);
                     break;
-                case "deletevpn":
+                case "delete":
                     app.deleteMessageVpn(messageVpnName);
                     break;
                 default:

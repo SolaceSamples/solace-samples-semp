@@ -2,9 +2,10 @@
 title: Solace Samples SEMP
 baseurl: "/solace-samples-semp" # the subpath of your site, e.g. /solace-samples-java
 repository: https://github.com/SolaceSamples/solace-samples-semp
-repository-java: https://github.com/SolaceSamples/solace-samples-semp/Java
+repository-java: https://github.com/SolaceSamples/solace-samples-semp/java
 tutorials-home: https://solacesamples.github.io/solace-samples-semp/
 solace-samples-jms-queues: https://solacesamples.github.io/solace-samples-jms/persistence-with-queues/
+solace-community: http://dev.solace.com/community/
 
 # Also see _includes/intro.html to customize the description which gets included in index.html.
 

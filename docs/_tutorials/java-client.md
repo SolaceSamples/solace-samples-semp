@@ -260,7 +260,7 @@ public void removingObjectUsingDelete() {
 
 The full source code for this example is available in [GitHub]({{ site.repository }}){:target="_blank"}. If you combine the example source code shown above results in the following source:
 
-*   [BasicOperationsSample.java]({{ site.repository }}/blob/master/src/main/java/com/solace/samples/BasicOperationsSample.java){:target="_blank"}
+*   [BasicOperationsSample.java]({{ site.repository }}/blob/master/java/src/main/java/com/solace/samples/BasicOperationsSample.java){:target="_blank"}
 
 ### Getting the Source
 
@@ -268,7 +268,7 @@ Clone the GitHub repository containing the Solace samples.
 
 ```
 git clone {{ site.repository }}
-cd {{ site.baseurl | remove: '/'}}
+cd {{ site.baseurl | remove: '/'}}/java
 ```
 
 ### Building
