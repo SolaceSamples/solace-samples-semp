@@ -2,3 +2,4 @@
   tutorials:
   - curl
   - java-client
+  - messagevpn-with-queue-java

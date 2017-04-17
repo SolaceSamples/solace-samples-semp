@@ -4,8 +4,8 @@ hs_err_pid*
 _site
 .DS_Store
 docs/_site
-/bin/
-/build/
+bin/
+build/
 .classpath
 .gradle/
 .project

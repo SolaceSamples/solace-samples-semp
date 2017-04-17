@@ -66,7 +66,7 @@ MsgVpnApi sempApiInstance = new MsgVpnApi(thisClient);
 
 Remember to update the values in the above example to match your environment.
 
-[*Source Reference: JavaClientSample.initialize()*]({{ site.repository }}/blob/master/src/main/java/com/solace/samples/JavaClientSample.java#L51){:target="_blank"}
+[*Source Reference: BasicOperationsSample.initialize()*]({{ site.repository }}/blob/master/src/main/java/com/solace/samples/BasicOperationsSample.java#L51){:target="_blank"}
 
 ### Error handling
 
@@ -109,7 +109,7 @@ private void handleError(ApiException ae) {
 
 The code uses the `Gson` library to parse the JSON response, which is used internally by the Swagger client library. There's no reason why you can't use your own favourite JSON parser, of course. It then simply prints the relevant information to the console. 
 
-[*Source Reference: JavaClientSample.handleError()*]({{ site.repository }}/blob/master/src/main/java/com/solace/samples/JavaClientSample.java#L39){:target="_blank"}
+[*Source Reference: BasicOperationsSample.handleError()*]({{ site.repository }}/blob/master/src/main/java/com/solace/samples/BasicOperationsSample.java#L39){:target="_blank"}
 
 ## Creating an Object Using POST
 
@@ -143,7 +143,7 @@ public void createObjectUsingPost() {
 }
 ```
 
-[*Source Reference: JavaClientSample.createObjectUsingPost()*]({{ site.repository }}/blob/master/src/main/java/com/solace/samples/JavaClientSample.java#L62){:target="_blank"}
+[*Source Reference: BasicOperationsSample.createObjectUsingPost()*]({{ site.repository }}/blob/master/src/main/java/com/solace/samples/BasicOperationsSample.java#L62){:target="_blank"}
 
 ## Retrieving an Object Using GET
 
@@ -162,7 +162,7 @@ public void retrievingObjectUsingGet() {
 }
 ```
 
-[*Source Reference: JavaClientSample.retrievingObjectUsingGet()*]({{ site.repository }}/blob/master/src/main/java/com/solace/samples/JavaClientSample.java#L83){:target="_blank"}
+[*Source Reference: BasicOperationsSample.retrievingObjectUsingGet()*]({{ site.repository }}/blob/master/src/main/java/com/solace/samples/BasicOperationsSample.java#L83){:target="_blank"}
 
 ## Retrieving a Collection of Objects Using GET
 
@@ -186,7 +186,7 @@ public void retrievingCollectionUsingGet() {
 
 For large collections, the response will be paged. See [SEMP paging]({{ site.docs-concepts-paging }}){:target="_top"} for details.
 
-[*Source Reference: JavaClientSample.retrievingCollectionUsingGet()*]({{ site.repository }}/blob/master/src/main/java/com/solace/samples/JavaClientSample.java#L94){:target="_blank"}
+[*Source Reference: BasicOperationsSample.retrievingCollectionUsingGet()*]({{ site.repository }}/blob/master/src/main/java/com/solace/samples/BasicOperationsSample.java#L94){:target="_blank"}
 
 ## Partially Updating an Object Using PATCH
 
@@ -210,7 +210,7 @@ public void partialObjectUpdateUsingPatch() {
 }
 ```
 
-[*Source Reference: JavaClientSample.partialObjectUpdateUsingPatch()*]({{ site.repository }}/blob/master/src/main/java/com/solace/samples/JavaClientSample.java#L106){:target="_blank"}
+[*Source Reference: BasicOperationsSample.partialObjectUpdateUsingPatch()*]({{ site.repository }}/blob/master/src/main/java/com/solace/samples/BasicOperationsSample.java#L106){:target="_blank"}
 
 ## Fully Updating an Object Using PUT
 
@@ -233,7 +233,7 @@ public void replaceObjectUpdateUsingPut() {
 }
 ```
 
-[*Source Reference: JavaClientSample.fullObjectUpdateUsingPut()*]({{ site.repository }}/blob/master/src/main/java/com/solace/samples/JavaClientSample.java#L120){:target="_blank"}
+[*Source Reference: BasicOperationsSample.fullObjectUpdateUsingPut()*]({{ site.repository }}/blob/master/src/main/java/com/solace/samples/BasicOperationsSample.java#L120){:target="_blank"}
 
 ## Removing an Object Using DELETE
 
@@ -254,13 +254,13 @@ public void removingObjectUsingDelete() {
 }
 ```
 
-[*Source Reference: JavaClientSample.removingObjectUsingDelete()*]({{ site.repository }}/blob/master/src/main/java/com/solace/samples/JavaClientSample.java#L135){:target="_blank"}
+[*Source Reference: BasicOperationsSample.removingObjectUsingDelete()*]({{ site.repository }}/blob/master/src/main/java/com/solace/samples/BasicOperationsSample.java#L135){:target="_blank"}
 
 ## Summary
 
 The full source code for this example is available in [GitHub]({{ site.repository }}){:target="_blank"}. If you combine the example source code shown above results in the following source:
 
-*   [JavaClientSample.java]({{ site.repository }}/blob/master/src/main/java/com/solace/samples/JavaClientSample.java){:target="_blank"}
+*   [BasicOperationsSample.java]({{ site.repository }}/blob/master/java/src/main/java/com/solace/samples/BasicOperationsSample.java){:target="_blank"}
 
 ### Getting the Source
 
@@ -268,7 +268,7 @@ Clone the GitHub repository containing the Solace samples.
 
 ```
 git clone {{ site.repository }}
-cd {{ site.baseurl | remove: '/'}}
+cd {{ site.baseurl | remove: '/'}}/java
 ```
 
 ### Building
@@ -283,7 +283,7 @@ This builds all of the Java Samples with OS specific launch scripts. The files a
 
 ### Running the Sample
 
-You start the `JavaClientSample` with a three arguments:
+You start the `BasicOperationsSample` with a three arguments:
 
 1. The SEMP Base Path. For example: `http://solacevmr:8080/SEMP/v2/config`
 2. The SEMP Username.
@@ -292,8 +292,8 @@ You start the `JavaClientSample` with a three arguments:
 For example: 
 
 ```
-$ ./build/staged/bin/javaClientSample <SEMP_BASE_PATH> <SEMP_USER> <SEMP_PASSWORD>
-JavaClientSample initializing...
+$ ./build/staged/bin/basicOperationsSample <SEMP_BASE_PATH> <SEMP_USER> <SEMP_PASSWORD>
+BasicOperationsSample initializing...
 SEMP initializing: <SEMP_BASE_PATH>, <SEMP_USER>
 Creating Object: tutorialUser
 ...
