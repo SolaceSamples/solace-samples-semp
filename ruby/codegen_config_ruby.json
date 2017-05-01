@@ -1,0 +1,9 @@
+{
+  "gemName" : "semp_client",
+  "moduleName" : "SempClient",
+  "gemHomepage": "http://solace.com",
+  "gemSummary": "SEMP Ruby Client Library",
+  "gemDescription": "This gem maps to the SEMP API used for configuring the Solace message router",
+  "gemAuthor": "Solace Corporation",
+  "gemAuthorEmail": "support_request@solace.com"
+}
