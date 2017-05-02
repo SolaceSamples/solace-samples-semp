@@ -31,7 +31,7 @@ This tutorial assumes that you have access to a running Solace VMR with the foll
 
 One simple way to get access to a Solace message router is to start a Solace VMR load as outlined [here]({{ site.docs-vmr-setup }}){:target="_top"}.
 
-We also assume that Ruby 2.7 is used.
+We also assume that Ruby is installed.
 
 ### Trying it yourself
 
