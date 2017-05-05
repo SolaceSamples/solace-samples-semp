@@ -29,7 +29,7 @@ This tutorial assumes that you have access to a running Solace VMR with the foll
 
 * A management user `admin` with password `admin`, authorized with a minimum access scope level of *global/read-write*.
 
-One simple way to get access to a Solace message router is to start a Solace VMR load as outlined [here]({{ site.docs-vmr-setup }}){:target="_top"}.
+One simple way to get access to a Solace message router is to start a Solace VMR as outlined [here]({{ site.docs-vmr-setup }}){:target="_top"}.
 
 We also assume that Ruby is installed.
 
@@ -86,8 +86,7 @@ end
 
 The first task is to create a new message-VPN with a name. Consulting the Solace documentation by following above [Message-VPN]({{ site.docs-msg-vpn }}){:target="_top"} link, we determine that it shall be configured for basic internal authentication, have the storage size increased for persistent message queues from default 0 and have it enabled. Tip: the [SolAdmin]({{ site.docs-soladmin-home }}){:target="_top"} management GUI tool can be used to show the default values for new created objects. If in doubt, try the intended management operation using SolAdmin, which can be [downloaded here]({{ site.docs-solace-downloads }}){:target="_top"}.
 
-To understand how to implement this, let’s consult now the [SEMP online API
-documentation]({{ site.docs-api }}){:target="_top"}:
+To understand how to implement this, let’s consult now the [SEMP online API documentation]({{ site.docs-api }}){:target="_top"}:
 - scrolling down to msgVPN and opening the `List Operations` link will show the color-coded options for all available operations. Clicking on `POST /msgVpns - Creates a Message VPN object` will open up the details. Scrolling down to `MsgVpn {`, here we can find the names of the attributes and we can derive the Ruby instance variable names using the rule: lowercase with words separated by underscores. For example, we look up the attribute `maxMsgSpoolUsage (integer)` and determine the instance variable name to be `max_msg_spool_usage`. Additionally, you can explore the SEMP Ruby Client Library specific documentation included in the [GitHub project folder]({{ site.repository }}/blob/master/ruby/docs){:target="_blank"}. 
 
 ```ruby

@@ -9,13 +9,15 @@ If you are new to SEMP, you can learn more here for full documentation and API r
 
 * http://docs.solace.com/SEMP/SEMP-Home.htm
 
-These tutorials apply to the SEMP API starting in version 2. For older versions of the SEMP API, you can see the [Legacy SEMP Documentation](http://docs.solace.com/SEMP/Using-Legacy-SEMP.htm)
+These tutorials apply to the SEMP API starting in version 2. For older versions of the SEMP API, you can see the [Legacy SEMP Documentation](http://dev.solace.com/get-started/semp-tutorials/)
 
-**Note**: SEMP v2 is only supported on Solace virtual message routers and Solace message router appliances running SolOS version 7.2.2 and above.
+**Note**: SEMP v2 is supported on Solace virtual message routers and Solace message router appliances running SolOS version 7.2.2 and above.
 
 ## Contents
 
-This repository contains code and matching tutorial walk throughs for different basic scenarios and programming languages. It is best to view the associated [tutorials home page](https://solacesamples.github.io/solace-samples-semp/).
+This repository contains code and matching tutorial walk throughs for different basic scenarios and programming languages. Sample code is organised in programming language specific subdirectories. 
+
+It is best to view the associated [tutorials home page](http://dev.solace.com/get-started/semp-tutorials/).
 
 ## Prerequisites
 
@@ -23,7 +25,9 @@ There are no prerequisites.
 
 ## Building and running the Samples
 
-To try individual samples, see the individual tutorials linked from the [tutorials home page](https://solacesamples.github.io/solace-samples-semp/) for full details which can walk you through the samples, what they do, and how to correctly run them to explore SEMP.
+Refer to the README.md in the `java`, `python` and `ruby` subdirectories for a short description of how to build and run the samples for the programming languages.
+
+To try individual samples, see the tutorials linked from the [tutorials home page](http://dev.solace.com/get-started/semp-tutorials/) for full details which can walk you through the samples, what they do, and how to correctly run them to explore SEMP.
 
 ## Contributing
 
