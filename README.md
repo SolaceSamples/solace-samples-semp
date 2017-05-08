@@ -9,55 +9,25 @@ If you are new to SEMP, you can learn more here for full documentation and API r
 
 * http://docs.solace.com/SEMP/SEMP-Home.htm
 
-These tutorials apply to the SEMP API starting in version 2. For older versions of the SEMP API, you can see the [Legacy SEMP Documentation](http://docs.solace.com/SEMP/Using-Legacy-SEMP.htm)
+These tutorials apply to the SEMP API starting in version 2. For older versions of the SEMP API, you can see the [Legacy SEMP Documentation](http://dev.solace.com/get-started/semp-tutorials/)
 
-**Note**: Currently SEMP v2 is only supported on Solace message router appliances running SolOS version 7.2.2 and above. Solace virtual message router will add SEMP v2 support in the near future.
+**Note**: SEMP v2 is supported on Solace virtual message routers and Solace message router appliances running SolOS version 7.2.2 and above.
 
 ## Contents
 
-This repository contains code and matching tutorial walk throughs for different basic scenarios. It is best to view the associated [tutorials home page](https://solacesamples.github.io/solace-samples-semp/).
+This repository contains code and matching tutorial walk throughs for different basic scenarios and programming languages. Sample code is organised in programming language specific subdirectories. 
+
+It is best to view the associated [tutorials home page](http://dev.solace.com/get-started/semp-tutorials/).
 
 ## Prerequisites
 
 There are no prerequisites. 
 
-## Build the Samples
+## Building and running the Samples
 
-    cd java
-    ./gradlew build
+Refer to the README.md in the `java`, `python` and `ruby` subdirectories for a short description of how to build and run the samples for the programming languages.
 
-## Running the Samples
-
-To try individual samples, build the project from source and then run samples like the following:
-
-    ./build/staged/bin/basicOperationsSample <SEMP_BASE_PATH> <SEMP_USER> <SEMP_PASSWORD>
-
-See the individual tutorials linked from the [tutorials home page](https://solacesamples.github.io/solace-samples-semp/) for full details which can walk you through the samples, what they do, and how to correctly run them to explore SEMP.
-
-## Exploring the Samples
-
-### Setting up your preferred IDE
-
-Using a modern Java IDE provides cool productivity features like auto-completion, on-the-fly compilation, assisted refactoring and debugging which can be useful when you're exploring the samples and even modifying the samples. Follow the steps below for your preferred IDE.
-
-#### Using Eclipse
-
-To generate Eclipse metadata (.classpath and .project files), do the following:
-
-    ./gradlew eclipse
-
-Once complete, you may then import the projects into Eclipse as usual:
-
- *File -> Import -> Existing projects into workspace*
-
-Browse to the *'solace-samples-semp'* root directory. All projects should import
-free of errors.
-
-#### Using IntelliJ IDEA
-
-To generate IDEA metadata (.iml and .ipr files), do the following:
-
-    ./gradlew idea
+To try individual samples, see the tutorials linked from the [tutorials home page](http://dev.solace.com/get-started/semp-tutorials/) for full details which can walk you through the samples, what they do, and how to correctly run them to explore SEMP.
 
 ## Contributing
 
