@@ -1,0 +1,53 @@
+apply plugin: 'java'
+
+configurations {
+    tool
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    tool "io.swagger:swagger-codegen-cli:2.2.2"
+}
+
+task buildSempLib << {
+    copy {
+        from configurations.tool
+        into new File("..").absolutePath
+    }
+    def f = new File('../swagger.yaml')
+    if (!f.exists()) {
+        new URL('https://sftp.solace.com/download/VMR_SEMPV2_SCHEMA_YAML').withInputStream{ i -> f.withOutputStream{ it << i }}
+    }       
+    delete "workdir"; (new File("workdir")).mkdirs()
+    javaexec { 
+        main="-jar";
+        classpath configurations.tool
+        workingDir = "workdir"
+        args = [
+            "../../swagger-codegen-cli-2.2.2.jar",
+            "generate",
+            "-l",
+            "python",
+            "-i",
+            "../../swagger.yaml",
+            "-c",
+            "../codegen_config_python.json"
+            ]
+    } 
+    // Cleanup
+    delete "workdir" + "/test"
+    delete fileTree("workdir") {
+        exclude "**/setup.py"
+        include "*"
+    }
+    copy {
+        from "workdir"
+        into "."
+    }
+    delete "workdir"
+}
+
+assemble.dependsOn buildSempLib
