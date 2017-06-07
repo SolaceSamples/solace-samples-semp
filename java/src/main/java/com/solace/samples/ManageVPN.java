@@ -23,23 +23,23 @@ import java.util.List;
 
 import com.google.gson.Gson;
 
-import com.solace.sempclient.samplelib.ApiClient;
-import com.solace.sempclient.samplelib.ApiException;
-import com.solace.sempclient.samplelib.api.MsgVpnApi;
-import com.solace.sempclient.samplelib.model.MsgVpn;
-import com.solace.sempclient.samplelib.model.MsgVpn.AuthenticationBasicTypeEnum;
-import com.solace.sempclient.samplelib.model.MsgVpnClientProfile;
-import com.solace.sempclient.samplelib.model.MsgVpnClientProfileResponse;
-import com.solace.sempclient.samplelib.model.MsgVpnClientUsername;
-import com.solace.sempclient.samplelib.model.MsgVpnClientUsernameResponse;
-import com.solace.sempclient.samplelib.model.MsgVpnQueue;
-import com.solace.sempclient.samplelib.model.MsgVpnQueue.AccessTypeEnum;
-import com.solace.sempclient.samplelib.model.MsgVpnQueue.PermissionEnum;
-import com.solace.sempclient.samplelib.model.MsgVpnQueueResponse;
-import com.solace.sempclient.samplelib.model.MsgVpnQueuesResponse;
-import com.solace.sempclient.samplelib.model.MsgVpnResponse;
-import com.solace.sempclient.samplelib.model.SempError;
-import com.solace.sempclient.samplelib.model.SempMetaOnlyResponse;
+import io.swagger.client.ApiClient;
+import io.swagger.client.ApiException;
+import io.swagger.client.api.MsgVpnApi;
+import io.swagger.client.model.MsgVpn;
+import io.swagger.client.model.MsgVpn.AuthenticationBasicTypeEnum;
+import io.swagger.client.model.MsgVpnClientProfile;
+import io.swagger.client.model.MsgVpnClientProfileResponse;
+import io.swagger.client.model.MsgVpnClientUsername;
+import io.swagger.client.model.MsgVpnClientUsernameResponse;
+import io.swagger.client.model.MsgVpnQueue;
+import io.swagger.client.model.MsgVpnQueue.AccessTypeEnum;
+import io.swagger.client.model.MsgVpnQueue.PermissionEnum;
+import io.swagger.client.model.MsgVpnQueueResponse;
+import io.swagger.client.model.MsgVpnQueuesResponse;
+import io.swagger.client.model.MsgVpnResponse;
+import io.swagger.client.model.SempError;
+import io.swagger.client.model.SempMetaOnlyResponse;
 
 @SuppressWarnings("unused")
 public class ManageVPN {

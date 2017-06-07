@@ -1,5 +1,5 @@
 # Load the gem
-require 'sempclient_samplelib'
+require 'semp_client'
 
 class ManageVpn
   
@@ -7,19 +7,19 @@ class ManageVpn
   DEFAULT_CLIENTUSERNAME = "default"
 
   def initialize(host_and_port, user, password)
-    SempClientSampleLib.configure do |config|
+    SempClient.configure do |config|
       config.scheme = 'http'
       config.host = host_and_port
       config.base_path = 'SEMP/v2/config'
       config.username = user
       config.password = password
     end
-    @api_instance = SempClientSampleLib::MsgVpnApi.new
+    @api_instance = SempClient::MsgVpnApi.new
   end
 
   def create_message_vpn(message_vpn_name)
     STDOUT.puts "Creating Message-VPN: #{message_vpn_name}...\n"
-    msg_vpn = SempClientSampleLib::MsgVpn.new
+    msg_vpn = SempClient::MsgVpn.new
     msg_vpn.msg_vpn_name = message_vpn_name
     msg_vpn.authentication_basic_type = "internal"
     msg_vpn.max_msg_spool_usage = 1500
@@ -29,7 +29,7 @@ class ManageVpn
 
   def update_default_client_profile_for_persistent_messaging(message_vpn_name)
     STDOUT.puts "Modifying Client-Profile for persistent messaging...\n"
-    msg_vpn_client_profile = SempClientSampleLib::MsgVpnClientProfile.new
+    msg_vpn_client_profile = SempClient::MsgVpnClientProfile.new
     msg_vpn_client_profile.allow_guaranteed_msg_send_enabled = true
     msg_vpn_client_profile.allow_guaranteed_msg_receive_enabled = true
     msg_vpn_client_profile.allow_guaranteed_endpoint_create_enabled = true
@@ -39,7 +39,7 @@ class ManageVpn
   
   def setup_client_username(message_vpn_name, client_name, client_password)
     STDOUT.puts "Setting up Client-Username: #{client_name} with password...\n"
-    msg_vpn_client_username = SempClientSampleLib::MsgVpnClientUsername.new
+    msg_vpn_client_username = SempClient::MsgVpnClientUsername.new
     msg_vpn_client_username.password = client_password
     msg_vpn_client_username.enabled = true
     if client_name != DEFAULT_CLIENTUSERNAME
@@ -54,7 +54,7 @@ class ManageVpn
 
   def create_queue(message_vpn_name, queue_name)
     STDOUT.puts "Creating persistent Queue: #{queue_name}...\n"
-    msg_vpn_queue = SempClientSampleLib::MsgVpnQueue.new
+    msg_vpn_queue = SempClient::MsgVpnQueue.new
     msg_vpn_queue.queue_name = queue_name
     msg_vpn_queue.permission = "delete"
     msg_vpn_queue.ingress_enabled = true
@@ -118,7 +118,7 @@ if __FILE__ == $0
       abort("Invalid command: #{command}" + usage)
     end
         
-  rescue SempClientSampleLib::ApiError  => e
+  rescue SempClient::ApiError  => e
     puts "Error during operation. Details: #{e.response_body}"
   end
 end

@@ -1,6 +1,6 @@
 import sys
-import sempclient_samplelib
-from sempclient_samplelib.rest import ApiException
+import semp_client
+from semp_client.rest import ApiException
 
 class ManageVpn:
     
@@ -8,14 +8,14 @@ class ManageVpn:
     DEFAULT_CLIENTUSERNAME = 'default'
    
     def __init__(self, host_and_port, user, password):
-        sempclient_samplelib.configuration.host = 'http://' + host_and_port + '/SEMP/v2/config'
-        sempclient_samplelib.configuration.username = user
-        sempclient_samplelib.configuration.password = password
-        self.api_instance = sempclient_samplelib.MsgVpnApi()
+        semp_client.configuration.host = 'http://' + host_and_port + '/SEMP/v2/config'
+        semp_client.configuration.username = user
+        semp_client.configuration.password = password
+        self.api_instance = semp_client.MsgVpnApi()
  
     def create_message_vpn(self, message_vpn_name):
-        print 'Creating Message-VPN: ' + message_vpn_name
-        msg_vpn = sempclient_samplelib.MsgVpn()
+        print 'Creating Message-VPN: ' + message_vpn_name + '\n'
+        msg_vpn = semp_client.MsgVpn()
         msg_vpn.msg_vpn_name = message_vpn_name
         msg_vpn.authentication_basic_type = "internal"
         msg_vpn.max_msg_spool_usage = 1500
@@ -23,8 +23,8 @@ class ManageVpn:
         self.api_instance.create_msg_vpn(msg_vpn)
  
     def update_default_client_profile_for_persistent_messaging(self, message_vpn_name):
-        print 'Modifying Client-Profile for persistent messaging...'
-        msg_vpn_client_profile = sempclient_samplelib.MsgVpnClientProfile()
+        print 'Modifying Client-Profile for persistent messaging...\n'
+        msg_vpn_client_profile = semp_client.MsgVpnClientProfile()
         msg_vpn_client_profile.allow_guaranteed_msg_send_enabled = True
         msg_vpn_client_profile.allow_guaranteed_msg_receive_enabled = True
         msg_vpn_client_profile.allow_guaranteed_endpoint_create_enabled = True
@@ -32,8 +32,8 @@ class ManageVpn:
           message_vpn_name, self.DEFAULT_CLIENTPROFILE, msg_vpn_client_profile)
   
     def setup_client_username(self, message_vpn_name, client_name, client_password):
-        print 'Setting up Client-Username: ' + client_name + ' with password...'
-        msg_vpn_client_username = sempclient_samplelib.MsgVpnClientUsername()
+        print 'Setting up Client-Username: ' + client_name + ' with password...\n'
+        msg_vpn_client_username = semp_client.MsgVpnClientUsername()
         msg_vpn_client_username.password = client_password
         msg_vpn_client_username.enabled = True
         if client_name != self.DEFAULT_CLIENTUSERNAME:
@@ -45,8 +45,8 @@ class ManageVpn:
                 message_vpn_name, self.DEFAULT_CLIENTUSERNAME, msg_vpn_client_username)
 
     def create_queue(self, message_vpn_name, queue_name):
-        print 'Creating persistent Queue: ' + queue_name + '...'
-        msg_vpn_queue = sempclient_samplelib.MsgVpnQueue()
+        print 'Creating persistent Queue: ' + queue_name + '...\n'
+        msg_vpn_queue = semp_client.MsgVpnQueue()
         msg_vpn_queue.queue_name = queue_name
         msg_vpn_queue.permission = "delete"
         msg_vpn_queue.ingress_enabled = True
@@ -56,17 +56,17 @@ class ManageVpn:
             message_vpn_name, msg_vpn_queue)
 
     def delete_message_vpn(self, message_vpn_name):
-        print 'Deleting Message-VPN: ' + message_vpn_name + '...'
+        print 'Deleting Message-VPN: ' + message_vpn_name + '...\n'
         # Prerequisite for delete VPN is to remove all queues
         resp = self.api_instance.get_msg_vpn_queues(message_vpn_name)
         if len(resp.data) > 0:
-            print 'Message-VPN contains one or more queues, deleting them first:'
+            print 'Message-VPN contains one or more queues, deleting them first:\n'
             for queue in resp.data:
                 self.delete_queue(message_vpn_name, queue.queue_name)
         self.api_instance.delete_msg_vpn(message_vpn_name)
 
     def delete_queue(self, message_vpn_name, queue_name):
-        print 'Deleting Queue: ' + queue_name + '...'
+        print 'Deleting Queue: ' + queue_name + '...\n'
         self.api_instance.delete_msg_vpn_queue(message_vpn_name, queue_name)
 
 if __name__ == '__main__':
@@ -103,4 +103,4 @@ if __name__ == '__main__':
             sys.exit("Invalid command: " + command + usage)
             
     except ApiException as e:
-        print 'Error during operation. Details: %s' % e.body
+        print 'Error during operation. Details: %s\n' % e.body
