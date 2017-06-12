@@ -3,3 +3,5 @@ sudo: false
 install:
  - cd java
  - ../gradlew assemble
+script:
+ - ../gradlew check
