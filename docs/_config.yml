@@ -33,6 +33,11 @@ docs-dtes: http://docs.solace.com/Configuring-and-Managing-Routers/Configuring-D
 docs-soladmin-home: http://docs.solace.com/SolAdmin/SolAdmin-Home.htm
 docs-solace-downloads: http://dev.solace.com/downloads/
 python-setuptools: http://pypi.python.org/pypi/setuptools
+swagger-spec: https://swagger.io/specification/
+swagger-codegen-site: http://swagger.io/swagger-codegen/
+swagger-tools-site: http://swagger.io/tools/
+swagger-codegen-github-overview: https://github.com/swagger-api/swagger-codegen#overview
+swagger-codegenjar-from-mvncentral: http://central.maven.org/maven2/io/swagger/swagger-codegen-cli/2.2.2/swagger-codegen-cli-2.2.2.jar
 
 #----------------------------------------------------
 # Generally don't modify items below this point

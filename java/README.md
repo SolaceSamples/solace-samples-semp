@@ -16,13 +16,15 @@ This directory contains code for different basic scenarios in Java. It is best t
 
 There are no prerequisites. 
 
-## Build the Samples
+## Build the the project from source
 
 Starting from the current `java` directory:    
 
 ```
-./gradlew build
+../gradlew build
 ```
+
+This will generate the required SEMP Java Client Library if it doesn't exist yet and build the samples.
 
 ## Running the Samples
 

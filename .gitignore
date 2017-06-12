@@ -1,4 +1,6 @@
 *.class
+*.jar
+*.yaml
 
 hs_err_pid*
 _site
