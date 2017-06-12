@@ -31,13 +31,13 @@ Before jumping to specific tasks like creating a Client Username, we will first 
 
 ### Initializing the SEMP API
 
-Before sending any commands, you must initialize the client library. There is a close relationship between the tags used in the SEMP specification and the SEMP client library classes offered. Each tag, like `msgVpn`, is compiled into a class in the `com.solace.sempclient.samplelib.api` package. Because of this, you have the option to work with the full SEMP API or subsets as controlled by the tags in the SEMP specification. You should determine which tag best fits your use case and use this client API class. For this introduction, we will use the `msgVpn` tag and the `MsgVpnApi` class because configuring a Solace message router message-VPN is a very common task in a dev-ops workflow.
+Before sending any commands, you must initialize the client library. There is a close relationship between the tags used in the SEMP specification and the SEMP client library classes offered. Each tag, like `msgVpn`, is compiled into a class in the `com.solace.labs.sempclient.samplelib.api` package. Because of this, you have the option to work with the full SEMP API or subsets as controlled by the tags in the SEMP specification. You should determine which tag best fits your use case and use this client API class. For this introduction, we will use the `msgVpn` tag and the `MsgVpnApi` class because configuring a Solace message router message-VPN is a very common task in a dev-ops workflow.
 
 Before you can send any commands to the Solace message router, you need an instance of the SEMP API. The following code shows you how to create such an instance and set the SEMP username and password. This will connect over HTTP.
 
 ```
-import com.solace.sempclient.samplelib.ApiClient;
-import com.solace.sempclient.samplelib.api.MsgVpnApi;
+import com.solace.labs.sempclient.samplelib.ApiClient;
+import com.solace.labs.sempclient.samplelib.api.MsgVpnApi;
 
 ApiClient thisClient = new ApiClient();
 thisClient.setBasePath("http://solacevmr:8080/SEMP/v2/config");
@@ -285,3 +285,4 @@ Client Username delete. Resp: 200
 At this point, you have created, retrieved, updated and deleted a Client Username object using SEMP. The examples used a generated client library in Java to interact with the Solace message router, but you can adapt the steps to any programming language of your choice. 
 
 SEMP is an extensive API that lets you configure anything on your Solace message router so there is a lot more to understand. If you want to know more, you can either get more familiar with the SEMP concepts by checking out the [Concepts Guide]({{ site.docs-concepts }}){:target="_top"} or you can see the full [developer documentation for the API]({{ site.docs-api }}){:target="_top"}.
+

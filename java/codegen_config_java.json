@@ -1,8 +1,8 @@
 {
-   "modelPackage": "com.solace.sempclient.samplelib.model",
-   "apiPackage": "com.solace.sempclient.samplelib.api",
-   "invokerPackage": "com.solace.sempclient.samplelib",
-   "groupId": "com.solace",
+   "modelPackage": "com.solace.labs.sempclient.samplelib.model",
+   "apiPackage": "com.solace.labs.sempclient.samplelib.api",
+   "invokerPackage": "com.solace.labs.sempclient.samplelib",
+   "groupId": "com.solace.labs",
    "artifactId": "sempclient_samplelib",
    "artifactVersion": "",
    "localVariablePrefix": "",

@@ -23,23 +23,23 @@ import java.util.List;
 
 import com.google.gson.Gson;
 
-import com.solace.sempclient.samplelib.ApiClient;
-import com.solace.sempclient.samplelib.ApiException;
-import com.solace.sempclient.samplelib.api.MsgVpnApi;
-import com.solace.sempclient.samplelib.model.MsgVpn;
-import com.solace.sempclient.samplelib.model.MsgVpn.AuthenticationBasicTypeEnum;
-import com.solace.sempclient.samplelib.model.MsgVpnClientProfile;
-import com.solace.sempclient.samplelib.model.MsgVpnClientProfileResponse;
-import com.solace.sempclient.samplelib.model.MsgVpnClientUsername;
-import com.solace.sempclient.samplelib.model.MsgVpnClientUsernameResponse;
-import com.solace.sempclient.samplelib.model.MsgVpnQueue;
-import com.solace.sempclient.samplelib.model.MsgVpnQueue.AccessTypeEnum;
-import com.solace.sempclient.samplelib.model.MsgVpnQueue.PermissionEnum;
-import com.solace.sempclient.samplelib.model.MsgVpnQueueResponse;
-import com.solace.sempclient.samplelib.model.MsgVpnQueuesResponse;
-import com.solace.sempclient.samplelib.model.MsgVpnResponse;
-import com.solace.sempclient.samplelib.model.SempError;
-import com.solace.sempclient.samplelib.model.SempMetaOnlyResponse;
+import com.solace.labs.sempclient.samplelib.ApiClient;
+import com.solace.labs.sempclient.samplelib.ApiException;
+import com.solace.labs.sempclient.samplelib.api.MsgVpnApi;
+import com.solace.labs.sempclient.samplelib.model.MsgVpn;
+import com.solace.labs.sempclient.samplelib.model.MsgVpn.AuthenticationBasicTypeEnum;
+import com.solace.labs.sempclient.samplelib.model.MsgVpnClientProfile;
+import com.solace.labs.sempclient.samplelib.model.MsgVpnClientProfileResponse;
+import com.solace.labs.sempclient.samplelib.model.MsgVpnClientUsername;
+import com.solace.labs.sempclient.samplelib.model.MsgVpnClientUsernameResponse;
+import com.solace.labs.sempclient.samplelib.model.MsgVpnQueue;
+import com.solace.labs.sempclient.samplelib.model.MsgVpnQueue.AccessTypeEnum;
+import com.solace.labs.sempclient.samplelib.model.MsgVpnQueue.PermissionEnum;
+import com.solace.labs.sempclient.samplelib.model.MsgVpnQueueResponse;
+import com.solace.labs.sempclient.samplelib.model.MsgVpnQueuesResponse;
+import com.solace.labs.sempclient.samplelib.model.MsgVpnResponse;
+import com.solace.labs.sempclient.samplelib.model.SempError;
+import com.solace.labs.sempclient.samplelib.model.SempMetaOnlyResponse;
 
 @SuppressWarnings("unused")
 public class ManageVPN {

@@ -23,14 +23,14 @@ import java.util.List;
 
 import com.google.gson.Gson;
 
-import com.solace.sempclient.samplelib.ApiClient;
-import com.solace.sempclient.samplelib.ApiException;
-import com.solace.sempclient.samplelib.api.MsgVpnApi;
-import com.solace.sempclient.samplelib.model.MsgVpnClientUsername;
-import com.solace.sempclient.samplelib.model.MsgVpnClientUsernameResponse;
-import com.solace.sempclient.samplelib.model.MsgVpnClientUsernamesResponse;
-import com.solace.sempclient.samplelib.model.SempError;
-import com.solace.sempclient.samplelib.model.SempMetaOnlyResponse;
+import com.solace.labs.sempclient.samplelib.ApiClient;
+import com.solace.labs.sempclient.samplelib.ApiException;
+import com.solace.labs.sempclient.samplelib.api.MsgVpnApi;
+import com.solace.labs.sempclient.samplelib.model.MsgVpnClientUsername;
+import com.solace.labs.sempclient.samplelib.model.MsgVpnClientUsernameResponse;
+import com.solace.labs.sempclient.samplelib.model.MsgVpnClientUsernamesResponse;
+import com.solace.labs.sempclient.samplelib.model.SempError;
+import com.solace.labs.sempclient.samplelib.model.SempMetaOnlyResponse;
 
 public class BasicOperationsSample {
 
