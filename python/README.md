@@ -14,11 +14,19 @@ This directory contains code for different basic scenarios in Java. It is best t
 
 ## Prerequisites
 
-The samples use Python 2.7. Building and installing use the Python [setuptools]({{ site.python-setuptools }}){:target="_top"}.
+The samples use Python 2.7 or later. Building and installing use the Python [setuptools]({{ site.python-setuptools }}){:target="_top"}.
 
 ## Building and Installing the Samples
 
 Starting from the current `python` directory:    
+
+Generate the latest version of the SEMP Python Client Library if needed (this step requires Java installed):
+
+```
+../gradlew build
+```
+
+Then build and install the library using Python setuptools:
 
 ```
 python setup.py install --user

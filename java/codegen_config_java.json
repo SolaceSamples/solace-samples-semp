@@ -1,0 +1,16 @@
+{
+   "modelPackage": "com.solace.labs.sempclient.samplelib.model",
+   "apiPackage": "com.solace.labs.sempclient.samplelib.api",
+   "invokerPackage": "com.solace.labs.sempclient.samplelib",
+   "groupId": "com.solace.labs",
+   "artifactId": "sempclient_samplelib",
+   "artifactVersion": "",
+   "localVariablePrefix": "",
+   "serializableModel": "false",
+   "bigDecimalAsString": "false",
+   "fullJavaUtil": "false",
+   "dateLibrary": "java8",
+   "useRxJava": "false",
+   "useAndroidMavenGradlePlugin": "false",
+   "library": "jersey2"
+}   

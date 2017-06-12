@@ -1,6 +1,7 @@
 - title: SEMP Tutorials
   tutorials:
   - curl
+  - generate-semp-client-lib
   - java-client
   - messagevpn-with-queue-java
   - messagevpn-with-queue-python

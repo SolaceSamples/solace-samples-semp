@@ -23,25 +23,7 @@ The examples below make a few assumptions for simplicity:
 
 ## Generating the SEMP Client Library
 
-Client libraries can be generate using the SEMP `swagger.json`. This file can be obtained in two ways:
-
-1.	From the Solace developer portal here: [SEMP Schema]({{ site.docs-schema }}){:target="_top"}
-2.	From the Solace message router directly via a GET call to the following URI: `http://solacevmr:8080/SEMP/v2/config/spec` - Remember to update the host and port to match your Solace message router.
-
-The Swagger community provides a couple of different ways to create client libraries:
-
-1.	The Swagger Editor - http://editor.swagger.io/#/
-2.	The Swagger Code Generator - https://github.com/swagger-api/swagger-codegen
-
-You can find links to these tools and other useful tools online here: http://swagger.io/tools/
-
-One quick and easy way is to use the online editor. The following steps walk you through the creation of a client library using this online editor:
-
-1.	Open the online Swagger editor: http://editor.swagger.io/#/
-2.	In the editor’s **File** menu, select **Import File ...**
-3.	Using the pop-up dialog, **Browse...** to the location of the `swagger.json` and **Open** the file
-4.	In the editor’s **Generate Client** menu, select the desired language from the list provided
-5.	A generated client library will start to download.
+The [Generating the SEMP Client Library tutorial]({{ site.baseurl }}/generate-semp-client-lib/) provides details about generating the latest version of the library. The Gradle build script at the end of this tutorial will automatically generate the required SEMP Java Client Library for the first time if it doesn't exist yet, as part of the build.
 
 ## Client Library Basics
 
@@ -49,13 +31,13 @@ Before jumping to specific tasks like creating a Client Username, we will first 
 
 ### Initializing the SEMP API
 
-Before sending any commands, you must initialize the client library. There is a close relationship between the tags used in the SEMP specification and the SEMP client library classes offered. Each tag, like `msgVpn`, is compiled into a class in the `io.swagger.client.api` package. Because of this, you have the option to work with the full SEMP API or subsets as controlled by the tags in the SEMP specification. You should determine which tag best fits your use case and use this client API class. For this introduction, we will use the `msgVpn` tag and the `MsgVpnApi` class because configuring a Solace message router message-VPN is a very common task in a dev-ops workflow.
+Before sending any commands, you must initialize the client library. There is a close relationship between the tags used in the SEMP specification and the SEMP client library classes offered. Each tag, like `msgVpn`, is compiled into a class in the `com.solace.labs.sempclient.samplelib.api` package. Because of this, you have the option to work with the full SEMP API or subsets as controlled by the tags in the SEMP specification. You should determine which tag best fits your use case and use this client API class. For this introduction, we will use the `msgVpn` tag and the `MsgVpnApi` class because configuring a Solace message router message-VPN is a very common task in a dev-ops workflow.
 
 Before you can send any commands to the Solace message router, you need an instance of the SEMP API. The following code shows you how to create such an instance and set the SEMP username and password. This will connect over HTTP.
 
 ```
-import io.swagger.client.ApiClient;
-import io.swagger.client.api.MsgVpnApi;
+import com.solace.labs.sempclient.samplelib.ApiClient;
+import com.solace.labs.sempclient.samplelib.api.MsgVpnApi;
 
 ApiClient thisClient = new ApiClient();
 thisClient.setBasePath("http://solacevmr:8080/SEMP/v2/config");
@@ -303,3 +285,4 @@ Client Username delete. Resp: 200
 At this point, you have created, retrieved, updated and deleted a Client Username object using SEMP. The examples used a generated client library in Java to interact with the Solace message router, but you can adapt the steps to any programming language of your choice. 
 
 SEMP is an extensive API that lets you configure anything on your Solace message router so there is a lot more to understand. If you want to know more, you can either get more familiar with the SEMP concepts by checking out the [Concepts Guide]({{ site.docs-concepts }}){:target="_top"} or you can see the full [developer documentation for the API]({{ site.docs-api }}){:target="_top"}.
+

@@ -25,7 +25,7 @@ There are no prerequisites.
 
 ## Building and running the Samples
 
-Refer to the README.md in the `java`, `python` and `ruby` subdirectories for a short description of how to build and run the samples for the programming languages.
+Refer to the README.md in the [`java`](https://github.com/SolaceSamples/solace-samples-semp/tree/master/java), [`python`](https://github.com/SolaceSamples/solace-samples-semp/tree/master/python) and [`ruby`](https://github.com/SolaceSamples/solace-samples-semp/tree/master/ruby) subdirectories for a short description of how to build and run the samples for the programming languages.
 
 To try individual samples, see the tutorials linked from the [tutorials home page](http://dev.solace.com/get-started/semp-tutorials/) for full details which can walk you through the samples, what they do, and how to correctly run them to explore SEMP.
 

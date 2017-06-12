@@ -20,6 +20,14 @@ The only prerequisite is Ruby installed.
 
 Starting from the current `ruby` directory:    
 
+Generate the latest version of the SEMP Ruby Client Library if needed (this step requires Java installed):
+
+```
+../gradlew build
+```
+
+Then build and install the library:
+
 ```
 gem build semp_client_lib.gemspec
 gem install --dev ./semp_client_lib-1.0.0.gem
