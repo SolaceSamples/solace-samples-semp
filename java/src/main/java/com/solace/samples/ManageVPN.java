@@ -80,7 +80,7 @@ public class ManageVPN {
         MsgVpn msgVpn = new MsgVpn();
         msgVpn.setMsgVpnName(messageVpnName);
         msgVpn.setAuthenticationBasicType(AuthenticationBasicTypeEnum.INTERNAL);
-        msgVpn.setMaxMsgSpoolUsage(1500);
+        msgVpn.setMaxMsgSpoolUsage(1500L);
         msgVpn.setEnabled(true);
         MsgVpnResponse resp = sempApiInstance.createMsgVpn(msgVpn, null);        
     }
