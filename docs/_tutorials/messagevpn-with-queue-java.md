@@ -75,7 +75,7 @@ documentation]({{ site.docs-api }}){:target="_top"}:
 MsgVpn msgVpn = new MsgVpn();
 msgVpn.setMsgVpnName(messageVpnName);
 msgVpn.setAuthenticationBasicType(AuthenticationBasicTypeEnum.INTERNAL);
-msgVpn.setMaxMsgSpoolUsage(1500);
+msgVpn.setMaxMsgSpoolUsage(1500L);
 msgVpn.setEnabled(true);
 MsgVpnResponse vpnResp = sempApiInstance.createMsgVpn(msgVpn, null);        
 ```
