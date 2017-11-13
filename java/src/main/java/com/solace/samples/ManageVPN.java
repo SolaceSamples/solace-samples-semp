@@ -160,27 +160,27 @@ public class ManageVPN {
     public static void main(String... args) throws Exception {
 
         // Modify these params as needed
-        final String vmrUser = "admin";
-        final String vmrPassword = "admin";
         final String vpnUserName = "default";
         final String vpnUserPassword = "password";
         final String testQueueName = "testQueue";
 
-        final String usage = "\nUsage: manageVPN [create | delete] <host:port> <vpnname>" +
-                "\nEx: manageVPN create <host:port> <vpnname>" +
+        final String usage = "\nUsage: manageVPN [create | delete] <host:port> <management_user> <management_password> <vpnname>" +
+                "\nEx: manageVPN create <host:port> <management_user> <management_password> <vpnname>" +
                 "\n        Create a message-vpn and add a sample queue: testQueue" +
-                "\n    manageVPN delete <host:port> <vpnname>" +
+                "\n    manageVPN delete <host:port> <management_user> <management_password> <vpnname>" +
                 "\n        Delete the message-vpn";
         
         // Check command line arguments
-        if (args.length < 3) {
+        if (args.length < 5) {
             System.out.println(usage);
             System.exit(-1);
         }
         
         String command = args[0];
-        String vmrBasePath = "http://" + args[1] + "/SEMP/v2/config";
-        String messageVpnName = args[2];
+        String vmrBasePath = "https://" + args[1] + "/SEMP/v2/config";
+        String vmrUser = args[2];
+        String vmrPassword = args[3];
+        String messageVpnName = args[4];
 
         ManageVPN app = new ManageVPN();
         

@@ -72,23 +72,23 @@ class ManageVpn:
 if __name__ == '__main__':
     try: 
         # Modify these params as needed
-        vmr_user = 'admin';
-        vmr_password = 'admin';
         vpn_user_name = 'default';
         vpn_user_password = 'password';
         test_queue_name = 'testQueue';
-        usage = ('\nUsage: manage_vpn [create | delete] <host:port> <vpnname>'
-                '\nEx: manage_vpn create <host:port> <vpnname>'
+        usage = ('\nUsage: manage_vpn [create | delete] <host:port> <management_user> <management_password> <vpnname>'
+                '\nEx: manage_vpn create <host:port> <management_user> <management_password> <vpnname>'
                 '\n        Create a message-vpn and add a sample queue: testQueue'
-                '\n    manage_vpn delete <host:port> <vpnname>'
+                '\n    manage_vpn delete <host:port> <management_user> <management_password> <vpnname>'
                 '\n        Delete the message-vpn')
         
         # Check command line arguments
-        if len(sys.argv) < 3:
+        if len(sys.argv) < 6:
             sys.exit(usage)
         command = sys.argv[1]
         host_and_port = sys.argv[2]
-        message_vpn_name = sys.argv[3]  
+        vmr_user = sys.argv[3]
+        vmr_password = sys.argv[4]
+        message_vpn_name = sys.argv[5]
         
         app = ManageVpn(host_and_port, vmr_user, vmr_password)
         

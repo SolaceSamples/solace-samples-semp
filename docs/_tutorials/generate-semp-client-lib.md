@@ -5,18 +5,16 @@ summary: Generate a SEMP management client library for any of the supported prog
 icon: generate-semp-client-lib.png
 ---
 
-Programmatic management of the Solace message router through the SEMP API can be done directly through accessing the router's HTTP REST protocol API (see the related [Basic Operations - curl tutorial]({{ site.baseurl }}/curl/)) or more conveniently, using a local SEMP client library which is:
+Programmatic management of the Solace messaging router through the SEMP API can be done directly through accessing the router's HTTP REST protocol API (see the related [Basic Operations - curl tutorial]({{ site.baseurl }}/curl/)) or more conveniently, using a local SEMP client library which is:
 * In a programming language that is native to your management code, 
 * Hides the REST protocol details, and 
 * Enables to focus on the objects to be managed.
 
-
-### Goals
+## Goals
 
 In this tutorial we will show and explain the steps to generate the latest version of the SEMP client library for any of the supported programming languages.
 
-
-### Trying it yourself
+## Trying it yourself
 
 This tutorial is available in [GitHub]({{ site.repository }}){:target="_blank"} along with the other Solace SEMP Getting Started Examples.
 
@@ -26,7 +24,7 @@ As a pre-requisite, you will need to have Java installed.
 
 ## Overview
 
-The Solace Element Management Protocol (SEMP) API is based on the [OpenAPI (a.k.a. Swagger) specification]({{ site.swagger-spec }}){:target="_top"}, which enables an object oriented approach to the management of the Solace message router by specifying management objects with valid operations and properties. 
+The Solace Element Management Protocol (SEMP) API is based on the [OpenAPI (a.k.a. Swagger) specification]({{ site.swagger-spec }}){:target="_top"}, which enables an object oriented approach to the management of the Solace messaging router by specifying management objects with valid operations and properties. 
 
 * The API is defined as a JSON or YAML formatted specification
 * From this specification it is possible to programmatically generate client libraries in most popular languages
@@ -36,10 +34,10 @@ When a new version of the router is released with new management capabilities, a
 
 Following steps are required to generate the SEMP client library:
 
-1. Step 1: Getting the API specification supporting at least the targeted version of the Solace message router
-2. Step 2: Getting the tool that can convert the API spec to client code on the targeted language
-3. Step 3: Setting customization rules, such as the naming of the generated library.
-4. Step 4: Generating the library
+1. Getting the API specification supporting at least the targeted version of the Solace messaging router.
+2. Getting the tool that can convert the API spec to client code on the targeted language.
+3. Setting customization rules, such as the naming of the generated library.
+4. Generating the library.
 
 	
 ## Step 1: Getting the API specification
@@ -47,9 +45,9 @@ Following steps are required to generate the SEMP client library:
 There are two ways to obtain the API specification:
 
 * The latest version from the Solace Developer Portal here: [SEMP Schema]({{ site.docs-schema }}){:target="_top"}
-* From the Solace message router directly via a GET call to the following URI: [http://solacevmr:8080/SEMP/v2/config/spec](http://solacevmr:8080/SEMP/v2/config/spec) - Remember to update the host and port to match your Solace message router.
+* From the Solace messaging router directly via a GET call to the following URI: [http://solacevmr:8080/SEMP/v2/config/spec](http://solacevmr:8080/SEMP/v2/config/spec) - Remember to update the host and port to match your Solace messaging router.
 
-It is generally recommended to download the latest API specification from the Solace developer portal, which will support all the versions of your currently used Solace message routers.
+It is generally recommended to download the latest API specification from the Solace developer portal, which will support all the versions of your currently used Solace messaging routers.
 
 
 ## Step 2: Getting the tool
@@ -83,7 +81,7 @@ With the JSON or YAML formatted API specification and codegen_config JSON file a
 
 ```
 java -jar swagger-codegen-cli-2.2.2.jar generate \
-    -l <language> -I <API spec swagger json or yaml file> \
+    -l <language> -i <API spec swagger json or yaml file> \
     -c <codegen_config json file>
 ```
 
