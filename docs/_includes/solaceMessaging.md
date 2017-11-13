@@ -22,12 +22,12 @@ This tutorial requires access Solace messaging and requires that you know severa
   <tr>
     <td>Management Username</td>
     <td>String</td>
-    <td>The management username. (See Notes below)</td>
+    <td>The management username.</td>
   </tr>
   <tr>
     <td>Management Password</td>
     <td>String</td>
-    <td>The management password. (See Notes below)</td>
+    <td>The management password.</td>
   </tr>
 </table>
 

@@ -26,7 +26,7 @@ To accomplish this, we will create a set of tasks as building blocks that match 
 
 This tutorial assumes that you have access to a running Solace VMR with the following configuration:
 
-* A management user `admin` with password `admin`, authorized with a minimum access scope level of *global/read-write*.
+* A management user authorized with a minimum access scope level of *global/read-write*.
 
 One simple way to get access to a Solace messaging router is to start a Solace VMR as outlined [here]({{ site.docs-vmr-setup }}){:target="_top"}.
 
@@ -55,7 +55,7 @@ Clients can connect to a message-VPN and use its resources after proper authenti
 * The [Message-VPN]({{ site.docs-msg-vpn }}){:target="_top"} object defines the type and details of client authentication applied and restrictions to the combined resource usage of all VPN clients. 
 * A [Client Profile]({{ site.docs-client-profile }}){:target="_top"} object within a message-VPN defines resource usage restrictions applied to individual clients.
 * An [ACL (Access Control List) Profile]({{ site.docs-acl-profile }}){:target="_top"} object within a message-VPN defines access restrictions by listing allowance or denial of which clients can connect and to which topics and queues.
-* A [Client Username]({{ site.client-username }}){:target="_top"} object within a message-VPN has an associated Client Profile and an ACL Profile. The username provided by the connecting client will be the Client Username applied to that connection or if it is not found then the default Client Username will be applied. The password property will be used if internal client authentication type has been specified for the message-VPN.
+* A [Client Username]({{ site.docs-client-username }}){:target="_top"} object within a message-VPN has an associated Client Profile and an ACL Profile. The username provided by the connecting client will be the Client Username applied to that connection or if it is not found then the default Client Username will be applied. The password property will be used if internal client authentication type has been specified for the message-VPN.
 
 Once connected, clients can send messages to message-VPN endpoints, represented as [Queue]({{ site.docs-queues }}){:target="_top"} or [Topic Endpoint]({{ site.docs-dtes }}){:target="_top"} SEMP objects within a message-VPN.
 
