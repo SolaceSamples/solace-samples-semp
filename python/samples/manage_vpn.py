@@ -8,7 +8,7 @@ class ManageVpn:
     DEFAULT_CLIENTUSERNAME = 'default'
    
     def __init__(self, host_and_port, user, password):
-        sempclient_samplelib.configuration.host = 'http://' + host_and_port + '/SEMP/v2/config'
+        sempclient_samplelib.configuration.host = 'https://' + host_and_port + '/SEMP/v2/config'
         sempclient_samplelib.configuration.username = user
         sempclient_samplelib.configuration.password = password
         self.api_instance = sempclient_samplelib.MsgVpnApi()

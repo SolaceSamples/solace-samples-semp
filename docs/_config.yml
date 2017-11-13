@@ -39,6 +39,7 @@ swagger-codegen-site: http://swagger.io/swagger-codegen/
 swagger-tools-site: http://swagger.io/tools/
 swagger-codegen-github-overview: https://github.com/swagger-api/swagger-codegen#overview
 swagger-codegenjar-from-mvncentral: http://central.maven.org/maven2/io/swagger/swagger-codegen-cli/2.2.2/swagger-codegen-cli-2.2.2.jar
+links-solaceCloud-setup: http://cloud.solace.com/create-messaging-service/
 
 #----------------------------------------------------
 # Generally don't modify items below this point
