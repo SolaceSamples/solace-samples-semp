@@ -37,8 +37,7 @@ This tutorial requires access Solace messaging and requires that you know severa
 * The messaging connectivity information are the following:
     * Host: \<public_ip> (IP address assigned to the VMR in tutorial instructions)
     * Message VPN: default
-    * Management Username: sampleUser (can be any value)
-    * Management Password: samplePassword (can be any value)
+    * A management username and password to access the router
 
     Note: By default, the Solace VMR "default" message VPN has authentication disabled.
 

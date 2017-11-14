@@ -20,7 +20,7 @@ The examples below make a few assumptions for simplicity:
 * These examples will work with a Client Username object to illustrate the various concepts. The concepts apply generally to all objects in SEMP.
 * The SEMP username and password are `user:password`
 * The Solace messaging router host and port are `solacevmr:8080`
-* The Solace VMR is `default`
+* The Solace message-vpn is `default`
 
 {% if jekyll.environment == 'solaceCloud' %} {% include solaceMessaging-cloud.md %} {% else %} {% include solaceMessaging.md %} {% endif %}
 

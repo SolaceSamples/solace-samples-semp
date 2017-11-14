@@ -59,7 +59,7 @@ curl -X POST -u user:password solacevmr:8080/SEMP/v2/config/msgVpns/default/clie
   -d '{"clientUsername":"tutorialUser","enabled":true}'
 ```
 
-When you execute this command, if successful the Solace messaging router will respond with contents that resembles the following:
+When you execute this command, if successful the Solace Messaging system will respond with content that resembles the following:
 
 ```
 {
@@ -89,7 +89,7 @@ The response contains three components. These are explained in more detail in th
 
 * Meta - The meta field contains information about the request that was sent, the response code from the Solace message router and it will contain additional error information on failures.
 * Links - The links object makes the API self-discoverable which can be nice for developers as they are coding. You can experiment with SEMP objects and use the links to navigate through collections to member objects etc. In general, this is simply a tool to aid in development because at runtime, most configuration management tools and applications follow known patterns and can directly address the resources. There is no need for this discoverability.
-* Data - The data contains a full representation of the newly created object. Here you can see what default values were select by the Solace messaging router etc.
+* Data - The data contains a full representation of the newly created object. Here you can see what default values were select by the Solace Messaging system etc.
 
 ## Retrieving an object using GET
 

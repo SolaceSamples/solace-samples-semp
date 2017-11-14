@@ -1,6 +1,6 @@
 # Site settings
 title: Solace Samples SEMP
-summary: These tutorials get you up to speed sending and receiving messages with Solace technology.
+summary: These tutorials will get you to up to speed and managing Solace technology.
 baseurl: "/solace-samples-semp" # the subpath of your site, e.g. /solace-samples-java
 repository: https://github.com/SolaceSamples/solace-samples-semp
 repository-java: https://github.com/SolaceSamples/solace-samples-semp/tree/master/java
