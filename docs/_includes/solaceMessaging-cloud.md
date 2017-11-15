@@ -1,7 +1,7 @@
 
 ## Get Solace Messaging
 
-This tutorial requires access Solace messaging and requires that you know several connectivity properties about your Solace messaging. Specifically you need to know the following:
+This tutorial requires access Solace messaging and requires that you know several connectivity properties about your Solace Messaging. Specifically you need to know the following:
 
 <table>
   <tr>
@@ -12,12 +12,12 @@ This tutorial requires access Solace messaging and requires that you know severa
   <tr>
     <td>Host</td>
     <td>String</td>
-    <td>This is the address clients use when connecting to the Solace messaging to send and receive messages. (Format: <code>DNS_NAME:Port</code> or <code>IP:Port</code>)</td>
+    <td>This is the address clients use when connecting to the Solace Messaging to send and receive messages. (Format: <code>DNS_NAME:Port</code> or <code>IP:Port</code>)</td>
   </tr>
   <tr>
     <td>Message VPN</td>
     <td>String</td>
-    <td>The Solace messaging router Message VPN that this client should connect to. </td>
+    <td>The Solace Messaging Message VPN that this client should connect to. </td>
   </tr>
   <tr>
     <td>Management Username</td>
@@ -41,8 +41,6 @@ There are several ways you can get access to Solace Messaging and find these req
     * Message VPN
     * Management Username
     * Management Password
-    
-    Note: By default, the Solace VMR "default" message VPN has authentication disabled.
 
 ![]({{ site.baseurl }}/images/connectivity-info.png)
 
@@ -52,9 +50,8 @@ There are several ways you can get access to Solace Messaging and find these req
 * The messaging connectivity information are the following:
     * Host: \<public_ip> (IP address assigned to the VMR in tutorial instructions)
     * Message VPN: default
-    * A management username and password to access the router
-
-    Note: By default, the Solace VMR "default" message VPN has authentication disabled.
+    * Management Username: sampleUser (for example: admin)
+    * Management Password: samplePassword (for example: admin)
 
 ### Option 3: Get access to a Solace appliance
 

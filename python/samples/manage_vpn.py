@@ -8,7 +8,7 @@ class ManageVpn:
     DEFAULT_CLIENTUSERNAME = 'default'
    
     def __init__(self, host_and_port, user, password):
-        sempclient_samplelib.configuration.host = 'http://' + host_and_port + '/SEMP/v2/config'
+        sempclient_samplelib.configuration.host = host_and_port
         sempclient_samplelib.configuration.username = user
         sempclient_samplelib.configuration.password = password
         self.api_instance = sempclient_samplelib.MsgVpnApi()
@@ -75,10 +75,10 @@ if __name__ == '__main__':
         vpn_user_name = 'default';
         vpn_user_password = 'password';
         test_queue_name = 'testQueue';
-        usage = ('\nUsage: manage_vpn [create | delete] <host:port> <management_user> <management_password> <vpnname>'
-                '\nEx: manage_vpn create <host:port> <management_user> <management_password> <vpnname>'
+        usage = ('\nUsage: manage_vpn [create | delete] <semp_base_path> <management_user> <management_password> <vpnname>'
+                '\nEx: manage_vpn create <semp_base_path> <management_user> <management_password> <vpnname>'
                 '\n        Create a message-vpn and add a sample queue: testQueue'
-                '\n    manage_vpn delete <host:port> <management_user> <management_password> <vpnname>'
+                '\n    manage_vpn delete <semp_base_path> <management_user> <management_password> <vpnname>'
                 '\n        Delete the message-vpn')
         
         # Check command line arguments

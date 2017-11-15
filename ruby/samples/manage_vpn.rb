@@ -8,9 +8,12 @@ class ManageVpn
 
   def initialize(host_and_port, user, password)
     SempClientSampleLib.configure do |config|
-      config.scheme = 'http'
-      config.host = host_and_port
-      config.base_path = 'SEMP/v2/config'
+      # get protocol(http or https)
+      config.scheme = host_and_port.split(/:\/\//).first
+      # get domain, remove http(s):// and anything after a slash
+      config.host = host_and_port.sub(/https?:\/\//, '').split('/').first
+      # get base path
+      config.base_path = host_and_port.gsub(config.scheme + '://' + config.host, '');
       config.username = user
       config.password = password
     end
@@ -88,10 +91,10 @@ if __FILE__ == $0
     vpn_user_name = "default";
     vpn_user_password = "password";
     test_queue_name = "testQueue";
-    usage = "\nUsage: manage_vpn [create | delete] <host:port> <management_user> <management_password> <vpnname>" +
-            "\nEx: manage_vpn create <host:port> <management_user> <management_password> <vpnname>" +
+    usage = "\nUsage: manage_vpn [create | delete] <semp_base_path> <management_user> <management_password> <vpnname>" +
+            "\nEx: manage_vpn create <semp_base_path> <management_user> <management_password> <vpnname>" +
             "\n        Create a message-vpn and add a sample queue: testQueue" +
-            "\n    manage_vpn delete <host:port> <management_user> <management_password> <vpnname>" +
+            "\n    manage_vpn delete <semp_base_path> <management_user> <management_password> <vpnname>" +
             "\n        Delete the message-vpn"
   
     # Check command line arguments

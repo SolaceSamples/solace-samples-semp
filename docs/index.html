@@ -50,7 +50,13 @@ layout: default
             <div class="tutorials learn row">
                 {% assign count = 0 %}
                 {% for section in site.data.tutorials %}
-                    {% for item in section.tutorials %}
+                <!--Hide the queue tutorial for solace cloud-->
+                    {% if jekyll.environment == 'solaceCloud' %}
+                        {% assign tutorials = section.tutorials-solace-cloud %}
+                    {% else %}
+                        {% assign tutorials = section.tutorials %}
+                    {% endif %}
+                    {% for item in tutorials %}
                         {% assign item_url = item | prepend:"/" | append:"/" %}
                         {% assign p = site.tutorials | where:"url", item_url | first %}
                         {% assign loopindex = forloop.index | modulo: 2 %}

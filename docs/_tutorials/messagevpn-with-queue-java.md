@@ -11,16 +11,16 @@ This tutorial will guide you through the steps of creating a sample Java-based t
 The goals of this tutorial are to:
 
 * Introduce the Solace Element Management Protocol (SEMP) object model for Solace message-VPNs and its resources
-* Demonstrate how to integrate the management of Solace messaging routers into Java-based DevOps tools using the SEMP Java Client Library
+* Demonstrate how to integrate the management of Solace Messaging into Java-based DevOps tools using the SEMP Java Client Library
 
 Let's review the admin objectives:
 
-* **Creating message-VPNs** is a convenient way to slice a Solace messaging router to separated independent virtual routers, multiplying its use. There are many use cases including security, controlled share of functionality and capacity. For developers, one way to make use of a message-VPN is to share a VMR with everyone having a dedicated message-VPN for development use. Once a message-VPN is created, the client can connect to it with the assigned username and password using basic internal authentication.
+* **Creating message-VPNs** is a convenient way to slice a Solace Messaging to separated independent virtual routers, multiplying its use. There are many use cases including security, controlled share of functionality and capacity. For developers, one way to make use of a message-VPN is to share a VMR with everyone having a dedicated message-VPN for development use. Once a message-VPN is created, the client can connect to it with the assigned username and password using basic internal authentication.
 * Another common objective is to **create a persistent queue** as a message endpoint in the particular message-VPN. This resource is only visible to those connected to this message-VPN and it can store incoming guaranteed messages until consumed. 
 * The administrator may also want the ability to **delete a queue** or 
 * **delete a message-VPN** when no longer needed.
 
-To accomplish this, we will create a set of tasks as building blocks that match the SEMP object model of the Solace messaging router and use a simple framework to demonstrate the integration and orchestration of these tasks to achieve above objectives. We will use the SEMP Java Client Library to implement these tasks, extending the concepts introduced in the [Basic Operations - Java Client Library]({{ site.baseurl }}/java-client) tutorial.
+To accomplish this, we will create a set of tasks as building blocks that match the SEMP object model of the Solace Messaging and use a simple framework to demonstrate the integration and orchestration of these tasks to achieve above objectives. We will use the SEMP Java Client Library to implement these tasks, extending the concepts introduced in the [Basic Operations - Java Client Library]({{ site.baseurl }}/java-client) tutorial.
 
 ### Assumptions
 
@@ -28,7 +28,7 @@ This tutorial assumes that you have access to a running Solace VMR with the foll
 
 * A management user authorized with a minimum access scope level of *global/read-write*.
 
-One simple way to get access to a Solace messaging router is to start a Solace VMR load as outlined [here]({{ site.docs-vmr-setup }}){:target="_top"}. 
+One simple way to get access to a Solace Messaging system is to start a Solace VMR load as outlined [here]({{ site.docs-vmr-setup }}){:target="_top"}. 
 
 ### Trying it yourself
 
@@ -40,15 +40,15 @@ At the end, this tutorial walks through downloading and running the sample from 
 
 ## The SEMP object model of Solace message-VPNs and VPN resources
 
-Here we introduce some important basic concepts that are required for the implementation of Solace messaging router management tasks using SEMP.
+Here we introduce some important basic concepts that are required for the implementation of Solace Messaging management tasks using SEMP.
 
-As described in the introduction, message-VPNs provide isolated messaging domains for exclusive use. You can read more about message-VPNs in the [Solace Message Router Concepts]({{ site.docs-router-concepts }}){:target="_top"} document.
+As described in the introduction, message-VPNs provide isolated messaging domains for exclusive use. You can read more about message-VPNs in the [Solace Messaging Concepts]({{ site.docs-router-concepts }}){:target="_top"} document.
 
-Solace messaging router management is divided into Router-global level and individual Message-VPN level management. A management user with *global/read-write* access scope is authorized for all router and all message-VPN level configurations, such as global configuration or administering a message-VPN. Conversely, *VPN/read-write* access scope only allows for management of objects that have an effect within the assigned VPN, such as configuring a queue. In this tutorial, we will use a management user with *global/read-write* access scope for all configurations. For more details, refer to the [Management User Authentication/Authorization]({{ site.docs-mgmt-user-aa }}){:target="_top"} documentation.
+Solace Messaging management is divided into Router-global level and individual Message-VPN level management. A management user with *global/read-write* access scope is authorized for all router and all message-VPN level configurations, such as global configuration or administering a message-VPN. Conversely, *VPN/read-write* access scope only allows for management of objects that have an effect within the assigned VPN, such as configuring a queue. In this tutorial, we will use a management user with *global/read-write* access scope for all configurations. For more details, refer to the [Management User Authentication/Authorization]({{ site.docs-mgmt-user-aa }}){:target="_top"} documentation.
 
 ![]({{ site.baseurl }}/images/message-vpn-semp-objects.png)
 
-Clients can connect to a message-VPN and use its resources after proper authentication and authorization, controlled by the properties of the following SEMP objects on the Solace messaging router:
+Clients can connect to a message-VPN and use its resources after proper authentication and authorization, controlled by the properties of the following SEMP objects on the Solace Messaging:
  
 * The [Message-VPN]({{ site.docs-msg-vpn }}){:target="_top"} object defines the type and details of client authentication applied and restrictions to the combined resource usage of all VPN clients. 
 * A [Client Profile]({{ site.docs-client-profile }}){:target="_top"} object within a message-VPN defines resource usage restrictions applied to individual clients.
@@ -81,7 +81,7 @@ msgVpn.setEnabled(true);
 MsgVpnResponse vpnResp = sempApiInstance.createMsgVpn(msgVpn, null);        
 ```
 
-When a new message-VPN management object is created on the Solace messaging router, a new `default` Client Username object will also be created automatically, associated with a new `default` Client Profile and a new `default` ACL Profile object. We will use these created default objects as a starting point for further configuration as they require fewer properties to modify. Alternatively, it is possible to create new non-default objects if a more complex structure is required.
+When a new message-VPN management object is created on the Solace Messaging system, a new `default` Client Username object will also be created automatically, associated with a new `default` Client Profile and a new `default` ACL Profile object. We will use these created default objects as a starting point for further configuration as they require fewer properties to modify. Alternatively, it is possible to create new non-default objects if a more complex structure is required.
 
 The `default` ACL Profile doesn’t define any access restrictions so there is no need to modify that.
 
@@ -212,10 +212,10 @@ This builds the manageVPN tool with OS specific launch scripts. The files are st
 
 ### Running the Sample
 
-From the `solace-samples-semp/java` directory, replace `<host:port>` by the VMR host name or IP address and the management port (the default port for the VMR is 8080 for HTTP), replace the `<management_user>` and `<management_password>` with your credentials and execute:
+From the `solace-samples-semp/java` directory, replace `<semp_base_path>` by the SEMP base path, for example: `http://solacevmr:8080/SEMP/v2/config`, replace the `<management_user>` and `<management_password>` with your credentials and execute:
 
 ```
-build/staged/bin/manageVPN create <host:port> <management_user> <management_password> myNewVPN
+build/staged/bin/manageVPN create <semp_base_path> <management_user> <management_password> myNewVPN
 ```
 
 This will create a new message-VPN called `myNewVPN` and also create a sample queue called `testQueue`. The credentials to connect to the new message-VPN are *default:password*, which can also be changed in the code if required.
@@ -223,7 +223,7 @@ This will create a new message-VPN called `myNewVPN` and also create a sample qu
 A message-VPN can also be deleted when no longer needed:
 
 ```
-build/staged/bin/manageVPN delete <host:port> <management_user> <management_password> myNewVPN
+build/staged/bin/manageVPN delete <semp_base_path> <management_user> <management_password> myNewVPN
 ```
 
 This will detect that the queue `testQueue` and possibly other queues are still there so it will delete these first and then it will delete `myNewVPN`.

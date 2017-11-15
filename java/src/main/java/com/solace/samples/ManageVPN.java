@@ -164,10 +164,10 @@ public class ManageVPN {
         final String vpnUserPassword = "password";
         final String testQueueName = "testQueue";
 
-        final String usage = "\nUsage: manageVPN [create | delete] <host:port> <management_user> <management_password> <vpnname>" +
-                "\nEx: manageVPN create <host:port> <management_user> <management_password> <vpnname>" +
+        final String usage = "\nUsage: manageVPN [create | delete] <semp_base_path> <management_user> <management_password> <vpnname>" +
+                "\nEx: manageVPN create <semp_base_path> <management_user> <management_password> <vpnname>" +
                 "\n        Create a message-vpn and add a sample queue: testQueue" +
-                "\n    manageVPN delete <host:port> <management_user> <management_password> <vpnname>" +
+                "\n    manageVPN delete <semp_base_path> <management_user> <management_password> <vpnname>" +
                 "\n        Delete the message-vpn";
         
         // Check command line arguments
@@ -177,7 +177,7 @@ public class ManageVPN {
         }
         
         String command = args[0];
-        String vmrBasePath = "https://" + args[1] + "/SEMP/v2/config";
+        String vmrBasePath = args[1];
         String vmrUser = args[2];
         String vmrPassword = args[3];
         String messageVpnName = args[4];
