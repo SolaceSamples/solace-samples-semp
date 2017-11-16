@@ -35,6 +35,7 @@ import com.solace.labs.sempclient.samplelib.model.SempMetaOnlyResponse;
 public class BasicOperationsSample {
 
     MsgVpnApi sempApiInstance;
+    String msgVpn;
     
     private void handleError(ApiException ae) {
         Gson gson = new Gson();
@@ -48,7 +49,7 @@ public class BasicOperationsSample {
                 "\nSEMP Error Descriptions: " + errorInfo.getDescription());
     }
     
-    public void initialize(String basePath, String user, String password) throws Exception {
+    public void initialize(String basePath, String msgVpn, String user, String password) throws Exception {
 
         System.out.format("SEMP initializing: %s, %s \n", basePath, user);
        
@@ -57,11 +58,11 @@ public class BasicOperationsSample {
         thisClient.setUsername(user);
         thisClient.setPassword(password);
         sempApiInstance = new MsgVpnApi(thisClient);
+        this.msgVpn = msgVpn;
     }
     
     public void createObjectUsingPost() {
 
-        String msgVpn = "default";
         String clientUsername = "tutorialUser";
         System.out.format("Creating Object: %s \n", clientUsername);
        
@@ -82,7 +83,6 @@ public class BasicOperationsSample {
     
     public void retrievingObjectUsingGet() {
         try {
-            String msgVpn = "default";
             String clientUsername = "tutorialUser";
             MsgVpnClientUsernameResponse resp = sempApiInstance.getMsgVpnClientUsername(msgVpn, clientUsername, null);
             System.out.println("Retrieved Client Username: " + resp.getData());
@@ -93,7 +93,6 @@ public class BasicOperationsSample {
     
     public void retrievingCollectionUsingGet() {
         try {
-            String msgVpn = "default";
             // Ignore paging and selectors in this example. So set to null.
             MsgVpnClientUsernamesResponse resp = sempApiInstance.getMsgVpnClientUsernames(msgVpn, null, null, null, null);
             List<MsgVpnClientUsername> clientUsernamesList = resp.getData();
@@ -105,7 +104,6 @@ public class BasicOperationsSample {
     
     public void partialObjectUpdateUsingPatch() {
         try {
-            String msgVpn = "default";
             String clientUsername = "tutorialUser";
             MsgVpnClientUsername updatedClientUsername = new MsgVpnClientUsername();
             updatedClientUsername.setEnabled(false);
@@ -119,7 +117,6 @@ public class BasicOperationsSample {
     
     public void replaceObjectUpdateUsingPut() {
         try {
-            String msgVpn = "default";
             String clientUsername = "tutorialUser";
             MsgVpnClientUsername updatedClientUsername = new MsgVpnClientUsername();
             updatedClientUsername.setEnabled(true);
@@ -135,7 +132,6 @@ public class BasicOperationsSample {
     public void removingObjectUsingDelete() {
 
         try {
-            String msgVpn = "default";
             String clientUsername = "tutorialUser";
             SempMetaOnlyResponse resp = sempApiInstance.deleteMsgVpnClientUsername(msgVpn, clientUsername);
             System.out.println("Client Username delete. Resp: " + resp.getMeta().getResponseCode());
@@ -148,21 +144,25 @@ public class BasicOperationsSample {
     public static void main(String... args) throws Exception {
 
         // Check command line arguments
-        if (args.length < 1) {
-            System.out.println("Usage: javaClientSample <SEMP_BASE_PATH> <SEMP_USER> <SEMP_PASSWORD>");
+        if (args.length < 4) {
+            System.out.println("Usage: javaClientSample <SEMP_BASE_PATH> <MESSAGE_VPN> <MANAGEMENT_USER> <MANAGEMENT_PASSWORD>");
             System.out.println("SEMP_BASE_PATH Ex: http://solacevmr:8080/SEMP/v2/config");
+            System.out.println("MESSAGE_VPN Ex: default");
+            System.out.println("SEMP_USER Ex: admin");
+            System.out.println("SEMP_PASSWORD admin");
             System.exit(-1);
         }
         System.out.println("JavaClientSample initializing...");
         
         
         String vmrBasePath = args[0];
-        String vmrUser = args[1];
-        String vmrPassword = args[2];
+        String messageVpn = args[1];
+        String vmrUser = args[2];
+        String vmrPassword = args[3];
 
         BasicOperationsSample app = new BasicOperationsSample();
         
-        app.initialize(vmrBasePath, vmrUser, vmrPassword);
+        app.initialize(vmrBasePath, messageVpn, vmrUser, vmrPassword);
         app.createObjectUsingPost();
         app.retrievingObjectUsingGet();
         app.retrievingCollectionUsingGet();

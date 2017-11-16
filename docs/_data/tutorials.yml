@@ -6,3 +6,7 @@
   - messagevpn-with-queue-java
   - messagevpn-with-queue-python
   - messagevpn-with-queue-ruby
+  tutorials-solace-cloud:
+  - curl
+  - generate-semp-client-lib
+  - java-client

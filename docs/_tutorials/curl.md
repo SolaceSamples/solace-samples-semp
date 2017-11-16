@@ -5,7 +5,7 @@ summary: The basics of how to create, read, update, and delete a SEMP object usi
 icon: curl-logo.png
 ---
 
-This is a quick tutorial to help you get started with the SEMP. You can learn more about the SEMP API using the [Online Documentation]({{ site.docs-semp-home }}){:target="_top"}. These documents explain the API concepts and details about the REST API. Additionally developers will find the [SEMP API Reference]({{ site.docs-api }}){:target="_top"} useful in understanding how to apply the concepts in this tutorial to other Solace Message Router objects.
+This is a quick tutorial to help you get started with the SEMP. You can learn more about the SEMP API using the [Online Documentation]({{ site.docs-semp-home }}){:target="_top"}. These documents explain the API concepts and details about the REST API. Additionally developers will find the [SEMP API Reference]({{ site.docs-api }}){:target="_top"} useful in understanding how to apply the concepts in this tutorial to other Solace Messaging objects.
 
 **Note**: This tutorial applies to the SEMP API starting in version 2. For older versions of the SEMP API, you can see the [Legacy SEMP Documentation]({{ site.docs-semp-legacy }}){:target="_top"}
 
@@ -19,7 +19,10 @@ The examples below make a few assumptions for simplicity:
 
 * These examples will work with a Client Username object to illustrate the various concepts. The concepts apply generally to all objects in SEMP.
 * The SEMP username and password are `user:password`
-* The Solace message router host and port are `solacevmr:8080`
+* The Solace Messaging host and port are `solacevmr:8080`
+* The Solace message-VPN is `default`
+
+{% if jekyll.environment == 'solaceCloud' %} {% include solaceMessaging-cloud.md %} {% else %} {% include solaceMessaging.md %} {% endif %}
 
 ## The Basics
 
@@ -34,11 +37,11 @@ Objects in SEMP are represented by JSON. For example, if you want to create a Cl
 }
 ```
 
-All Solace message router objects are addressed by a resource path that you specify in the URI. So for example let’s look at the URI for creating a Client Username.
+All Solace Messaging objects are addressed by a resource path that you specify in the URI. So for example let’s look at the URI for creating a Client Username.
 
     solacevmr:8080/SEMP/v2/config/msgVpns/default/clientUsernames
 
-In this URI, the authority component is `solacevmr:8080`, which identifies the Solace message router that you are interacting with. Then `/SEMP/v2/config` identifies that you are making a SEMP call and that you are using version 2 of the API `config` API.
+In this URI, the authority component is `solacevmr:8080`, which identifies the Solace Messaging system that you are interacting with. Then `/SEMP/v2/config` identifies that you are making a SEMP call and that you are using version 2 of the API `config`.
 
 The remaining part of the URI, `/msgVpns/default/clientUsernames`, identifies that you are targeting Client Usernames collection within the “default” message-VPN.
 
@@ -56,7 +59,7 @@ curl -X POST -u user:password solacevmr:8080/SEMP/v2/config/msgVpns/default/clie
   -d '{"clientUsername":"tutorialUser","enabled":true}'
 ```
 
-When you execute this command, if successful the Solace message router will respond with contents that resembles the following:
+When you execute this command, if successful the Solace Messaging system will respond with content that resembles the following:
 
 ```
 {
@@ -84,9 +87,9 @@ When you execute this command, if successful the Solace message router will resp
 
 The response contains three components. These are explained in more detail in the [API concepts documentation]({{ site.docs-http-responses }}){:target="_top"}. But here is a quick summary:
 
-* Meta - The meta field contains information about the request that was sent, the response code from the Solace message router and it will contain additional error information on failures.
+* Meta - The meta field contains information about the request that was sent, the response code from the Solace Messaging system and it will contain additional error information on failures.
 * Links - The links object makes the API self-discoverable which can be nice for developers as they are coding. You can experiment with SEMP objects and use the links to navigate through collections to member objects etc. In general, this is simply a tool to aid in development because at runtime, most configuration management tools and applications follow known patterns and can directly address the resources. There is no need for this discoverability.
-* Data - The data contains a full representation of the newly created object. Here you can see what default values were select by the Solace message router etc.
+* Data - The data contains a full representation of the newly created object. Here you can see what default values were select by the Solace Messaging system etc.
 
 ## Retrieving an object using GET
 
@@ -128,7 +131,7 @@ When you retrieve a specific object from SEMP, the response will contain the exp
 
 You can also retrieve all of the Client Usernames within the `default` Message VPN and you will see the newly created `tutorialUser` object as well as any others. For this, you perform an HTTP GET on the actual `clientUsernames` collection.
 
-    curl -u user:password solacevmr:8080/SEMP/v2/config/msgVpns/default/clientUsernames
+    curl -X GET -u user:password solacevmr:8080/SEMP/v2/config/msgVpns/default/clientUsernames
 
 In this case, the response will contain a data object which will have a JSON array of `clientUsername` objects. For large collections the response will be paged. See [SEMP paging]({{ site.docs-concepts-paging }}){:target="_top"} for details.
 
@@ -196,7 +199,7 @@ curl -X PATCH  -u user:password solacevmr:8080/SEMP/v2/config/msgVpns/default/cl
   -d '{"enabled":false}'
 ```
 
-The response back from the Solace message router will again have the same format as the GET response. In the response, the object is still returned and in this case, you can see that the object is now disabled: `"enabled":false`. 
+The response back from the Solace Messaging system will again have the same format as the GET response. In the response, the object is still returned and in this case, you can see that the object is now disabled: `"enabled":false`. 
 
 ```
   {
@@ -281,5 +284,5 @@ In contrast to other methods, for the delete only the meta object is returned. T
 
 At this point, you have created, retrieved, updated and deleted a Client Username object using SEMP. The examples used `curl` to send and receive the HTTP requests, but you can adapt the steps to any programming language of your choice. 
 
-SEMP is an extensive API that lets you configure anything on your Solace message router so there is a lot more to understand. If you want to know more, either you can get more familiar with the SEMP concepts by checking out the [user guide]({{ site.docs-overview }}){:target="_top"} or you can see the full [developer documentation for the API]({{ site.docs-api }}){:target="_top"}.
+SEMP is an extensive API that lets you configure anything on your Solace Messaging so there is a lot more to understand. If you want to know more, either you can get more familiar with the SEMP concepts by checking out the [user guide]({{ site.docs-overview }}){:target="_top"} or you can see the full [developer documentation for the API]({{ site.docs-api }}){:target="_top"}.
 

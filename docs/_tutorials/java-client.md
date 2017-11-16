@@ -5,13 +5,13 @@ summary: The basics of how to create, read, update, and delete a SEMP object usi
 icon: java-logo.jpg
 ---
 
-This is a quick tutorial to help you get started with the SEMP Java client library. You can learn more about the SEMP API using the [Online Documentation]({{ site.docs-semp-home }}){:target="_top"}. These documents explain the API concepts and details about the REST API. Additionally developers will find the [SEMP API Reference]({{ site.docs-api }}){:target="_top"} useful in understanding how to apply the concepts in this tutorial to other Solace Message Router objects.
+This is a quick tutorial to help you get started with the SEMP Java client library. You can learn more about the SEMP API using the [Online Documentation]({{ site.docs-semp-home }}){:target="_top"}. These documents explain the API concepts and details about the REST API. Additionally developers will find the [SEMP API Reference]({{ site.docs-api }}){:target="_top"} useful in understanding how to apply the concepts in this tutorial to other Solace Messaging objects.
 
 **Note**: This tutorial applies to the SEMP API starting in version 2. For older versions of the SEMP API, you can see the [Legacy SEMP Documentation]({{ site.docs-semp-legacy }}){:target="_top"}
 
 The following examples use a Java API generated from the SEMP specification and include an overview of the steps involved in creating this API. There is extensive support for creating SEMP client APIs in many programming languages. It should be easy enough to adapt the instructions and examples below to the programming language of your choosing.
 
-Alternatively, it is also possible to use SEMP through directly through HTTP. If you are interested in using the API directly through HTTP, you can look at this [Quick Start tutorial]({{ site.baseurl }}/curl/) which walks you through the basics of making SEMP calls directly through HTTP.
+Alternatively, it is also possible to use SEMP directly through HTTP. If you are interested in using the API directly through HTTP, you can look at this [Quick Start tutorial]({{ site.baseurl }}/curl/) which walks you through the basics of making SEMP calls directly through HTTP.
 
 ## Assumptions
 
@@ -19,7 +19,10 @@ The examples below make a few assumptions for simplicity:
 
 * These examples will work with a Client Username object to illustrate the various concepts. The concepts apply generally to all objects in SEMP.
 * The SEMP username and password are `user:password`
-* The Solace message router host and port are `solacevmr:8080`
+* The Solace Messaging host and port are `solacevmr:8080`
+* The Solace message-VPN is `default`
+
+{% if jekyll.environment == 'solaceCloud' %} {% include solaceMessaging-cloud.md %} {% else %} {% include solaceMessaging.md %} {% endif %}
 
 ## Generating the SEMP Client Library
 
@@ -31,9 +34,9 @@ Before jumping to specific tasks like creating a Client Username, we will first 
 
 ### Initializing the SEMP API
 
-Before sending any commands, you must initialize the client library. There is a close relationship between the tags used in the SEMP specification and the SEMP client library classes offered. Each tag, like `msgVpn`, is compiled into a class in the `com.solace.labs.sempclient.samplelib.api` package. Because of this, you have the option to work with the full SEMP API or subsets as controlled by the tags in the SEMP specification. You should determine which tag best fits your use case and use this client API class. For this introduction, we will use the `msgVpn` tag and the `MsgVpnApi` class because configuring a Solace message router message-VPN is a very common task in a dev-ops workflow.
+Before sending any commands, you must initialize the client library. There is a close relationship between the tags used in the SEMP specification and the SEMP client library classes offered. Each tag, like `msgVpn`, is compiled into a class in the `com.solace.labs.sempclient.samplelib.api` package. Because of this, you have the option to work with the full SEMP API or subsets as controlled by the tags in the SEMP specification. You should determine which tag best fits your use case and use this client API class. For this introduction, we will use the `msgVpn` tag and the `MsgVpnApi` class because configuring a Solace Messaging message-VPN is a very common task in a dev-ops workflow.
 
-Before you can send any commands to the Solace message router, you need an instance of the SEMP API. The following code shows you how to create such an instance and set the SEMP username and password. This will connect over HTTP.
+Before you can send any commands to the Solace Messaging system, you need an instance of the SEMP API. The following code shows you how to create such an instance and set the SEMP username and password. This will connect over HTTP.
 
 ```
 import com.solace.labs.sempclient.samplelib.ApiClient;
@@ -48,13 +51,13 @@ MsgVpnApi sempApiInstance = new MsgVpnApi(thisClient);
 
 Remember to update the values in the above example to match your environment.
 
-[*Source Reference: BasicOperationsSample.initialize()*]({{ site.repository }}/blob/master/src/main/java/com/solace/samples/BasicOperationsSample.java#L51){:target="_blank"}
+[*Source Reference: initialize() from BasicOperationsSample*]({{ site.repository }}/blob/master/java/src/main/java/com/solace/samples/BasicOperationsSample.java){:target="_blank"}
 
 ### Error handling
 
-There are many different errors that can occur when trying to connect with and manage the Solace message routers. In the client library, the `ApiException` class represents all of these errors. This `ApiException` wraps the HTTP errors and provides access to the HTTP response code, response headers, response body, etc.
+There are many different errors that can occur when trying to connect with and manage the Solace Messaging. In the client library, the `ApiException` class represents all of these errors. This `ApiException` wraps the HTTP errors and provides access to the HTTP response code, response headers, response body, etc.
 
-The Solace message router will always respond with a JSON payload of the following format for all errors.
+The Solace messaging system will always respond with a JSON payload of the following format for all errors.
 
 ```
 {
@@ -91,7 +94,7 @@ private void handleError(ApiException ae) {
 
 The code uses the `Gson` library to parse the JSON response, which is used internally by the Swagger client library. There's no reason why you can't use your own favourite JSON parser, of course. It then simply prints the relevant information to the console. 
 
-[*Source Reference: BasicOperationsSample.handleError()*]({{ site.repository }}/blob/master/src/main/java/com/solace/samples/BasicOperationsSample.java#L39){:target="_blank"}
+[*Source Reference: handleError() from BasicOperationsSample*]({{ site.repository }}/blob/master/java/src/main/java/com/solace/samples/BasicOperationsSample.java){:target="_blank"}
 
 ## Creating an Object Using POST
 
@@ -125,7 +128,7 @@ public void createObjectUsingPost() {
 }
 ```
 
-[*Source Reference: BasicOperationsSample.createObjectUsingPost()*]({{ site.repository }}/blob/master/src/main/java/com/solace/samples/BasicOperationsSample.java#L62){:target="_blank"}
+[*Source Reference: createObjectUsingPost() from BasicOperationsSample*]({{ site.repository }}/blob/master/java/src/main/java/com/solace/samples/BasicOperationsSample.java){:target="_blank"}
 
 ## Retrieving an Object Using GET
 
@@ -144,7 +147,7 @@ public void retrievingObjectUsingGet() {
 }
 ```
 
-[*Source Reference: BasicOperationsSample.retrievingObjectUsingGet()*]({{ site.repository }}/blob/master/src/main/java/com/solace/samples/BasicOperationsSample.java#L83){:target="_blank"}
+[*Source Reference: retrievingObjectUsingGet() from BasicOperationsSample*]({{ site.repository }}/blob/master/java/src/main/java/com/solace/samples/BasicOperationsSample.java){:target="_blank"}
 
 ## Retrieving a Collection of Objects Using GET
 
@@ -168,7 +171,7 @@ public void retrievingCollectionUsingGet() {
 
 For large collections, the response will be paged. See [SEMP paging]({{ site.docs-concepts-paging }}){:target="_top"} for details.
 
-[*Source Reference: BasicOperationsSample.retrievingCollectionUsingGet()*]({{ site.repository }}/blob/master/src/main/java/com/solace/samples/BasicOperationsSample.java#L94){:target="_blank"}
+[*Source Reference: retrievingCollectionUsingGet() from BasicOperationsSample*]({{ site.repository}}/blob/master/java/src/main/java/com/solace/samples/BasicOperationsSample.java){:target="_blank"}
 
 ## Partially Updating an Object Using PATCH
 
@@ -192,7 +195,7 @@ public void partialObjectUpdateUsingPatch() {
 }
 ```
 
-[*Source Reference: BasicOperationsSample.partialObjectUpdateUsingPatch()*]({{ site.repository }}/blob/master/src/main/java/com/solace/samples/BasicOperationsSample.java#L106){:target="_blank"}
+[*Source Reference: partialObjectUpdateUsingPatch() from BasicOperationsSample*]({{ site.repository }}/blob/master/java/src/main/java/com/solace/samples/BasicOperationsSample.java){:target="_blank"}
 
 ## Fully Updating an Object Using PUT
 
@@ -215,7 +218,7 @@ public void replaceObjectUpdateUsingPut() {
 }
 ```
 
-[*Source Reference: BasicOperationsSample.fullObjectUpdateUsingPut()*]({{ site.repository }}/blob/master/src/main/java/com/solace/samples/BasicOperationsSample.java#L120){:target="_blank"}
+[*Source Reference: fullObjectUpdateUsingPut() from BasicOperationsSample*]({{ site.repository }}/blob/master/java/src/main/java/com/solace/samples/BasicOperationsSample.java){:target="_blank"}
 
 ## Removing an Object Using DELETE
 
@@ -236,7 +239,7 @@ public void removingObjectUsingDelete() {
 }
 ```
 
-[*Source Reference: BasicOperationsSample.removingObjectUsingDelete()*]({{ site.repository }}/blob/master/src/main/java/com/solace/samples/BasicOperationsSample.java#L135){:target="_blank"}
+[*Source Reference: removingObjectUsingDelete() from BasicOperationsSample*]({{ site.repository }}/blob/master/java/src/main/java/com/solace/samples/BasicOperationsSample.java){:target="_blank"}
 
 ## Summary
 
@@ -258,31 +261,32 @@ cd {{ site.baseurl | remove: '/'}}/java
 The project uses Gradle. To build, execute the following command.
 
 ```
-./gradlew build
+../gradlew build
 ```
 
 This builds all of the Java Samples with OS specific launch scripts. The files are staged in the `build/staged` directory.
 
 ### Running the Sample
 
-You start the `BasicOperationsSample` with a three arguments:
+You start the `BasicOperationsSample` with four arguments:
 
-1. The SEMP Base Path. For example: `http://solacevmr:8080/SEMP/v2/config`
-2. The SEMP Username.
-3. The SEMP Password.
+1. The SEMP Base Path. For example: `http://solacevmr:8080/SEMP/v2/config`.
+2. The Message VPN.
+3. The Management Username.
+4. The Management Password.
 
 For example: 
 
 ```
-$ ./build/staged/bin/basicOperationsSample <SEMP_BASE_PATH> <SEMP_USER> <SEMP_PASSWORD>
+$ ./build/staged/bin/basicOperationsSample <SEMP_BASE_PATH> <MESSAGE_VPN> <MANAGEMENT_USER> <MANAGEMENT_PASSWORD>
 BasicOperationsSample initializing...
-SEMP initializing: <SEMP_BASE_PATH>, <SEMP_USER>
+SEMP initializing: <SEMP_BASE_PATH>, <MANAGEMENT_USER>
 Creating Object: tutorialUser
 ...
 Client Username delete. Resp: 200
 ```
 
-At this point, you have created, retrieved, updated and deleted a Client Username object using SEMP. The examples used a generated client library in Java to interact with the Solace message router, but you can adapt the steps to any programming language of your choice. 
+At this point, you have created, retrieved, updated and deleted a Client Username object using SEMP. The examples used a generated client library in Java to interact with the Solace Messaging, but you can adapt the steps to any programming language of your choice. 
 
-SEMP is an extensive API that lets you configure anything on your Solace message router so there is a lot more to understand. If you want to know more, you can either get more familiar with the SEMP concepts by checking out the [Concepts Guide]({{ site.docs-concepts }}){:target="_top"} or you can see the full [developer documentation for the API]({{ site.docs-api }}){:target="_top"}.
+SEMP is an extensive API that lets you configure anything on your Solace Messaging so there is a lot more to understand. If you want to know more, you can either get more familiar with the SEMP concepts by checking out the [Concepts Guide]({{ site.docs-concepts }}){:target="_top"} or you can see the full [developer documentation for the API]({{ site.docs-api }}){:target="_top"}.
 
