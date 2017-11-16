@@ -30,7 +30,7 @@ The Solace Element Management Protocol (SEMP) API is based on the [OpenAPI (a.k.
 * From this specification it is possible to programmatically generate client libraries in most popular languages
 * Documentation can also be generated similarly, so it is always up-to-date
 	
-When a new version of the system is released with new management capabilities, an updated API specification will reflect that. Then a new backwards-compatible version of the client library can be generated with added support to the latest features.
+When a new version of Solace Messaging is released with new management capabilities, an updated API specification will reflect that. Then a new backwards-compatible version of the client library can be generated with added support to the latest features.
 
 Following steps are required to generate the SEMP client library:
 
@@ -106,4 +106,4 @@ We have shown how to generate the latest version of the SEMP client library, whi
 
 If using it for the first time for a new client language, the getting started documentation (filtered out by default by the automated Gradle script) includes help to get to a basic working SEMP management example and it will advise of any additional specific steps for the language you are using. Reviewing the [Solace SEMP API Reference]({{ site.docs-api }}){:target="_top"} documentation and the provided [Java]({{ site.baseurl }}/messagevpn-with-queue-java/), [Python]({{ site.baseurl }}/messagevpn-with-queue-python/) or [Ruby]({{ site.baseurl }}/messagevpn-with-queue-ruby/) samples will also help to understand some of the common ideas.
 
-Our [Message VPN with Queue series]({{ site.baseurl }}/messagevpn-with-queue-java/) of samples also show how to create a high level library for common management tasks for the Solace Messaging.
+Our [Message VPN with Queue series]({{ site.baseurl }}/messagevpn-with-queue-java/) of samples also show how to create a high level library for common management tasks for Solace Messaging.
