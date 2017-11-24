@@ -2,7 +2,7 @@
 layout: tutorials
 title: Message VPN with Queue – Ruby 
 summary: Sample integration into a Ruby-based management tool using the SEMP Ruby Client Library
-icon: management-integration-ruby.png
+icon: management-integration-ruby.svg
 ---
 
 This tutorial will guide you through the steps of creating a sample Ruby-based tool to administer basic message-VPNs and queues.

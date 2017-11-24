@@ -2,7 +2,7 @@
 layout: tutorials
 title: Basic Operations - curl
 summary: The basics of how to create, read, update, and delete a SEMP object using an HTTP client (curl)
-icon: curl-logo.png
+icon: curl-logo.svg
 ---
 
 This is a quick tutorial to help you get started with the SEMP. You can learn more about the SEMP API using the [Online Documentation]({{ site.docs-semp-home }}){:target="_top"}. These documents explain the API concepts and details about the REST API. Additionally developers will find the [SEMP API Reference]({{ site.docs-api }}){:target="_top"} useful in understanding how to apply the concepts in this tutorial to other Solace Messaging objects.

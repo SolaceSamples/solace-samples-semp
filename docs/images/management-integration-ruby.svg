@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="107px" height="93px" viewBox="0 0 107 93" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 47.1 (45422) - http://www.bohemiancoding.com/sketch -->
+    <title>Group 7</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <polygon id="path-1" points="0 12.1720077 26.6204035 41.5384615 54 12.1720077 45.1277884 0 9.43578226 0"></polygon>
+    </defs>
+    <g id="ICONS" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Group-7">
+            <g id="Group-4-Copy-2">
+                <rect id="path-1" fill="#DCE3EE" x="0.885714286" y="0.885714286" width="60.2285714" height="91.2285714" rx="30.1142857"></rect>
+                <rect id="Rectangle-33-Copy-7" stroke="#9EAFBF" stroke-width="4" x="20.3714286" y="46.0571429" width="21.2571429" height="21.2571429" rx="10.6285714"></rect>
+                <rect id="Rectangle-path" stroke="#9EAFBF" stroke-width="4" x="2" y="2" width="58" height="89" rx="29"></rect>
+                <ellipse id="Oval-2" stroke="#9EAFBF" stroke-width="5" cx="31.8857143" cy="18.6" rx="24.9571429" ry="16.1"></ellipse>
+            </g>
+            <g id="Group-6" transform="translate(50.000000, 38.000000)">
+                <g id="Path-2">
+                    <use fill="#BAC9D5" fill-rule="evenodd" xlink:href="#path-1"></use>
+                    <path stroke="#9EAFBF" stroke-width="2" d="M-1.30420209,12.222213 L8.94570298,-1 L45.6363423,-1 L55.2943884,12.2501135 L26.6100533,43.0159871 L-1.30420209,12.222213 Z"></path>
+                </g>
+                <polygon id="Path-3" fill-opacity="0.400000006" fill="#FFFFFF" points="26.6582613 1.03846154 16.6153846 12.4630519 27.1132537 41.5384615 37.3846154 12.247071"></polygon>
+                <polygon id="Path-3" fill-opacity="0.430000007" fill="#FFFFFF" points="26.6226912 1.03846154 16.6153846 12.4615385 37.3846154 12.2666371"></polygon>
+                <polygon id="Path-4" fill-opacity="0.340000004" fill="#FFFFFF" points="36.3461538 12.3108656 44.8558959 0 54 12.4615385"></polygon>
+                <polygon id="Path-4" fill-opacity="0.340000004" fill="#FFFFFF" points="0 12.3540822 9.60294359 0 16.6153846 12.4615385"></polygon>
+            </g>
+        </g>
+    </g>
+</svg>

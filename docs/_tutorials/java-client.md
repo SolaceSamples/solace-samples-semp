@@ -2,7 +2,7 @@
 layout: tutorials
 title: Basic Operations - Java 
 summary: The basics of how to create, read, update, and delete a SEMP object using a Java client library
-icon: java-logo.jpg
+icon: java-logo.svg
 ---
 
 This is a quick tutorial to help you get started with the SEMP Java client library. You can learn more about the SEMP API using the [Online Documentation]({{ site.docs-semp-home }}){:target="_top"}. These documents explain the API concepts and details about the REST API. Additionally developers will find the [SEMP API Reference]({{ site.docs-api }}){:target="_top"} useful in understanding how to apply the concepts in this tutorial to other Solace Messaging objects.
