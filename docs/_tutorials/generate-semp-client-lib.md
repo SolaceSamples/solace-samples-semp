@@ -2,7 +2,7 @@
 layout: tutorials
 title: Generating the SEMP Client Library 
 summary: Generate a SEMP management client library for any of the supported programming languages
-icon: generate-semp-client-lib.png
+icon: generate-semp-client-lib.svg
 ---
 
 Programmatic management of the Solace Messaging through the SEMP API can be done directly through accessing the system's HTTP REST protocol API (see the related [Basic Operations - curl tutorial]({{ site.baseurl }}/curl/)) or more conveniently, using a local SEMP client library which is:
