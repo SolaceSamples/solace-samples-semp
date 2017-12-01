@@ -100,7 +100,7 @@ The code uses the `Gson` library to parse the JSON response, which is used inter
 
 You create a Client Username from the `clientUsername` collection within the message-VPN. The Client Username has only one required attribute, its name. In this example I’ve chosen `tutorialUser`. For interest, I will also enable the new Client Username so it is ready for messaging clients to use. During creation, any attributes that are not specified will be created using default values. 
 
-To create a Client Username, you use the `createMsgVpnClientUsername()` method. If you understand how the resource names are composed in the SEMP API, the method names should be easy to derive and understand. For details on resource name composition, you can check out the [SEMP Concepts - URI Structure]({{ site.docs-docs-concepts-uri }}){:target="_top"}. 
+To create a Client Username, you use the `createMsgVpnClientUsername()` method. If you understand how the resource names are composed in the SEMP API, the method names should be easy to derive and understand. For details on resource name composition, you can check out the [SEMP Concepts - URI Structure]({{ site.docs-concepts-uri }}){:target="_top"}. 
 
 The new Client Username is represented by the `MsgVpnClientUsername` class from the model. Using this class, you can set any Client Username attributes you would like during creation.
 The response will contain the newly created Client Username in the data portion.
