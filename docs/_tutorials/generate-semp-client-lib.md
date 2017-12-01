@@ -6,8 +6,9 @@ icon: generate-semp-client-lib.svg
 ---
 
 Programmatic management of the Solace Messaging through the SEMP API can be done directly through accessing the system's HTTP REST protocol API (see the related [Basic Operations - curl tutorial]({{ site.baseurl }}/curl/)) or more conveniently, using a local SEMP client library which is:
-* In a programming language that is native to your management code, 
-* Hides the REST protocol details, and 
+<br><br>
+* In a programming language that is native to your management code
+* Hides the REST protocol details
 * Enables to focus on the objects to be managed.
 
 ## Goals
