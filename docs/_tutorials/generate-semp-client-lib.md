@@ -6,8 +6,9 @@ icon: generate-semp-client-lib.svg
 ---
 
 Programmatic management of the Solace Messaging through the SEMP API can be done directly through accessing the system's HTTP REST protocol API (see the related [Basic Operations - curl tutorial]({{ site.baseurl }}/curl/)) or more conveniently, using a local SEMP client library which is:
-* In a programming language that is native to your management code, 
-* Hides the REST protocol details, and 
+<br><br>
+* In a programming language that is native to your management code
+* Hides the REST protocol details
 * Enables to focus on the objects to be managed.
 
 ## Goals
@@ -104,6 +105,6 @@ cd solace-samples-semp/<language>       # java, python or ruby
 
 We have shown how to generate the latest version of the SEMP client library, which is now ready to use. Use it in your project structure, adjust for any library names as required.
 
-If using it for the first time for a new client language, the getting started documentation (filtered out by default by the automated Gradle script) includes help to get to a basic working SEMP management example and it will advise of any additional specific steps for the language you are using. Reviewing the [Solace SEMP API Reference]({{ site.docs-api }}){:target="_top"} documentation and the provided [Java]({{ site.baseurl }}/messagevpn-with-queue-java/), [Python]({{ site.baseurl }}/messagevpn-with-queue-python/) or [Ruby]({{ site.baseurl }}/messagevpn-with-queue-ruby/) samples will also help to understand some of the common ideas.
+If using it for the first time for a new client language, the getting started documentation (filtered out by default by the automated Gradle script) includes help to get to a basic working SEMP management example and it will advise of any additional specific steps for the language you are using. Reviewing the [Solace SEMP API Reference]({{ site.docs-api }}){:target="_top"} documentation{% if jekyll.environment != 'solaceCloud' %} and the provided [Java]({{ site.baseurl }}/messagevpn-with-queue-java/), [Python]({{ site.baseurl }}/messagevpn-with-queue-python/) or [Ruby]({{ site.baseurl }}/messagevpn-with-queue-ruby/) samples{% endif %} will help to understand some of the common ideas.
 
 Our [Message VPN with Queue series]({{ site.baseurl }}/messagevpn-with-queue-java/) of samples also show how to create a high level library for common management tasks for Solace Messaging.
