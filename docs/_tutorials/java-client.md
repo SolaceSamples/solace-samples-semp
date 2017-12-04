@@ -248,7 +248,7 @@ Clone the GitHub repository containing the Solace samples.
 
 ```
 git clone {{ site.repository }}
-cd {{ site.baseurl | remove: '/'}}/java
+cd {{ site.repository | split: '/' | last}}/java
 ```
 
 ### Building
