@@ -6,108 +6,109 @@ repository: https://github.com/SolaceSamples/solace-samples-semp
 repository-java: https://github.com/SolaceSamples/solace-samples-semp/tree/master/java
 repository-python: https://github.com/SolaceSamples/solace-samples-semp/tree/master/python
 repository-ruby: https://github.com/SolaceSamples/solace-samples-semp/tree/master/ruby
-tutorials-home: https://solacesamples.github.io/solace-samples-semp/
-solace-samples-jms-queues: https://solacesamples.github.io/solace-samples-jms/persistence-with-queues/
-solace-community: http://dev.solace.com/community/
+
+tutorials-home: //solacesamples.github.io/solace-samples-semp/
+solace-samples-jms-queues: //solacesamples.github.io/solace-samples-jms/persistence-with-queues/
+solace-community: //dev.solace.com/community/
 
 # Also see _includes/intro.html to customize the description which gets included in index.html.
 
 # Links
-docs-semp-home: http://docs.solace.com/SEMP/SEMP-Home.htm
-docs-concepts: http://docs.solace.com/SEMP/SEMP-Concepts.htm
-docs-architecture: http://docs.solace.com/SEMP/SEMP-API-Archit.htm
-docs-http-responses: http://docs.solace.com/SEMP/SEMP-API-Protocol.htm#HTTP4
-docs-concepts-paging: http://docs.solace.com/SEMP/SEMP-API-Archit.htm#Paginati
-docs-concepts-uri: http://docs.solace.com/SEMP/SEMP-API-Protocol.htm#URI
-docs-api: http://docs.solace.com/API-Developer-Online-Ref-Documentation/swagger-ui/index.html
-docs-schema: http://docs.solace.com/SEMP/SEMP-API-Archit.htm#SEMP
-docs-semp-legacy: http://docs.solace.com/SEMP/Using-Legacy-SEMP.htm
-docs-vmr-setup: http://docs.solace.com/Solace-VMR-Set-Up/Setting-Up-VMRs.htm
-docs-router-concepts: http://docs.solace.com/Features/Core-Concepts.htm#router-concepts
-docs-mgmt-user-aa: http://docs.solace.com/Features/Mgmt-User-Authenticate-Authorize.htm
-docs-msg-vpn: http://docs.solace.com/Configuring-and-Managing-Routers/Configuring-VPNs.htm
-docs-client-profile: http://docs.solace.com/Features/Client-Authorization.htm#client_authentication_and_authorization_2866343001_219397
-docs-acl-profile: http://docs.solace.com/Configuring-and-Managing-Routers/Managing-Access-Control-Lists.htm
-docs-client-username: http://docs.solace.com/Features/Client-authentication-and-authorization.htm
-docs-queues: http://docs.solace.com/Configuring-and-Managing-Routers/Configuring-Queues.htm
-docs-dtes: http://docs.solace.com/Configuring-and-Managing-Routers/Configuring-DTEs.htm
-docs-soladmin-home: http://docs.solace.com/SolAdmin/SolAdmin-Home.htm
-docs-solace-downloads: http://dev.solace.com/downloads/
-python-setuptools: http://pypi.python.org/pypi/setuptools
-swagger-spec: https://swagger.io/specification/
-swagger-codegen-site: http://swagger.io/swagger-codegen/
-swagger-tools-site: http://swagger.io/tools/
-swagger-codegen-github-overview: https://github.com/swagger-api/swagger-codegen#overview
-swagger-codegenjar-from-mvncentral: http://central.maven.org/maven2/io/swagger/swagger-codegen-cli/2.2.2/swagger-codegen-cli-2.2.2.jar
-links-solaceCloud-setup: http://cloud.solace.com/create-messaging-service/
+docs-semp-home: //docs.solace.com/SEMP/SEMP-Home.htm
+docs-concepts: //docs.solace.com/SEMP/SEMP-Concepts.htm
+docs-architecture: //docs.solace.com/SEMP/SEMP-API-Archit.htm
+docs-http-responses: //docs.solace.com/SEMP/SEMP-API-Protocol.htm#HTTP4
+docs-concepts-paging: //docs.solace.com/SEMP/SEMP-API-Archit.htm#Paginati
+docs-concepts-uri: //docs.solace.com/SEMP/SEMP-API-Protocol.htm#URI
+docs-api: //docs.solace.com/API-Developer-Online-Ref-Documentation/swagger-ui/index.html
+docs-schema: //docs.solace.com/SEMP/SEMP-API-Archit.htm#SEMP
+docs-semp-legacy: //docs.solace.com/SEMP/Using-Legacy-SEMP.htm
+docs-vmr-setup: //docs.solace.com/Solace-VMR-Set-Up/Setting-Up-VMRs.htm
+docs-router-concepts: //docs.solace.com/Features/Core-Concepts.htm#router-concepts
+docs-mgmt-user-aa: //docs.solace.com/Features/Mgmt-User-Authenticate-Authorize.htm
+docs-msg-vpn: //docs.solace.com/Configuring-and-Managing-Routers/Configuring-VPNs.htm
+docs-client-profile: //docs.solace.com/Features/Client-Authorization.htm#client_authentication_and_authorization_2866343001_219397
+docs-acl-profile: //docs.solace.com/Configuring-and-Managing-Routers/Managing-Access-Control-Lists.htm
+docs-client-username: //docs.solace.com/Features/Client-authentication-and-authorization.htm
+docs-queues: //docs.solace.com/Configuring-and-Managing-Routers/Configuring-Queues.htm
+docs-dtes: //docs.solace.com/Configuring-and-Managing-Routers/Configuring-DTEs.htm
+docs-soladmin-home: //docs.solace.com/SolAdmin/SolAdmin-Home.htm
+docs-solace-downloads: //dev.solace.com/downloads/
+python-setuptools: //pypi.python.org/pypi/setuptools
+swagger-spec: //swagger.io/specification/
+swagger-codegen-site: //swagger.io/swagger-codegen/
+swagger-tools-site: //swagger.io/tools/
+swagger-codegen-github-overview: //github.com/swagger-api/swagger-codegen#overview
+swagger-codegenjar-from-mvncentral: //central.maven.org/maven2/io/swagger/swagger-codegen-cli/2.2.2/swagger-codegen-cli-2.2.2.jar
+links-solaceCloud-setup: //cloud.solace.com/create-messaging-service/
 
 solace-apis-dev:
-  - value: http://dev.solace.com/get-started/c-tutorials/
+  - value: //dev.solace.com/get-started/c-tutorials/
     name: C
-  - value: http://dev.solace.com/get-started/dotnet-tutorials/
+  - value: //dev.solace.com/get-started/dotnet-tutorials/
     name: C#/.NET
-  - value: http://dev.solace.com/get-started/java-tutorials/
+  - value: //dev.solace.com/get-started/java-tutorials/
     name: Java
-  - value: http://dev.solace.com/get-started/java-rto-tutorials/
+  - value: //dev.solace.com/get-started/java-rto-tutorials/
     name: Java RTO
-  - value: http://dev.solace.com/get-started/javascript-tutorials/
+  - value: //dev.solace.com/get-started/javascript-tutorials/
     name: JavaScript
-  - value: http://dev.solace.com/get-started/node-js-tutorials/
+  - value: //dev.solace.com/get-started/node-js-tutorials/
     name: Node.js
 open-apis-dev:
-  - value: http://dev.solace.com/get-started/amqp-tutorials-jms-11/
+  - value: //dev.solace.com/get-started/amqp-tutorials-jms-11/
     name: AMQP - JMS 1.1
-  - value: http://dev.solace.com/get-started/amqp-tutorials-jms-2/
+  - value: //dev.solace.com/get-started/amqp-tutorials-jms-2/
     name: AMQP - JMS 2.0
-  - value: http://dev.solace.com/get-started/amqp-tutorials-node-js/
+  - value: //dev.solace.com/get-started/amqp-tutorials-node-js/
     name: AMQP - Node.js
-  - value: http://dev.solace.com/get-started/mqtt-tutorials/
+  - value: //dev.solace.com/get-started/mqtt-tutorials/
     name: MQTT - Eclipse Paho Java
-  - value: http://dev.solace.com/get-started/amqp-tutorials-jms-11/
+  - value: //dev.solace.com/get-started/amqp-tutorials-jms-11/
     name: JMS 1.1 - Apache Qpid
-  - value: http://dev.solace.com/get-started/amqp-tutorials-jms-2/
+  - value: //dev.solace.com/get-started/amqp-tutorials-jms-2/
     name: JMS 2.0 - Apache Qpid
-  - value: http://dev.solace.com/get-started/jms-tutorials/
+  - value: //dev.solace.com/get-started/jms-tutorials/
     name: JMS 1.1 - Solace
-  - value: http://dev.solace.com/get-started/openmama-tutorials/
+  - value: //dev.solace.com/get-started/openmama-tutorials/
     name: OpenMAMA
-  - value: http://dev.solace.com/get-started/rest-tutorials/
+  - value: //dev.solace.com/get-started/rest-tutorials/
     name: REST Messaging
 other-environments-dev:
-  - value: http://dev.solace.com/get-started/pcf-tutorials/
+  - value: //dev.solace.com/get-started/pcf-tutorials/
     name: Pivotal Cloud Foundry
 
 solace-apis-cloud:
-  - value: http://cloud.solace.com/samples/solace-samples-c/
+  - value: //cloud.solace.com/samples/solace-samples-c/
     name: C
-  - value: http://cloud.solace.com/samples/solace-samples-dotnet/
+  - value: //cloud.solace.com/samples/solace-samples-dotnet/
     name: C#/.NET
-  - value: http://cloud.solace.com/samples/solace-samples-java/
+  - value: //cloud.solace.com/samples/solace-samples-java/
     name: Java
-  - value: http://cloud.solace.com/samples/solace-samples-javarto/
+  - value: //cloud.solace.com/samples/solace-samples-javarto/
     name: Java RTO
-  - value: http://cloud.solace.com/samples/solace-samples-javascript/
+  - value: //cloud.solace.com/samples/solace-samples-javascript/
     name: JavaScript
-  - value: http://cloud.solace.com/samples/solace-samples-nodejs/
+  - value: //cloud.solace.com/samples/solace-samples-nodejs/
     name: Node.js
 open-apis-cloud:
-  - value: http://cloud.solace.com/samples/solace-samples-amqp-qpid-jms1/
+  - value: //cloud.solace.com/samples/solace-samples-amqp-qpid-jms1/
     name: AMQP - JMS 1.1
-  - value: http://cloud.solace.com/samples/solace-samples-amqp-qpid-jms2/
+  - value: //cloud.solace.com/samples/solace-samples-amqp-qpid-jms2/
     name: AMQP - JMS 2.0
-  - value: http://cloud.solace.com/samples/solace-samples-amqp-nodejs/
+  - value: //cloud.solace.com/samples/solace-samples-amqp-nodejs/
     name: AMQP - Node.js
-  - value: http://cloud.solace.com/samples/solace-samples-mqtt/
+  - value: //cloud.solace.com/samples/solace-samples-mqtt/
     name: MQTT - Eclipse Paho Java
-  - value: http://cloud.solace.com/samples/solace-samples-amqp-qpid-jms1/
+  - value: //cloud.solace.com/samples/solace-samples-amqp-qpid-jms1/
     name: JMS 1.1 - Apache Qpid
-  - value: http://cloud.solace.com/samples/solace-samples-amqp-qpid-jms2/
+  - value: //cloud.solace.com/samples/solace-samples-amqp-qpid-jms2/
     name: JMS 2.0 - Apache Qpid
-  - value: http://cloud.solace.com/samples/solace-samples-jms/
+  - value: //cloud.solace.com/samples/solace-samples-jms/
     name: JMS 1.1 - Solace
-  - value: http://cloud.solace.com/samples/solace-samples-openmama/
+  - value: //cloud.solace.com/samples/solace-samples-openmama/
     name: OpenMAMA
-  - value: http://cloud.solace.com/samples/solace-samples-rest-messaging/
+  - value: //cloud.solace.com/samples/solace-samples-rest-messaging/
     name: REST Messaging
 
 #----------------------------------------------------
