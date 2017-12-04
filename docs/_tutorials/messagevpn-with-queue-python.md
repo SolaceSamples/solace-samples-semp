@@ -197,8 +197,8 @@ The full source code for this example is available in [GitHub]({{ site.repositor
 Clone the GitHub repository containing the Solace samples.
 
 ```
-git clone https://github.com/SolaceSamples/solace-samples-semp
-cd {{ site.baseurl | remove: '/'}}/python
+git clone {{ site.repository }}
+cd {{ site.repository | split: '/' | last}}/python
 ```
 
 ### Building and Installing the SEMP Python Client Library
