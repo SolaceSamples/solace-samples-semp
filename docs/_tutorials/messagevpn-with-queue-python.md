@@ -1,6 +1,6 @@
 ---
 layout: tutorials
-title: Message VPN with Queue – Python 
+title: Message VPN with Queue – Python
 summary: Sample integration into a Python-based management tool using the SEMP Python Client Library
 icon: management-integration-python.svg
 ---
@@ -16,8 +16,8 @@ The goals of this tutorial are to:
 Let's review the admin objectives:
 
 * **Creating message-VPNs** is a convenient way to slice a Solace Messaging system to separated independent virtual routers, multiplying its use. There are many use cases including security, controlled share of functionality and capacity. For developers, one way to make use of a message-VPN is to share a VMR with everyone having a dedicated message-VPN for development use. Once a message-VPN is created, the client can connect to it with the assigned username and password using basic internal authentication.
-* Another common objective is to **create a persistent queue** as a message endpoint in the particular message-VPN. This resource is only visible to those connected to this message-VPN and it can store incoming guaranteed messages until consumed. 
-* The administrator may also want the ability to **delete a queue** or 
+* Another common objective is to **create a persistent queue** as a message endpoint in the particular message-VPN. This resource is only visible to those connected to this message-VPN and it can store incoming guaranteed messages until consumed.
+* The administrator may also want the ability to **delete a queue** or
 * **delete a message-VPN** when no longer needed.
 
 To accomplish this, we will create a set of tasks as building blocks that match the SEMP object model of the Solace Messaging and use a simple framework to demonstrate the integration and orchestration of these tasks to achieve above objectives. We will use the SEMP Python Client Library to implement these tasks which is a Python wrapper for the SEMP REST API introduced in the [Basic Operations - curl]({{ site.baseurl }}/curl) tutorial.
@@ -38,7 +38,7 @@ This tutorial is available in [GitHub]({{ site.repository }}){:target="_blank"} 
 
 At the end, this tutorial walks through downloading and running the sample from source.
 
-{% if jekyll.environment == 'solaceCloud' %} {% include solaceMessaging-cloud.md %} {% else %} {% include solaceMessaging.md %} {% endif %}
+{% include solaceMessaging.md %}
 
 ## The SEMP object model of Solace message-VPNs and VPN resources
 
@@ -51,8 +51,8 @@ Solace Messaging management is divided into Router-global level and individual M
 ![]({{ site.baseurl }}/images/message-vpn-semp-objects.png)
 
 Clients can connect to a message-VPN and use its resources after proper authentication and authorization, controlled by the properties of the following SEMP objects on the Solace Messaging:
- 
-* The [Message-VPN]({{ site.docs-msg-vpn }}){:target="_top"} object defines the type and details of client authentication applied and restrictions to the combined resource usage of all VPN clients. 
+
+* The [Message-VPN]({{ site.docs-msg-vpn }}){:target="_top"} object defines the type and details of client authentication applied and restrictions to the combined resource usage of all VPN clients.
 * A [Client Profile]({{ site.docs-client-profile }}){:target="_top"} object within a message-VPN defines resource usage restrictions applied to individual clients.
 * An [ACL (Access Control List) Profile]({{ site.docs-acl-profile }}){:target="_top"} object within a message-VPN defines access restrictions by listing allowance or denial of which clients can connect and to which topics and queues.
 * A [Client Username]({{ site.docs-client-username }}){:target="_top"} object within a message-VPN has an associated Client Profile and an ACL Profile. The username provided by the connecting client will be the Client Username applied to that connection or if it is not found then the default Client Username will be applied. The password property will be used if internal client authentication type has been specified for the message-VPN.
@@ -84,7 +84,7 @@ self.api_instance = semp_client.MsgVpnApi()
 The first task is to create a new message-VPN with a name. Consulting the Solace documentation by following above [Message-VPN]({{ site.docs-msg-vpn }}){:target="_top"} link, we determine that it shall be configured for basic internal authentication, have the storage size increased for persistent message queues from default 0 and have it enabled. Tip: the [SolAdmin]({{ site.docs-soladmin-home }}){:target="_top"} management GUI tool can be used to show the default values for new created objects. If in doubt, try the intended management operation using SolAdmin, which can be [downloaded here]({{ site.docs-solace-downloads }}){:target="_top"}.
 
 To understand how to implement this, let’s consult the [SEMP online API documentation]({{ site.docs-api }}){:target="_top"}:
-- scrolling down to msgVPN and opening the `List Operations` link will show the color-coded options for all available operations. Clicking on `POST /msgVpns - Creates a Message VPN object` will open up the details. Scrolling down to `MsgVpn {`, here we can find the names of the attributes and we can derive the Python instance variable names using the rule: lowercase with words separated by underscores. For example, we look up the attribute `maxMsgSpoolUsage (integer)` and determine the instance variable name to be `max_msg_spool_usage`. 
+- scrolling down to msgVPN and opening the `List Operations` link will show the color-coded options for all available operations. Clicking on `POST /msgVpns - Creates a Message VPN object` will open up the details. Scrolling down to `MsgVpn {`, here we can find the names of the attributes and we can derive the Python instance variable names using the rule: lowercase with words separated by underscores. For example, we look up the attribute `maxMsgSpoolUsage (integer)` and determine the instance variable name to be `max_msg_spool_usage`.
 
 ```python
 # Create message-vpn
@@ -243,5 +243,3 @@ Now it is possible to easily create as many message-VPNs as required and share a
 ```
 
 If you have any issues using SEMP, check the [Solace community.]({{ site.solace-community }}){:target="_top"} for answers to common issues.
-
-
