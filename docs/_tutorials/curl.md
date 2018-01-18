@@ -22,7 +22,7 @@ The examples below make a few assumptions for simplicity:
 * The Solace Messaging host and port are `solacevmr:8080`
 * The Solace message-VPN is `default`
 
-{% if jekyll.environment == 'solaceCloud' %} {% include solaceMessaging-cloud.md %} {% else %} {% include solaceMessaging.md %} {% endif %}
+{% include solaceMessaging.md %}
 
 ## The Basics
 
@@ -49,7 +49,7 @@ Ok let’s get started...
 
 ## Creating an object using POST
 
-You create a Client Username from the `clientUsernames` collection within the message-VPN. The Client Username has only one required attribute, its name. In this example I’ve chosen `tutorialUser`. For interest, I will also enable the new Client Username so it is ready for messaging clients to use. During creation, any attributes that are not specified will be created using default values. 
+You create a Client Username from the `clientUsernames` collection within the message-VPN. The Client Username has only one required attribute, its name. In this example I’ve chosen `tutorialUser`. For interest, I will also enable the new Client Username so it is ready for messaging clients to use. During creation, any attributes that are not specified will be created using default values.
 
 With `curl`, you can create a Client Username using an HTTP POST with the following command:
 
@@ -199,7 +199,7 @@ curl -X PATCH  -u user:password solacevmr:8080/SEMP/v2/config/msgVpns/default/cl
   -d '{"enabled":false}'
 ```
 
-The response back from the Solace Messaging system will again have the same format as the GET response. In the response, the object is still returned and in this case, you can see that the object is now disabled: `"enabled":false`. 
+The response back from the Solace Messaging system will again have the same format as the GET response. In the response, the object is still returned and in this case, you can see that the object is now disabled: `"enabled":false`.
 
 ```
   {
@@ -259,7 +259,7 @@ As with other methods, the response format contains the meta, links, and data. I
     }
 }  
 ```
-       
+
 ## Removing an object using DELETE
 
 The HTTP DELETE method is used to remove an object. No content is required. All the details are provided in the URI. The following curl will delete the `tutorialUser` Client Username object.
@@ -282,7 +282,6 @@ In contrast to other methods, for the delete only the meta object is returned. T
 
 ## Summary
 
-At this point, you have created, retrieved, updated and deleted a Client Username object using SEMP. The examples used `curl` to send and receive the HTTP requests, but you can adapt the steps to any programming language of your choice. 
+At this point, you have created, retrieved, updated and deleted a Client Username object using SEMP. The examples used `curl` to send and receive the HTTP requests, but you can adapt the steps to any programming language of your choice.
 
 SEMP is an extensive API that lets you configure anything on your Solace Messaging so there is a lot more to understand. If you want to know more, either you can get more familiar with the SEMP concepts by checking out the [Concepts Guide]({{ site.docs-concepts }}){:target="_top"} or you can see the full [developer documentation for the API]({{ site.docs-api }}){:target="_top"}.
-

@@ -1,7 +1,7 @@
 
 ## Get Solace Messaging
 
-This tutorial requires access Solace Messaging and requires that you know several connectivity properties about your Solace Messaging. Specifically you need to know the following:
+This tutorial requires access Solace messaging and requires that you know several connectivity properties about your Solace Messaging. Specifically you need to know the following:
 
 <table>
   <tr>
@@ -31,18 +31,31 @@ This tutorial requires access Solace Messaging and requires that you know severa
   </tr>
 </table>
 
-### Option 1: Start a Solace VMR
+There are several ways you can get access to Solace Messaging and find these required properties.
+
+### Option 1: Use Solace Cloud
+
+* Follow [these instructions]({{ site.links-solaceCloud-setup }}){:target="_top"} to quickly spin up a cloud-based Solace messaging service for your applications.
+* The messaging connectivity information is found in the service details in the connectivity tab (shown below). You will need:
+    * Host:Port (use the SEMP URI)
+    * Message VPN
+    * Management Username
+    * Management Password
+
+![]({{ site.baseurl }}/images/connectivity-info.png)
+
+### Option 2: Start a Solace VMR
 
 * Follow [these instructions]({{ site.docs-vmr-setup }}){:target="_top"} to start the Solace VMR in leading Clouds, Container Platforms or Hypervisors. The tutorials outline where to download and how to install the Solace VMR.
 * The messaging connectivity information are the following:
     * Host: \<public_ip> (IP address assigned to the VMR in tutorial instructions)
     * Message VPN: default
-    * A management username and password to access the router
+    * Management Username: sampleUser (for example: admin)
+    * Management Password: samplePassword (for example: admin)
 
-### Option 2: Get access to a Solace appliance
+### Option 3: Get access to a Solace appliance
 
 * Contact your Solace appliance administrators and obtain the following:
     * A Solace Message-VPN where you can produce and consume direct and persistent messages
     * The host name or IP address of the Solace appliance hosting your Message-VPN
-    * Management Username: sampleUser (for example: admin)
-    * Management Password: samplePassword (for example: admin)
+    * A username and password to access the Solace appliance

@@ -1,6 +1,6 @@
 ---
 layout: tutorials
-title: Message VPN with Queue – Java 
+title: Message VPN with Queue – Java
 summary: Sample integration into a Java-based management tool using the SEMP Java Client Library
 icon: management-integration-java.svg
 ---
@@ -16,8 +16,8 @@ The goals of this tutorial are to:
 Let's review the admin objectives:
 
 * **Creating message-VPNs** is a convenient way to slice a Solace Messaging to separated independent virtual routers, multiplying its use. There are many use cases including security, controlled share of functionality and capacity. For developers, one way to make use of a message-VPN is to share a VMR with everyone having a dedicated message-VPN for development use. Once a message-VPN is created, the client can connect to it with the assigned username and password using basic internal authentication.
-* Another common objective is to **create a persistent queue** as a message endpoint in the particular message-VPN. This resource is only visible to those connected to this message-VPN and it can store incoming guaranteed messages until consumed. 
-* The administrator may also want the ability to **delete a queue** or 
+* Another common objective is to **create a persistent queue** as a message endpoint in the particular message-VPN. This resource is only visible to those connected to this message-VPN and it can store incoming guaranteed messages until consumed.
+* The administrator may also want the ability to **delete a queue** or
 * **delete a message-VPN** when no longer needed.
 
 To accomplish this, we will create a set of tasks as building blocks that match the SEMP object model of the Solace Messaging and use a simple framework to demonstrate the integration and orchestration of these tasks to achieve above objectives. We will use the SEMP Java Client Library to implement these tasks, extending the concepts introduced in the [Basic Operations - Java Client Library]({{ site.baseurl }}/java-client) tutorial.
@@ -28,7 +28,7 @@ This tutorial assumes that you have access to a running Solace VMR with the foll
 
 * A management user authorized with a minimum access scope level of *global/read-write*.
 
-One simple way to get access to a Solace Messaging system is to start a Solace VMR load as outlined [here]({{ site.docs-vmr-setup }}){:target="_top"}. 
+One simple way to get access to a Solace Messaging system is to start a Solace VMR load as outlined [here]({{ site.docs-vmr-setup }}){:target="_top"}.
 
 ### Trying it yourself
 
@@ -36,7 +36,7 @@ This tutorial is available in [GitHub]({{ site.repository }}){:target="_blank"} 
 
 At the end, this tutorial walks through downloading and running the sample from source.
 
-{% if jekyll.environment == 'solaceCloud' %} {% include solaceMessaging-cloud.md %} {% else %} {% include solaceMessaging.md %} {% endif %}
+{% include solaceMessaging.md %}
 
 ## The SEMP object model of Solace message-VPNs and VPN resources
 
@@ -49,8 +49,8 @@ Solace Messaging management is divided into Router-global level and individual M
 ![]({{ site.baseurl }}/images/message-vpn-semp-objects.png)
 
 Clients can connect to a message-VPN and use its resources after proper authentication and authorization, controlled by the properties of the following SEMP objects on the Solace Messaging:
- 
-* The [Message-VPN]({{ site.docs-msg-vpn }}){:target="_top"} object defines the type and details of client authentication applied and restrictions to the combined resource usage of all VPN clients. 
+
+* The [Message-VPN]({{ site.docs-msg-vpn }}){:target="_top"} object defines the type and details of client authentication applied and restrictions to the combined resource usage of all VPN clients.
 * A [Client Profile]({{ site.docs-client-profile }}){:target="_top"} object within a message-VPN defines resource usage restrictions applied to individual clients.
 * An [ACL (Access Control List) Profile]({{ site.docs-acl-profile }}){:target="_top"} object within a message-VPN defines access restrictions by listing allowance or denial of which clients can connect and to which topics and queues.
 * A [Client Username]({{ site.docs-client-username }}){:target="_top"} object within a message-VPN has an associated Client Profile and an ACL Profile. The username provided by the connecting client will be the Client Username applied to that connection or if it is not found then the default Client Username will be applied. The password property will be used if internal client authentication type has been specified for the message-VPN.
@@ -111,7 +111,7 @@ MsgVpnClientUsername clientUsername = new MsgVpnClientUsername();
 clientUsername.setPassword(clientPassword);
 clientUsername.setEnabled(true);
 if (!clientName.equals(DEFAULT_CLIENTUSERNAME)) {
-    // Create client-username if not default 
+    // Create client-username if not default
     clientUsername.setClientUsername(clientName);
     MsgVpnClientUsernameResponse cuResp = sempApiInstance.createMsgVpnClientUsername(
     		messageVpnName, clientUsername, null);
@@ -158,7 +158,7 @@ List<MsgVpnQueue> queuesList = resp.getData();
 if (queuesList.size() > 0) {
     System.out.format("Message-VPN contains one or more queues, deleting them first:\n");
     for (MsgVpnQueue queue: queuesList){
-       	// Calling above Delete queue building block 
+       	// Calling above Delete queue building block
        	deleteQueue(messageVPNName, queue.getQueueName());
     }
 }
@@ -235,5 +235,3 @@ Now it is possible to easily create as many message-VPNs as required and share a
 ```
 
 If you have any issues using SEMP, check the [Solace community.]({{ site.solace-community }}){:target="_top"} for answers to common issues.
-
-
