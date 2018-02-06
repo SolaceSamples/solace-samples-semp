@@ -1,8 +1,10 @@
 ---
 layout: tutorials
-title: Generating the SEMP Client Library 
+title: Generating the SEMP Client Library
 summary: Generate a SEMP management client library for any of the supported programming languages
 icon: generate-semp-client-lib.svg
+icon-height: 70px
+icon-width: 228px
 ---
 
 Programmatic management of the Solace Messaging through the SEMP API can be done directly through accessing the system's HTTP REST protocol API (see the related [Basic Operations - curl tutorial]({{ site.baseurl }}/curl/)) or more conveniently, using a local SEMP client library which is:
@@ -25,12 +27,12 @@ As a pre-requisite, you will need to have Java installed.
 
 ## Overview
 
-The Solace Element Management Protocol (SEMP) API is based on the [OpenAPI (a.k.a. Swagger) specification]({{ site.swagger-spec }}){:target="_top"}, which enables an object oriented approach to the management of Solace Messaging by specifying management objects with valid operations and properties. 
+The Solace Element Management Protocol (SEMP) API is based on the [OpenAPI (a.k.a. Swagger) specification]({{ site.swagger-spec }}){:target="_top"}, which enables an object oriented approach to the management of Solace Messaging by specifying management objects with valid operations and properties.
 
 * The API is defined as a JSON or YAML formatted specification
 * From this specification it is possible to programmatically generate client libraries in most popular languages
 * Documentation can also be generated similarly, so it is always up-to-date
-	
+
 When a new version of Solace Messaging is released with new management capabilities, an updated API specification will reflect that. Then a new backwards-compatible version of the client library can be generated with added support to the latest features.
 
 Following steps are required to generate the SEMP client library:
@@ -40,7 +42,7 @@ Following steps are required to generate the SEMP client library:
 3. Setting customization rules, such as the naming of the generated library.
 4. Generating the library.
 
-	
+
 ## Step 1: Getting the API specification
 
 There are two ways to obtain the API specification:
