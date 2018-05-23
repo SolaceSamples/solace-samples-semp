@@ -108,10 +108,10 @@ task buildSempLib << {
     }
     def f = new File('../swagger.yaml')
     if (!f.exists()) {
-        new URL('https://sftp.solace.com/download/VMR_SEMPV2_SCHEMA_YAML').withInputStream{ i -> f.withOutputStream{ it << i }}
-    }       
+        new URL('https://products.solace.com/download/PUBSUB_SEMPV2_SCHEMA_YAML').withInputStream{ i -> f.withOutputStream{ it << i }}
+    }
     delete "workdir"; (new File("workdir")).mkdirs()
-    javaexec { 
+    javaexec {
         main="-jar";
         classpath configurations.tool
         workingDir = "workdir"
@@ -125,7 +125,7 @@ task buildSempLib << {
                 "-c",
                 "../codegen_config_java.json"
                 ]
-    } 
+    }
     // Cleanup
     delete "workdir/gradle", "workdir/src/test"
     delete fileTree("workdir") {
@@ -142,7 +142,7 @@ task sempLibPresent {
     def f = new File('docs')   // we take the presence of the docs directory as an evidence that the library has been built
     if (!f.exists()) {
         buildSempLib.execute()
-    }       
+    }
 }
 
 assemble.dependsOn sempLibPresent
