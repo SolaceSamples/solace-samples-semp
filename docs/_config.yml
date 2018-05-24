@@ -14,6 +14,8 @@ solace-community: //dev.solace.com/community/
 # Also see _includes/intro.html to customize the description which gets included in index.html.
 
 # Links
+hostname: cloud.solace.com
+dev-hostname: dev.solace.com
 docs-semp-home: //docs.solace.com/SEMP/SEMP-Home.htm
 docs-concepts: //docs.solace.com/SEMP/SEMP-Concepts.htm
 docs-architecture: //docs.solace.com/SEMP/SEMP-API-Archit.htm
