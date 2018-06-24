@@ -24,7 +24,7 @@ The examples below make a few assumptions for simplicity:
 * The Solace Messaging host and port are `solacevmr:8080`
 * The Solace message-VPN is `default`
 
-{% include solaceMessaging.md %}
+{% include_relative assets/solaceMessaging.md %}
 
 ## The Basics
 
