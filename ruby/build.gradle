@@ -19,7 +19,7 @@ task buildSempLib << {
     }
     def f = new File('../swagger.yaml')
     if (!f.exists()) {
-        new URL('https://sftp.solace.com/download/VMR_SEMPV2_SCHEMA_YAML').withInputStream{ i -> f.withOutputStream{ it << i }}
+        new URL('https://products.solace.com/download/PUBSUB_SEMPV2_SCHEMA_YAML').withInputStream{ i -> f.withOutputStream{ it << i }}
     }
     delete "workdir"; (new File("workdir")).mkdirs()
     javaexec {
