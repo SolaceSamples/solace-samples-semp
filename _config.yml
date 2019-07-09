@@ -21,7 +21,7 @@ docs-architecture: //docs.solace.com/SEMP/SEMP-API-Archit.htm
 docs-http-responses: //docs.solace.com/SEMP/SEMP-API-Protocol.htm#HTTP4
 docs-concepts-paging: //docs.solace.com/SEMP/SEMP-API-Archit.htm#Paginati
 docs-concepts-uri: //docs.solace.com/SEMP/SEMP-API-Protocol.htm#URI
-docs-api: //docs.solace.com/API-Developer-Online-Ref-Documentation/swagger-ui/index.html
+docs-api: //docs.solace.com/SEMP/SEMP-API-Ref.htm
 docs-schema: //docs.solace.com/SEMP/SEMP-API-Archit.htm#SEMP
 docs-semp-legacy: //docs.solace.com/SEMP/Using-Legacy-SEMP.htm
 
