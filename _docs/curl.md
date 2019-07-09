@@ -292,7 +292,7 @@ Here are some additional examples of frequently used configurations:
 This will create a new mesage-vpn "MyMessageVpn" with no authentication (for development purposes only) and 100 MB message spool usage quota:
 
 ```
-curl -X POST -u user:password solacevmr:8080/SEMP/v2/config/msgVpn \
+curl -X POST -u user:password solacevmr:8080/SEMP/v2/config/msgVpns \
   -H "content-type: application/json" \
   -d '{"msgVpnName":"MyMessageVpn","authenticationBasicType":"none","maxMsgSpoolUsage":100,"enabled":true}'
 ```
