@@ -282,6 +282,32 @@ In contrast to other methods, for the delete only the meta object is returned. T
 }
 ```
 
+
+## Examples
+
+Here are some additional examples of frequently used configurations:
+
+### Creating a message-vpn
+
+This will create a new mesage-vpn "MyMessageVpn" with no authentication (for development purposes only) and 100 MB message spool usage quota:
+
+```
+curl -X POST -u user:password solacevmr:8080/SEMP/v2/config/msgVpns \
+  -H "content-type: application/json" \
+  -d '{"msgVpnName":"MyMessageVpn","authenticationBasicType":"none","maxMsgSpoolUsage":100,"enabled":true}'
+```
+
+
+### Creating a queue
+
+This command will create a non-exclusive queue "MyQueue" on "MyMessageVpn":
+
+```
+curl -X POST -u user:password solacevmr:8080/SEMP/v2/config/msgVpns/MyMessageVpn/queues \
+  -H "content-type: application/json" \
+  -d '{"queueName":"MyQueue","accessType":"non-exclusive","egressEnabled":true,"ingressEnabled":true,"permission":"delete"}'
+```
+
 ## Summary
 
 At this point, you have created, retrieved, updated and deleted a Client Username object using SEMP. The examples used `curl` to send and receive the HTTP requests, but you can adapt the steps to any programming language of your choice.

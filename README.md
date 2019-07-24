@@ -17,7 +17,7 @@ These tutorials apply to the SEMP API starting in version 2. For older versions 
 
 This repository contains code and matching tutorial walk throughs for different basic scenarios and programming languages. Sample code is organised in programming language specific subdirectories. 
 
-It is best to view the associated [tutorials home page](http://dev.solace.com/get-started/semp-tutorials/).
+It is best to view the associated [tutorials home page](//solace.com/samples/solace-samples-semp/).
 
 ## Prerequisites
 
@@ -27,7 +27,7 @@ There are no prerequisites.
 
 Refer to the README.md in the [`java`](https://github.com/SolaceSamples/solace-samples-semp/tree/master/java), [`python`](https://github.com/SolaceSamples/solace-samples-semp/tree/master/python) and [`ruby`](https://github.com/SolaceSamples/solace-samples-semp/tree/master/ruby) subdirectories for a short description of how to build and run the samples for the programming languages.
 
-To try individual samples, see the tutorials linked from the [tutorials home page](http://dev.solace.com/get-started/semp-tutorials/) for full details which can walk you through the samples, what they do, and how to correctly run them to explore SEMP.
+To try individual samples, see the tutorials linked from the [tutorials home page](//solace.com/samples/solace-samples-semp/) for full details which can walk you through the samples, what they do, and how to correctly run them to explore SEMP.
 
 ## Contributing
 
