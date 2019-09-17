@@ -41,4 +41,4 @@ swagger-codegen-site: //swagger.io/swagger-codegen/
 swagger-tools-site: //swagger.io/tools/
 swagger-codegen-github-overview: //github.com/swagger-api/swagger-codegen#overview
 swagger-codegenjar-from-mvncentral: //central.maven.org/maven2/io/swagger/swagger-codegen-cli/2.2.2/swagger-codegen-cli-2.2.2.jar
-links-solaceCloud-setup: //solace.com/cloud
+links-solaceCloud-setup: //solace.com/cloud/
