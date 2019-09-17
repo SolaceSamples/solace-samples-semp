@@ -7,7 +7,7 @@ These tutorials will get you up to speed and managing Solace message routers wit
 
 If you are new to SEMP, you can learn more here for full documentation and API reference:
 
-* http://docs.solace.com/SEMP/SEMP-Home.htm
+* https://docs.solace.com/SEMP/SEMP-Concepts.htm
 
 These tutorials apply to the SEMP API starting in version 2. For older versions of the SEMP API, you can see the [Legacy SEMP Documentation](http://dev.solace.com/get-started/semp-tutorials/)
 
@@ -48,4 +48,4 @@ For more information try these resources:
 - The Solace Developer Portal website at: http://dev.solace.com
 - Get a better understanding of [Solace technology](http://dev.solace.com/tech/).
 - Check out the [Solace blog](http://dev.solace.com/blog/) for other interesting discussions around Solace technology
-- Ask the [Solace community.](http://dev.solace.com/community/)
+- Ask the [Solace community.](https://solace.com/support/ )
