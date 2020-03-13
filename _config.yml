@@ -9,7 +9,7 @@ repository-ruby: https://github.com/SolaceSamples/solace-samples-semp/tree/maste
 
 tutorials-home: //solacesamples.github.io/solace-samples-semp/
 solace-samples-jms-queues: //solacesamples.github.io/solace-samples-jms/persistence-with-queues/
-solace-community: //solace.com/support/
+solace-community: //solace.community
 
 # Also see _includes/intro.html to customize the description which gets included in index.html.
 
