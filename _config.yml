@@ -9,13 +9,13 @@ repository-ruby: https://github.com/SolaceSamples/solace-samples-semp/tree/maste
 
 tutorials-home: //solacesamples.github.io/solace-samples-semp/
 solace-samples-jms-queues: //solacesamples.github.io/solace-samples-jms/persistence-with-queues/
-solace-community: //dev.solace.com/community/
+solace-community: //solace.community
 
 # Also see _includes/intro.html to customize the description which gets included in index.html.
 
 # Links
 
-docs-semp-home: //docs.solace.com/SEMP/SEMP-Home.htm
+docs-semp-home: //docs.solace.com/SEMP/SEMP-Concepts.htm
 docs-concepts: //docs.solace.com/SEMP/SEMP-Concepts.htm
 docs-architecture: //docs.solace.com/SEMP/SEMP-API-Archit.htm
 docs-http-responses: //docs.solace.com/SEMP/SEMP-API-Protocol.htm#HTTP4
@@ -25,20 +25,20 @@ docs-api: //docs.solace.com/SEMP/SEMP-API-Ref.htm
 docs-schema: //docs.solace.com/SEMP/SEMP-API-Archit.htm#SEMP
 docs-semp-legacy: //docs.solace.com/SEMP/Using-Legacy-SEMP.htm
 
-docs-router-concepts: //docs.solace.com/Features/Core-Concepts.htm#router-concepts
-docs-mgmt-user-aa: //docs.solace.com/Features/Mgmt-User-Authenticate-Authorize.htm
-docs-msg-vpn: //docs.solace.com/Configuring-and-Managing-Routers/Configuring-VPNs.htm
-docs-client-profile: //docs.solace.com/Features/Client-Authorization.htm#client_authentication_and_authorization_2866343001_219397
-docs-acl-profile: //docs.solace.com/Configuring-and-Managing-Routers/Managing-Access-Control-Lists.htm
-docs-client-username: //docs.solace.com/Features/Client-authentication-and-authorization.htm
-docs-queues: //docs.solace.com/Configuring-and-Managing-Routers/Configuring-Queues.htm
-docs-dtes: //docs.solace.com/Configuring-and-Managing-Routers/Configuring-DTEs.htm
-docs-soladmin-home: //docs.solace.com/SolAdmin/SolAdmin-Home.htm
-docs-solace-downloads: //dev.solace.com/downloads/
+docs-router-concepts: //docs.solace.com/PubSub-Basics/Core-Concepts.htm
+docs-mgmt-user-aa: //docs.solace.com/Configuring-and-Managing/TLS-SSL-Encryption.htm
+docs-msg-vpn: //docs.solace.com/Configuring-and-Managing/Configuring-VPNs.htm
+docs-client-profile: //docs.solace.com/Configuring-and-Managing/Client-Authorization.htm
+docs-acl-profile: //docs.solace.com/Configuring-and-Managing/Managing-Access-Control-Lists.htm
+docs-client-username: //docs.solace.com/Configuring-and-Managing/Managing-Client-Authentic-and-Authoriz.htm
+docs-queues: //docs.solace.com/Configuring-and-Managing/Configuring-Queues.htm
+docs-dtes: //docs.solace.com/Configuring-and-Managing/Configuring-DTEs.htm
+docs-soladmin-home: //docs.solace.com/SolAdmin/SolAdmin-Overview.htm
+docs-solace-downloads: //solace.com/downloads/
 python-setuptools: //pypi.python.org/pypi/setuptools
 swagger-spec: //swagger.io/specification/
 swagger-codegen-site: //swagger.io/swagger-codegen/
 swagger-tools-site: //swagger.io/tools/
 swagger-codegen-github-overview: //github.com/swagger-api/swagger-codegen#overview
 swagger-codegenjar-from-mvncentral: //central.maven.org/maven2/io/swagger/swagger-codegen-cli/2.2.2/swagger-codegen-cli-2.2.2.jar
-links-solaceCloud-setup: //cloud.solace.com/create-messaging-service/
+links-solaceCloud-setup: //solace.com/cloud/
