@@ -82,7 +82,7 @@ public class ManageVPN {
         msgVpn.setAuthenticationBasicType(AuthenticationBasicTypeEnum.INTERNAL);
         msgVpn.setMaxMsgSpoolUsage(1500L);
         msgVpn.setEnabled(true);
-        MsgVpnResponse resp = sempApiInstance.createMsgVpn(msgVpn, null);        
+        MsgVpnResponse resp = sempApiInstance.createMsgVpn(msgVpn, null, null);        
     }
     
     public void updateDefaultClientProfileForPersistentMessaging(String messageVpnName) throws ApiException {
@@ -94,7 +94,7 @@ public class ManageVPN {
         clientProfile.setAllowGuaranteedMsgSendEnabled(true);
         clientProfile.setAllowGuaranteedMsgReceiveEnabled(true);
         clientProfile.setAllowGuaranteedEndpointCreateEnabled(true);
-        MsgVpnClientProfileResponse resp = sempApiInstance.updateMsgVpnClientProfile(messageVpnName, DEFAULT_CLIENTPROFILE, clientProfile, null);
+        MsgVpnClientProfileResponse resp = sempApiInstance.updateMsgVpnClientProfile(messageVpnName, DEFAULT_CLIENTPROFILE, clientProfile, null, null);
     }
     
     public void setupClientUsername(String messageVpnName, String clientName, String clientPassword) throws ApiException {
@@ -109,11 +109,11 @@ public class ManageVPN {
             // Create client-username if not default (which was already created automatically with the VPN)
             clientUsername.setClientUsername(clientName);
             MsgVpnClientUsernameResponse resp = sempApiInstance.createMsgVpnClientUsername(
-                    messageVpnName, clientUsername, null);
+                    messageVpnName, clientUsername, null, null);
         } else {
             // Modify existing default client-username
             MsgVpnClientUsernameResponse resp = sempApiInstance.updateMsgVpnClientUsername(
-                    messageVpnName, DEFAULT_CLIENTUSERNAME, clientUsername, null);
+                    messageVpnName, DEFAULT_CLIENTUSERNAME, clientUsername, null, null);
         }
     }
     
@@ -128,7 +128,7 @@ public class ManageVPN {
         queue.setIngressEnabled(true);
         queue.setEgressEnabled(true);
         queue.setAccessType(AccessTypeEnum.NON_EXCLUSIVE);
-        MsgVpnQueueResponse resp = sempApiInstance.createMsgVpnQueue(messageVpnName, queue, null);
+        MsgVpnQueueResponse resp = sempApiInstance.createMsgVpnQueue(messageVpnName, queue, null, null);
     }
 
     public void deleteMessageVpn(String messageVPNName) throws ApiException {
@@ -136,7 +136,7 @@ public class ManageVPN {
         System.out.format("Deleting Message-VPN: %s...\n", messageVPNName);
 
         // Prerequisite for delete VPN is to remove all queues
-        MsgVpnQueuesResponse queryResp = sempApiInstance.getMsgVpnQueues(messageVPNName, null, null, null, null);
+        MsgVpnQueuesResponse queryResp = sempApiInstance.getMsgVpnQueues(messageVPNName, null, null, null, null, null);
         List<MsgVpnQueue> queuesList = queryResp.getData();
         if (queuesList.size() > 0) {
             System.out.format("Message-VPN contains one or more queues, deleting them first:\n");
