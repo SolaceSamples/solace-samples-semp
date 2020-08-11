@@ -75,7 +75,7 @@ dependencies {
     tool "io.swagger:swagger-codegen-cli:2.2.2"
 }
 
-task createAllStartScripts() << {
+task createAllStartScripts() doLast {
      // just a placeholder
 }
   def scripts = [ 'basicOperationsSample':'com.solace.samples.BasicOperationsSample',
@@ -101,14 +101,14 @@ installDist {
 
 assemble.dependsOn installDist
 
-task buildSempLib << {
+task buildSempLib doLast {
     copy {
         from configurations.tool
         into new File("..").absolutePath
     }
     def f = new File('../swagger.yaml')
     if (!f.exists()) {
-        new URL('https://products.solace.com/download/PUBSUB_SEMPV2_SCHEMA_YAML').withInputStream{ i -> f.withOutputStream{ it << i }}
+        new URL('https://products.solace.com/download/PUBSUB_SEMPV2_SCHEMA_YAML').withInputStream{ i -> f.withOutputStream{ it doLast { i } }}
     }
     delete "workdir"; (new File("workdir")).mkdirs()
     javaexec {

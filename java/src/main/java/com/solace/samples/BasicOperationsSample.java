@@ -71,7 +71,7 @@ public class BasicOperationsSample {
         newClientUsername.setEnabled(true);
         MsgVpnClientUsernameResponse resp = null;
         try {
-             resp = sempApiInstance.createMsgVpnClientUsername(msgVpn, newClientUsername, null);
+             resp = sempApiInstance.createMsgVpnClientUsername(msgVpn, newClientUsername, null, null);
         } catch (ApiException e) {
             handleError(e);
             return;
@@ -84,7 +84,7 @@ public class BasicOperationsSample {
     public void retrievingObjectUsingGet() {
         try {
             String clientUsername = "tutorialUser";
-            MsgVpnClientUsernameResponse resp = sempApiInstance.getMsgVpnClientUsername(msgVpn, clientUsername, null);
+            MsgVpnClientUsernameResponse resp = sempApiInstance.getMsgVpnClientUsername(msgVpn, clientUsername, null, null);
             System.out.println("Retrieved Client Username: " + resp.getData());
         } catch (ApiException e) {
             handleError(e);
@@ -94,7 +94,7 @@ public class BasicOperationsSample {
     public void retrievingCollectionUsingGet() {
         try {
             // Ignore paging and selectors in this example. So set to null.
-            MsgVpnClientUsernamesResponse resp = sempApiInstance.getMsgVpnClientUsernames(msgVpn, null, null, null, null);
+            MsgVpnClientUsernamesResponse resp = sempApiInstance.getMsgVpnClientUsernames(msgVpn, null, null, null, null, null);
             List<MsgVpnClientUsername> clientUsernamesList = resp.getData();
             System.out.println("Retrieved " + clientUsernamesList.size() + " Client Usernames.");
         } catch (ApiException e) {
@@ -108,7 +108,7 @@ public class BasicOperationsSample {
             MsgVpnClientUsername updatedClientUsername = new MsgVpnClientUsername();
             updatedClientUsername.setEnabled(false);
             MsgVpnClientUsernameResponse resp = sempApiInstance.updateMsgVpnClientUsername(
-                    msgVpn, clientUsername, updatedClientUsername, null);
+                    msgVpn, clientUsername, updatedClientUsername, null, null);
             System.out.println("Updated: " + resp.getData());
         } catch (ApiException e) {
             handleError(e);
@@ -121,7 +121,7 @@ public class BasicOperationsSample {
             MsgVpnClientUsername updatedClientUsername = new MsgVpnClientUsername();
             updatedClientUsername.setEnabled(true);
             MsgVpnClientUsernameResponse resp = sempApiInstance.replaceMsgVpnClientUsername(
-                            msgVpn, clientUsername, updatedClientUsername, null);
+                            msgVpn, clientUsername, updatedClientUsername, null, null);
             System.out.println("Updated: " + resp.getData());
             
         } catch (ApiException e) {
