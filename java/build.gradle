@@ -15,7 +15,7 @@ distTar.enabled=false
 distZip.enabled=false
 
 applicationName = 'solace-samples-semp'
-version = ''
+def version = '0.0.1'
 
 eclipse {
   project {
@@ -35,9 +35,18 @@ idea {
   }
 }
 
+sourceSets {
+    main {
+        java {
+            srcDir 'src/main/java'
+            srcDir 'src2/main/java'
+        }
+    }
+}
+
 jar {
-	baseName = 'solace-samples-semp'
-    version =  version
+    archiveBaseName = 'solace-samples-semp'
+    archiveVersion =  version
     manifest {
         attributes 'Implementation-Title': 'Solace Getting Started Samples',
                    'Implementation-Version': version
@@ -50,29 +59,32 @@ configurations {
 
 repositories {
     mavenCentral()
+    flatDir {
+        dirs 'lib'
+    }
 }
 
 ext {
-    swagger_annotations_version = "1.5.8"
-    jackson_version = "2.7.5"
-    jersey_version = "2.22.2"
+    swagger_annotations_version = "1.5.24"
+    jackson_version = "2.11.4"
+    jersey_version = "2.29.1"
     junit_version = "4.12"
 }
 
 dependencies {
     // Swagger Java Client API Dependencies
-    compile "io.swagger:swagger-annotations:$swagger_annotations_version"
-    compile "org.glassfish.jersey.core:jersey-client:$jersey_version"
-    compile "org.glassfish.jersey.media:jersey-media-multipart:$jersey_version"
-    compile "org.glassfish.jersey.media:jersey-media-json-jackson:$jersey_version"
-    compile "com.fasterxml.jackson.core:jackson-core:$jackson_version"
-    compile "com.fasterxml.jackson.core:jackson-annotations:$jackson_version"
-    compile "com.fasterxml.jackson.core:jackson-databind:$jackson_version"
-    compile "com.fasterxml.jackson.datatype:jackson-datatype-jsr310:$jackson_version"
-    compile "com.brsanthu:migbase64:2.2"
-    compile("com.google.code.gson:gson:2.6.2")
-    testCompile "junit:junit:$junit_version"
-    tool "io.swagger:swagger-codegen-cli:2.2.2"
+    implementation "io.swagger:swagger-annotations:$swagger_annotations_version"
+    implementation "org.glassfish.jersey.core:jersey-client:$jersey_version"
+    implementation "org.glassfish.jersey.media:jersey-media-multipart:$jersey_version"
+    implementation "org.glassfish.jersey.media:jersey-media-json-jackson:$jersey_version"
+    implementation "com.fasterxml.jackson.core:jackson-core:$jackson_version"
+    implementation "com.fasterxml.jackson.core:jackson-annotations:$jackson_version"
+    implementation "com.fasterxml.jackson.core:jackson-databind:$jackson_version"
+    implementation "com.fasterxml.jackson.datatype:jackson-datatype-jsr310:$jackson_version"
+    implementation "com.brsanthu:migbase64:2.2"
+    implementation "com.google.code.gson:gson:2.6.2"
+    testImplementation "junit:junit:$junit_version"
+    tool "io.swagger:swagger-codegen-cli:2.4.25"
 }
 
 task createAllStartScripts() doLast {
@@ -82,10 +94,10 @@ task createAllStartScripts() doLast {
                   'manageVPN':'com.solace.samples.ManageVPN'  ]
   scripts.each() { scriptName, className ->
           def t = tasks.create(name: scriptName+'StartScript', type: CreateStartScripts) {
-        mainClassName = className
+        mainClass = className
         applicationName = scriptName
         outputDir = new File(project.buildDir, 'scripts')
-        classpath = jar.outputs.files + project.configurations.runtime
+        classpath = jar.outputs.files + project.configurations.runtimeClasspath
     }
       applicationDistribution.into("bin") {
             from(t)
@@ -101,22 +113,22 @@ installDist {
 
 assemble.dependsOn installDist
 
-task buildSempLib doLast {
+task buildSempLib {
     copy {
         from configurations.tool
         into new File("..").absolutePath
     }
     def f = new File('../swagger.yaml')
     if (!f.exists()) {
-        new URL('https://products.solace.com/download/PUBSUB_SEMPV2_SCHEMA_YAML').withInputStream{ i -> f.withOutputStream{ it doLast { i } }}
+        new URL('https://products.solace.com/download/PUBSUB_SEMPV2_SCHEMA_YAML').withInputStream{ i -> f.withOutputStream{ it << i }}
     }
-    delete "workdir"; (new File("workdir")).mkdirs()
+    delete "sempclient"; (new File("sempclient")).mkdirs()
     javaexec {
-        main="-jar";
+        mainClass="-jar";
         classpath configurations.tool
-        workingDir = "workdir"
+        workingDir = "sempclient"
         args = [
-                "../../swagger-codegen-cli-2.2.2.jar",
+                "../../swagger-codegen-cli-2.4.25.jar",
                 "generate",
                 "-l",
                 "java",
@@ -127,21 +139,25 @@ task buildSempLib doLast {
                 ]
     }
     // Cleanup
-    delete "workdir/gradle", "workdir/src/test"
-    delete fileTree("workdir") {
-        include "*"
+    //delete "workdir/gradle", "workdir/src/test"
+    //delete fileTree("workdir") {
+    //    include "*"
+    //}
+    copy {
+        from "sempclient/src"
+        into "./src2"
     }
     copy {
-        from "workdir"
-        into "."
+        from "sempclient/docs"
+        into "./docs"
     }
-    delete "workdir"
+    //delete "sempclient"
 }
 
 task sempLibPresent {
     def f = new File('docs')   // we take the presence of the docs directory as an evidence that the library has been built
     if (!f.exists()) {
-        buildSempLib.execute()
+        buildSempLib
     }
 }
 
