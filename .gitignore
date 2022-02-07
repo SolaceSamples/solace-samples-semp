@@ -13,3 +13,7 @@ build/
 .project
 .settings/
 .idea
+java/src2/
+java/docs/
+java/sempclient/
+java/lib/
