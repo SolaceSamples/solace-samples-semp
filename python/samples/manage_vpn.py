@@ -103,4 +103,4 @@ if __name__ == '__main__':
             sys.exit("Invalid command: " + command + usage)
             
     except ApiException as e:
-        print('Error during operation. Details: %s' % e.reason)
+        print('Error during operation. Details: %s' % e.body)
