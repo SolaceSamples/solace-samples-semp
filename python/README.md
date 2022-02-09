@@ -41,7 +41,7 @@ To try the samples, run them like the following:
 python samples/manage_vpn.py create <host:port> admin admin myNewVPN
 ```
 
-See the individual tutorials linked from the [tutorials home page](http://dev.solace.com/get-started/semp-tutorials/) for full details which can walk you through the samples, what they do, and how to correctly run them to explore SEMP.
+See the individual tutorials linked from the [tutorials home page](https://tutorials.solace.dev/semp) for full details which can walk you through the samples, what they do, and how to correctly run them to explore SEMP.
 
 ## Contributing
 
