@@ -41,8 +41,12 @@ To try the samples, run them like the following:
 ```
 ruby -Ilib samples/manage_vpn.rb create <host:port> <semp-username> <semp-password> myNewVPN
 ```
+E.g.:
+```
+ruby -Ilib samples/manage_vpn.rb create http://localhost:8080/SEMP/v2/config admin admin test
+```
 
-See the individual tutorials linked from the [tutorials home page](http://dev.solace.com/get-started/semp-tutorials/) for full details which can walk you through the samples, what they do, and how to correctly run them to explore SEMP.
+See the individual tutorials linked from the [tutorials home page](https://tutorials.solace.dev/semp) for full details which can walk you through the samples, what they do, and how to correctly run them to explore SEMP.
 
 ## Contributing
 
