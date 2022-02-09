@@ -1,28 +1,4 @@
 apply plugin: 'java'
-apply plugin: 'application'
-
-// Don't need these task, so disabling them. Makes it possible to avoid
-// declaring a single application main class.
-startScripts.enabled = false
-run.enabled = false
-
-// Also don't need the regular application distribution packages since
-// this is just a set of samples. So disabling to make the build output
-// cleaner
-distTar.enabled=false
-distZip.enabled=false
-
-applicationName = 'solace-samples-semp'
-def version = '0.0.1'
-
-jar {
-    archiveBaseName = 'solace-samples-semp'
-    archiveVersion =  version
-    manifest {
-        attributes 'Implementation-Title': 'Solace Getting Started Samples',
-                   'Implementation-Version': version
-    }
-}
 
 configurations {
     tool
@@ -30,59 +6,11 @@ configurations {
 
 repositories {
     mavenCentral()
-    flatDir {
-        dirs 'lib'
-    }
-}
-
-ext {
-    swagger_annotations_version = "1.5.24"
-    jackson_version = "2.11.4"
-    jersey_version = "2.29.1"
-    junit_version = "4.12"
 }
 
 dependencies {
-    // Swagger Java Client API Dependencies
-    implementation "io.swagger:swagger-annotations:$swagger_annotations_version"
-    implementation "org.glassfish.jersey.core:jersey-client:$jersey_version"
-    implementation "org.glassfish.jersey.media:jersey-media-multipart:$jersey_version"
-    implementation "org.glassfish.jersey.media:jersey-media-json-jackson:$jersey_version"
-    implementation "com.fasterxml.jackson.core:jackson-core:$jackson_version"
-    implementation "com.fasterxml.jackson.core:jackson-annotations:$jackson_version"
-    implementation "com.fasterxml.jackson.core:jackson-databind:$jackson_version"
-    implementation "com.fasterxml.jackson.datatype:jackson-datatype-jsr310:$jackson_version"
-    implementation "com.brsanthu:migbase64:2.2"
-    implementation "com.google.code.gson:gson:2.6.2"
-    testImplementation "junit:junit:$junit_version"
     tool "io.swagger:swagger-codegen-cli:2.4.25"
 }
-
-task createAllStartScripts() doLast {
-     // just a placeholder
-}
-  def scripts = [ 'basicOperationsSample':'com.solace.samples.BasicOperationsSample',
-                  'manageVPN':'com.solace.samples.ManageVPN'  ]
-  scripts.each() { scriptName, className ->
-          def t = tasks.create(name: scriptName+'StartScript', type: CreateStartScripts) {
-        mainClass = className
-        applicationName = scriptName
-        outputDir = new File(project.buildDir, 'scripts')
-        classpath = jar.outputs.files + project.configurations.runtimeClasspath
-    }
-      applicationDistribution.into("bin") {
-            from(t)
-            fileMode = 0755
-			duplicatesStrategy = DuplicatesStrategy.EXCLUDE
-    }
-    createAllStartScripts.dependsOn(t)
-}
-
-installDist {
-    destinationDir = new File(project.buildDir, 'staged')
-}
-
-assemble.dependsOn installDist
 
 task buildSempLib {
     copy {
@@ -93,43 +21,33 @@ task buildSempLib {
     if (!f.exists()) {
         new URL('https://products.solace.com/download/PUBSUB_SEMPV2_SCHEMA_YAML').withInputStream{ i -> f.withOutputStream{ it << i }}
     }
-    delete "sempclient"; (new File("sempclient")).mkdirs()
+    delete "workdir"; (new File("workdir")).mkdirs()
     javaexec {
         mainClass="-jar";
         classpath configurations.tool
-        workingDir = "sempclient"
+        workingDir = "workdir"
         args = [
-                "../../swagger-codegen-cli-2.4.25.jar",
-                "generate",
-                "-l",
-                "python",
-                "-i",
-                "../../swagger.yaml",
-                "-c",
-                "../codegen_config_python.json"
-                ]
+            "../../swagger-codegen-cli-2.4.25.jar",
+            "generate",
+            "-l",
+            "python",
+            "-i",
+            "../../swagger.yaml",
+            "-c",
+            "../codegen_config_python.json"
+            ]
     }
     // Cleanup
-    //delete "workdir/gradle", "workdir/src/test"
-    //delete fileTree("workdir") {
-    //    include "*"
-    //}
-    copy {
-        from "sempclient/src"
-        into "./src2"
+    delete "workdir/test"
+    delete fileTree("workdir") {
+        exclude "**/setup.py"
+        include "*"
     }
     copy {
-        from "sempclient/docs"
-        into "./docs"
+        from "workdir"
+        into "."
     }
-    //delete "sempclient"
+    delete "workdir"
 }
 
-task sempLibPresent {
-    def f = new File('docs')   // we take the presence of the docs directory as an evidence that the library has been built
-    if (!f.exists()) {
-        buildSempLib
-    }
-}
-
-assemble.dependsOn sempLibPresent
+assemble.dependsOn buildSempLib
