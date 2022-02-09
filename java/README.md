@@ -34,7 +34,7 @@ To try individual samples, build the project from source and then run samples li
 ./build/staged/bin/basicOperationsSample <SEMP_BASE_PATH> <SEMP_USER> <SEMP_PASSWORD>
 ```
 
-See the tutorials linked from the [tutorials home page](http://dev.solace.com/get-started/semp-tutorials/) for full details which can walk you through the samples, what they do, and how to correctly run them to explore SEMP.
+See the tutorials linked from the [tutorials home page](https://tutorials.solace.dev/semp) for full details which can walk you through the samples, what they do, and how to correctly run them to explore SEMP.
 
 ## Exploring the Samples
 
