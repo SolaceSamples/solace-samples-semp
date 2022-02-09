@@ -21,11 +21,11 @@ task buildSempLib {
     if (!f.exists()) {
         new URL('https://products.solace.com/download/PUBSUB_SEMPV2_SCHEMA_YAML').withInputStream{ i -> f.withOutputStream{ it << i }}
     }
-    delete "sempclient"; (new File("sempclient")).mkdirs()
+    delete "workdir"; (new File("workdir")).mkdirs()
     javaexec {
         mainClass="-jar";
         classpath configurations.tool
-        workingDir = "sempclient"
+        workingDir = "workdir"
         args = [
             "../../swagger-codegen-cli-2.4.25.jar",
             "generate",
@@ -39,16 +39,16 @@ task buildSempLib {
     }
     // Cleanup
     // delete files at the "root" level, but not the directories
-    delete fileTree("sempclient") {
+    delete fileTree("workdir") {
         exclude "*.gemspec"
         include "*"
     }
     // copy all folders (e.g. docs, spec) and the gemspec file up one level
     copy {
-        from "sempclient"
+        from "workdir"
         into "."
     }
-    delete "sempclient"
+    delete "workdir"
 }
 
 assemble.dependsOn buildSempLib
