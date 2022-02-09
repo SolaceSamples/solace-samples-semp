@@ -29,10 +29,10 @@ Generate the latest version of the SEMP Ruby Client Library if needed (this step
 Then build and install the library:
 
 ```
-gem build semp_client_lib.gemspec
-gem install --dev ./semp_client_lib-1.0.0.gem
+gem build sempclient_samplelib.gemspec
+gem install --dev ./sempclient_samplelib-1.0.0.gem
 ```
-(or `sudo gem install --dev ./semp_client_lib-1.0.0.gem` to install the gem for all users)
+(or `sudo gem install --dev ./sempclient_samplelib-1.0.0.gem` to install the gem for all users)
 
 ## Running the Samples
 
