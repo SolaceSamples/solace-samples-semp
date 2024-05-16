@@ -9,45 +9,42 @@ repositories {
 }
 
 dependencies {
-    tool "io.swagger:swagger-codegen-cli:2.2.2"
+    tool 'io.swagger:swagger-codegen-cli:2.2.2'
 }
 
-task buildSempLib << {
+task buildSempLib doLast {
     copy {
         from configurations.tool
-        into new File("..").absolutePath
+        into new File('..').absolutePath
     }
     def f = new File('../swagger.yaml')
     if (!f.exists()) {
         new URL('https://products.solace.com/download/PUBSUB_SEMPV2_SCHEMA_YAML').withInputStream{ i -> f.withOutputStream{ it << i }}
     }
-    delete "workdir"; (new File("workdir")).mkdirs()
+    delete 'workdir'; (new File('workdir')).mkdirs()
     javaexec {
-        main="-jar";
+        main='-jar';
         classpath configurations.tool
-        workingDir = "workdir"
+        workingDir = 'workdir'
         args = [
-            "../../swagger-codegen-cli-2.2.2.jar",
-            "generate",
-            "-l",
-            "python",
-            "-i",
-            "../../swagger.yaml",
-            "-c",
-            "../codegen_config_python.json"
+            '../../swagger-codegen-cli-2.2.2.jar',
+            'generate',
+            '-l', 'python',
+            '-i', '../../swagger.yaml',
+            '-c', '../codegen_config_python.json'
             ]
     }
     // Cleanup
-    delete "workdir" + "/test"
-    delete fileTree("workdir") {
-        exclude "**/setup.py"
-        include "*"
+    delete 'workdir' + '/test'
+    delete fileTree('workdir') {
+        exclude '**/setup.py'
+        include '*'
     }
     copy {
-        from "workdir"
-        into "."
+        from 'workdir'
+        into '.'
     }
-    delete "workdir"
+    delete 'workdir'
 }
 
 assemble.dependsOn buildSempLib
